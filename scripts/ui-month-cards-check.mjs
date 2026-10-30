@@ -67,7 +67,10 @@ try{
    const metrics=await page.locator('.lp-overview-month').evaluateAll(cards=>cards.map(card=>{
     const r=card.getBoundingClientRect();return {width:r.width,overflow:card.scrollWidth-card.clientWidth,labels:[...card.querySelectorAll('.lp-overview-caption>span')].map(n=>{const t=n.getBoundingClientRect();return {left:t.left-r.left,right:t.right-r.right,height:t.height};}),dates:[...card.querySelectorAll('[data-date]')].map(n=>{const t=n.getBoundingClientRect(),s=n.firstElementChild.getBoundingClientRect();return {height:t.height,over:s.width-t.width};})};
    }));
-   for(const m of metrics){assert(m.overflow<=1,JSON.stringify(m));assert(m.labels.every(l=>l.left>=-1&&l.right<=1),JSON.stringify(m));if(!m.dates.every(d=>d.height>=44&&d.over<=1))await page.screenshot({path:'test-results/month-cards/failure.png'});assert(m.dates.every(d=>d.height>=44&&d.over<=1),JSON.stringify(m));}
+   // Linux/Windows font metrics can differ by a few Chromium layout units
+   // (1/64 CSS px). Keep the one-pixel allowance plus a subpixel rounding budget.
+   const dateOverflowTolerance=1+3/64;
+   for(const m of metrics){assert(m.overflow<=1,JSON.stringify(m));assert(m.labels.every(l=>l.left>=-1&&l.right<=1),JSON.stringify(m));if(!m.dates.every(d=>d.height>=44&&d.over<=dateOverflowTolerance))await page.screenshot({path:'test-results/month-cards/failure.png'});assert(m.dates.every(d=>d.height>=44&&d.over<=dateOverflowTolerance),JSON.stringify(m));}
    if(width<=430){const tops=await page.locator('.lp-overview-month').evaluateAll(a=>a.map(n=>n.getBoundingClientRect().top));assert(tops[1]>tops[0]);}
    if(width===390&&font===16&&dark&&type==='quarter')await page.locator('#app').screenshot({path:'test-results/month-cards/quarter-mobile.png'});
   });

@@ -17,7 +17,9 @@ await mount();Object.assign(window,{headerTest:{state:()=>collection.state,resta
 // Isolated browser-only Daily Notes fixture; canonical product helpers and settings UI.
 let dailySettings=normalizeSettings(JSON.parse(await fileIO.read('.fixture/plugin-data.json')??'{}'));
 const dailyHost=document.createElement('div');dailyHost.id='daily-settings';document.body.append(dailyHost);
-const saveDaily=async(next:typeof dailySettings)=>{dailySettings=normalizeSettings(next);await fileIO.write('.fixture/plugin-data.json',JSON.stringify(dailySettings));};
+// Report the saved state only after the IndexedDB transaction commits. Tests may
+// reload immediately after observing it, just as a user can close the app.
+const saveDaily=async(next:typeof dailySettings)=>{const saved=normalizeSettings(next);await fileIO.write('.fixture/plugin-data.json',JSON.stringify(saved));dailySettings=saved;};
 const showDaily=()=>renderSettingsPanel(dailyHost,{get:()=>dailySettings,save:saveDaily,connectDailyNotes:async()=>{await configureDailyNotes(fileIO,dailySettings,'.fixture');await saveDaily({...dailySettings,dailyNotes:'enabled'});},template:async()=>{},preview:()=>{},openCalendar:async()=>{},sync:async()=>{},export:async()=>{},recover:async()=>{},store},'Календарь');
 const daily={prepare:async()=>{await new NotesService(fileIO,'Planner',()=>dailySettings).ensureFoundation();await fileIO.write('.fixture/daily-notes.json',JSON.stringify({folder:'Other journal',format:'YYYY-MM-DD',template:'Other template'}));await fileIO.write('.fixture/core-plugins.json','["graph"]');await saveDaily({...dailySettings,dailyNotes:'pending'});},state:()=>dailySettings.dailyNotes,snapshot:async()=>[await fileIO.read('.fixture/daily-notes.json'),await fileIO.read('.fixture/core-plugins.json')],start:async()=>{const choice=await dailyNotesStartupChoice(fileIO,dailySettings,'.fixture');if(choice!==dailySettings.dailyNotes)await saveDaily({...dailySettings,dailyNotes:choice});},show:showDaily};
 Object.assign(window,{dailyTest:daily});
