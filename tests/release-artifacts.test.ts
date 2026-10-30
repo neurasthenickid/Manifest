@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {mkdir,mkdtemp,writeFile} from 'node:fs/promises';
+import {verifyProof,sourceDigest,sha} from '../scripts/release-integrity.mjs';
+test('R5: proof covers actual collection license/checksum metadata and rejects unapproved paths',async()=>{
+ await mkdir('test-results',{recursive:true});const root=await mkdtemp('test-results/release-artifacts-');const paths=['dist/packages/SHA256SUMS.txt','dist/collection/IMAGE_LICENSE.txt','dist/collection/SHA256SUMS.txt','dist/collection/headers-manifest.json'];for(const dir of ['packages','collection'])await mkdir(root+'/dist/'+dir,{recursive:true});const artifacts:Record<string,string>={};for(const p of paths){await writeFile(root+'/'+p,'checked metadata');artifacts[p]=sha('checked metadata');}const proof={commit:'a'.repeat(40),source:await sourceDigest(root),artifacts};await verifyProof(proof,proof.commit,root);await assert.rejects(verifyProof({...proof,artifacts:{'dist/collection/main.js':sha('checked metadata')}},proof.commit,root));
+});

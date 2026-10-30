@@ -1,0 +1,46 @@
+{
+  "name": "life-planner",
+  "version": "1.0.11",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "lint": "eslint src",
+    "check:manifest": "node scripts/verify-manifest.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "collection": "node scripts/collection.mjs",
+    "pack": "python scripts/pack.py",
+    "audit:public": "node scripts/audit-public.mjs",
+    "ui:build": "node scripts/preview.mjs --build-only",
+    "ui:serve": "node scripts/preview.mjs",
+    "test:ui": "node scripts/browser-check.mjs"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "devDependencies": {
+    "@codemirror/state": "6.7.6",
+    "@codemirror/view": "6.43.13",
+    "@types/node": "22.15.17",
+    "esbuild": "0.25.5",
+    "obsidian": "1.8.7",
+    "tsx": "4.20.5",
+    "typescript": "5.8.3",
+    "eslint": "9.39.5",
+    "eslint-plugin-obsidianmd": "0.4.2",
+    "playwright": "1.62.1"
+  },
+  "dependencies": {
+    "ical.js": "2.2.1"
+  },
+  "author": "neurasthenick1d",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neurasthenickid/Manifest.git"
+  },
+  "homepage": "https://github.com/neurasthenickid/Manifest",
+  "bugs": {
+    "url": "https://github.com/neurasthenickid/Manifest/issues"
+  },
+  "license": "PolyForm-Noncommercial-1.0.0"
+}

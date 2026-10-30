@@ -1,0 +1,56 @@
+{
+  "googleFontsCommit": "9710da1eacb3be272583c3224dcb70f9da6eadbb",
+  "fonts": [
+    {
+      "id": "manrope",
+      "family": "Manrope",
+      "file": "manrope.woff2",
+      "weight": [
+        200,
+        800
+      ],
+      "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/manrope/Manrope%5Bwght%5D.ttf",
+      "sourceSha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "sha256": "72bcd20e0c06075eb0d9454d21fada1e73340405462c9b7d0cfcd3f6b2aea975",
+      "bytes": 53684,
+      "license": "SIL OFL 1.1",
+      "cyrillic": "А-Я а-я Ё ё present",
+      "glyphs": 678,
+      "conversion": "Full font losslessly compressed to WOFF2; no glyph subsetting"
+    },
+    {
+      "id": "literata",
+      "family": "Literata",
+      "file": "literata.woff2",
+      "weight": [
+        200,
+        900
+      ],
+      "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/literata/Literata%5Bopsz%2Cwght%5D.ttf",
+      "sourceSha256": "b41138c9373112f32abb589cc22e8674b06ed4048b0c513be922bdd26f274440",
+      "sha256": "6dfc130b3f2b4b0b02badc95470b3b7560f6e3bd49dbae001d25213b64b41eac",
+      "bytes": 396320,
+      "license": "SIL OFL 1.1",
+      "cyrillic": "А-Я а-я Ё ё present",
+      "glyphs": 1163,
+      "conversion": "Full font losslessly compressed to WOFF2; no glyph subsetting"
+    },
+    {
+      "id": "jetbrainsmono",
+      "family": "JetBrains Mono",
+      "file": "jetbrainsmono.woff2",
+      "weight": [
+        100,
+        800
+      ],
+      "source": "https://raw.githubusercontent.com/google/fonts/9710da1eacb3be272583c3224dcb70f9da6eadbb/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf",
+      "sourceSha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "sha256": "8de97e694af3fa33b6e923674e240df6cd27d1d9519e7b3deffac67c5ef8e03c",
+      "bytes": 71684,
+      "license": "SIL OFL 1.1",
+      "cyrillic": "А-Я а-я Ё ё present",
+      "glyphs": 976,
+      "conversion": "Full font losslessly compressed to WOFF2; no glyph subsetting"
+    }
+  ]
+}

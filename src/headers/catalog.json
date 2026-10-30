@@ -1,0 +1,2373 @@
+{
+  "schemaVersion": 1,
+  "version": "2026.10.1",
+  "minPluginVersion": "1.0.0",
+  "maxPluginMajor": 1,
+  "files": [
+    {
+      "path": "collection/petersburg-spring-morning.webp",
+      "bytes": 425378,
+      "sha256": "8fa48b0fef67fe9d13f738dcf7a000f8b088ba61c069c8420b29c45e46281161"
+    },
+    {
+      "path": "collection/petersburg-spring-day.webp",
+      "bytes": 445500,
+      "sha256": "3b9ff6b5a9ca96b365f444880197bc1c41bcb38043ca903e08d892b1f410fc6d"
+    },
+    {
+      "path": "collection/petersburg-spring-evening.webp",
+      "bytes": 410990,
+      "sha256": "1aff76f92bd041c2a9c1522bb1dd4738517259b181f623724ed4f4caeb25cc1f"
+    },
+    {
+      "path": "collection/petersburg-spring-night.webp",
+      "bytes": 386206,
+      "sha256": "6a0935101be903461cdc9a1591615cde273ec69611fef20d82507d93042fc354"
+    },
+    {
+      "path": "collection/petersburg-summer-morning.webp",
+      "bytes": 426412,
+      "sha256": "c0bbba3c470fdf57c2da16bfb99e0a04c5b788abd21c8bcfde87ad170dc69e07"
+    },
+    {
+      "path": "collection/petersburg-summer-day.webp",
+      "bytes": 464060,
+      "sha256": "30f1b176517d58d59992b479190edbeef54311e3569786f8744863ddb2a08c5a"
+    },
+    {
+      "path": "collection/petersburg-summer-evening.webp",
+      "bytes": 421934,
+      "sha256": "efcb01a6d061cc34b5c9feb76ebe0dbd0cab1cd548d5ece3ad2c7cdf43ddc2f9"
+    },
+    {
+      "path": "collection/petersburg-summer-night.webp",
+      "bytes": 388336,
+      "sha256": "17594a3393315be41bc72313940910269e195ecb34b1ddb87a6c24c2576c7df5"
+    },
+    {
+      "path": "collection/petersburg-autumn-morning.webp",
+      "bytes": 430074,
+      "sha256": "dc0e85d5d2b3002f864ec93da5952398dba9a459d4ff93e7927985abb0d0f6b3"
+    },
+    {
+      "path": "collection/petersburg-autumn-day.webp",
+      "bytes": 430834,
+      "sha256": "cd9f4fe934c634a9ddfa3921536efa4e47a09532a947ddd0125bf69151bdc2d5"
+    },
+    {
+      "path": "collection/petersburg-autumn-evening.webp",
+      "bytes": 356616,
+      "sha256": "8d654a9983e6a8507e6695992b8a15879d20c5b1c44c2b03c74f6a09fe2a8397"
+    },
+    {
+      "path": "collection/petersburg-autumn-night.webp",
+      "bytes": 357186,
+      "sha256": "14e2eeeee5e2f6b044d0181ef6e7d5bfdfe9d1a1ce5f1490ad48319b02db5169"
+    },
+    {
+      "path": "collection/petersburg-winter-morning.webp",
+      "bytes": 409684,
+      "sha256": "78e691ebef80e9d3a9117e1ffd1ab46dd7448cb96c69a1dd74b1e8ea88fc470f"
+    },
+    {
+      "path": "collection/petersburg-winter-day.webp",
+      "bytes": 445966,
+      "sha256": "b1d0586db4b048676996cab9046616075212d6ae83fcbb2d51c2925023bdef52"
+    },
+    {
+      "path": "collection/petersburg-winter-evening.webp",
+      "bytes": 408906,
+      "sha256": "76fd1548c011816531e57f19e8f804c145de26d0512b11a254abe93f0641caba"
+    },
+    {
+      "path": "collection/petersburg-winter-night.webp",
+      "bytes": 376368,
+      "sha256": "4aa1891a999600efd940bf94cf9269c75a08243a56e125a1cbcbe9f6d5f1e233"
+    },
+    {
+      "path": "collection/moscow-spring-morning.webp",
+      "bytes": 411760,
+      "sha256": "c1665e03e3891db251e1588ab862ba08770fc747060a823fa764df6879918aa1"
+    },
+    {
+      "path": "collection/moscow-spring-day.webp",
+      "bytes": 448784,
+      "sha256": "70e5f8f97326547c9801d1595f9c1e6633dd609b7aab93d7603534594d52fb68"
+    },
+    {
+      "path": "collection/moscow-spring-evening.webp",
+      "bytes": 413940,
+      "sha256": "848211a1cbc170b3b4a389cb4164c385963328bb9b857998b69d7787c8d5c59a"
+    },
+    {
+      "path": "collection/moscow-spring-night.webp",
+      "bytes": 420066,
+      "sha256": "816f5ceb6a7daaae0ed21016f92ac1fc20d03042785d8c3174e7a9b9992f64e9"
+    },
+    {
+      "path": "collection/moscow-summer-morning.webp",
+      "bytes": 386500,
+      "sha256": "4d0c8f24fb9e798a17456612ac3fb71b229190cea03e204b3ab051591e8bd51e"
+    },
+    {
+      "path": "collection/moscow-summer-day.webp",
+      "bytes": 433568,
+      "sha256": "ab5bfc50c009c1cabf58ca8663da2d8055aabb1c0eb4e65d485792c778d2c1c1"
+    },
+    {
+      "path": "collection/moscow-summer-evening.webp",
+      "bytes": 370884,
+      "sha256": "e0b0880fbeb3ec876a8b1db3394f7a1fae154dcaf474cc3d5fc72af2a8d3a021"
+    },
+    {
+      "path": "collection/moscow-summer-night.webp",
+      "bytes": 415276,
+      "sha256": "5df2e2b5d2233d4b3a8c6db1f2b556bf61bda1e1090ec8379b6da6b4828a1bee"
+    },
+    {
+      "path": "collection/moscow-autumn-morning.webp",
+      "bytes": 411622,
+      "sha256": "70eb16d388d39b8e5a2aaa71b9326e6c7d67fd329b2a465efc4779708fb42110"
+    },
+    {
+      "path": "collection/moscow-autumn-day.webp",
+      "bytes": 472552,
+      "sha256": "186b2e4e1950f27d8356e8c0df0d9c34561a9bbdaf45b83fa327ffde24682e6f"
+    },
+    {
+      "path": "collection/moscow-autumn-evening.webp",
+      "bytes": 391932,
+      "sha256": "01fbd32ca485d239959de24726892068690c13af4172e7ac608e509fe829a076"
+    },
+    {
+      "path": "collection/moscow-autumn-night.webp",
+      "bytes": 401680,
+      "sha256": "09a671251ffd37b219b34911a30807430c726e5be369aa6e0ea83318b658cdfa"
+    },
+    {
+      "path": "collection/moscow-winter-morning.webp",
+      "bytes": 393076,
+      "sha256": "e0c022e7e291040a8a180b6653fa40357ae733da437ba32c065438185cc7d5fc"
+    },
+    {
+      "path": "collection/moscow-winter-day.webp",
+      "bytes": 419294,
+      "sha256": "336740b7efa0595fd0b960b5975fffc5eb9312acb991d843c07d6becfeb05bf6"
+    },
+    {
+      "path": "collection/moscow-winter-evening.webp",
+      "bytes": 415304,
+      "sha256": "209feb8b3a7eb5a9369cd9e82b26ff108e04b7e8ba9afd04b23af92b5bc2ec90"
+    },
+    {
+      "path": "collection/moscow-winter-night.webp",
+      "bytes": 418472,
+      "sha256": "32f09a829df752f090aa52263ee96706d50e1b9822f751f0dab53cdd8957e2b4"
+    },
+    {
+      "path": "collection/novgorod-spring-morning.webp",
+      "bytes": 338416,
+      "sha256": "21fd77f97de483280df8e49aaeb74c8835bd77893ee8d4797ce9749954f46177"
+    },
+    {
+      "path": "collection/novgorod-spring-day.webp",
+      "bytes": 274172,
+      "sha256": "0e9be5553015cdfacd23ef01d4fc5761af1d1623d96543bdbc57eb56fd66d5e7"
+    },
+    {
+      "path": "collection/novgorod-spring-evening.webp",
+      "bytes": 302854,
+      "sha256": "165e23f12a1600473bd3e2431d5f063c3d4a9aa421c4ebe5fe4081d85406c05d"
+    },
+    {
+      "path": "collection/novgorod-spring-night.webp",
+      "bytes": 287302,
+      "sha256": "747098125e2e4168519834b49473e5fda96232c20166a7e831b3f817f5812ba4"
+    },
+    {
+      "path": "collection/novgorod-summer-morning.webp",
+      "bytes": 377230,
+      "sha256": "1732384e0d987a725e8ab1e983366953a14c2b3b747de3511b69d5ac7d9c93dd"
+    },
+    {
+      "path": "collection/novgorod-summer-day.webp",
+      "bytes": 365642,
+      "sha256": "be28db5c38c41373354095bef2857312b7422e10fe5fa222284c9a331ec6bcb2"
+    },
+    {
+      "path": "collection/novgorod-summer-evening.webp",
+      "bytes": 393606,
+      "sha256": "81bee4bdf4c96c76e6e20524ea995012576502ba2a7cd024a130a7b621061406"
+    },
+    {
+      "path": "collection/novgorod-summer-night.webp",
+      "bytes": 291646,
+      "sha256": "16d93ed217d1a5e1fb5ec6db7578659a9fc56a5b5c4b9df4c5cbc01470b59ddd"
+    },
+    {
+      "path": "collection/novgorod-autumn-morning.webp",
+      "bytes": 330930,
+      "sha256": "364c6e0d0f378f3b41a2a61979630ff6f5b3a2e22d6e48674995bdca854f6c44"
+    },
+    {
+      "path": "collection/novgorod-autumn-day.webp",
+      "bytes": 309144,
+      "sha256": "9cba21cc66c5a006fc221f839b80d38956db60a551d366e35154c332e6fa3a81"
+    },
+    {
+      "path": "collection/novgorod-autumn-evening.webp",
+      "bytes": 282344,
+      "sha256": "fdf897904ae53d5191ae82507b0ba52e0109765ff22a6b54d498b77b91ace5d8"
+    },
+    {
+      "path": "collection/novgorod-autumn-night.webp",
+      "bytes": 295732,
+      "sha256": "8205f88e6672a0a8bc2387a99e02788d9e3f5be5222e895829039b6322315dd1"
+    },
+    {
+      "path": "collection/novgorod-winter-morning.webp",
+      "bytes": 411980,
+      "sha256": "20dadd397034cab11ed2936bfda61cff060d789403a3de53f148f281d8ef375e"
+    },
+    {
+      "path": "collection/novgorod-winter-day.webp",
+      "bytes": 361298,
+      "sha256": "a89d9514c836022b0dbec5018b30f424d0567310a266ad97239349eaf35daaba"
+    },
+    {
+      "path": "collection/novgorod-winter-evening.webp",
+      "bytes": 332360,
+      "sha256": "17733d7d4727d7835a6d292055bd8f94bafa43c51905106576f7e6aab9b1dac0"
+    },
+    {
+      "path": "collection/novgorod-winter-night.webp",
+      "bytes": 403286,
+      "sha256": "af4ef4f82ee1be36607ab3192ddb873d04ed9f3335f2cc87d19545c2ece4c612"
+    },
+    {
+      "path": "collection/yaroslavl-spring-morning.webp",
+      "bytes": 388922,
+      "sha256": "4e7f53cd2e795dc2859098ef128953896b7fb826cc7762108a5e0613198e6958"
+    },
+    {
+      "path": "collection/yaroslavl-spring-day.webp",
+      "bytes": 411772,
+      "sha256": "f7d0b988058d19bed36a06e8acdfe01281e43acefb1cb17e1db6f86bb6709d1e"
+    },
+    {
+      "path": "collection/yaroslavl-spring-evening.webp",
+      "bytes": 385166,
+      "sha256": "ef5c95c99c27a67b1909e6745f2366d850dce0f3e27025a94bc4aa3f80a9f730"
+    },
+    {
+      "path": "collection/yaroslavl-spring-night.webp",
+      "bytes": 408276,
+      "sha256": "02a32044566f8ca9554b6364facca33c1f015c6b724b61a92111eaed0eb22cf2"
+    },
+    {
+      "path": "collection/yaroslavl-summer-morning.webp",
+      "bytes": 395852,
+      "sha256": "ae9964739caf3868d853688f9bcf9541ddcbb043e9b76fbf3ca94c2b9ea84287"
+    },
+    {
+      "path": "collection/yaroslavl-summer-day.webp",
+      "bytes": 427720,
+      "sha256": "6c0b9419cb1f0e5c518945b66d5ef1943b00cd2f889b71703da42b8858ce9c3f"
+    },
+    {
+      "path": "collection/yaroslavl-summer-evening.webp",
+      "bytes": 394158,
+      "sha256": "ffea5c53771f039ae6468d756f73ab9231dfc8a495e0cb0ed917fd4b027ae24e"
+    },
+    {
+      "path": "collection/yaroslavl-summer-night.webp",
+      "bytes": 399850,
+      "sha256": "3fbfef557dd0975afd4b8fa591cc0f2d0c1c267082652082e4c5d642446b5e05"
+    },
+    {
+      "path": "collection/yaroslavl-autumn-morning.webp",
+      "bytes": 392492,
+      "sha256": "41199f2c7b44f9c5813996824f5e9ee2f7fcd1461f641d6e97d6c6e19b79099d"
+    },
+    {
+      "path": "collection/yaroslavl-autumn-day.webp",
+      "bytes": 416254,
+      "sha256": "6f3259d13d314065cd1aea808652be18fb0ca8f697a31850baa6cf14069e7e4e"
+    },
+    {
+      "path": "collection/yaroslavl-autumn-evening.webp",
+      "bytes": 389482,
+      "sha256": "09e46788dfaed91430695705bdd3298c2e4629d4901776dee093c03cbbea64fd"
+    },
+    {
+      "path": "collection/yaroslavl-autumn-night.webp",
+      "bytes": 388956,
+      "sha256": "a6b5fe614a5f0583f94cd47feea3e3e9a2488798acc0ca3ccfc3c08ef584caa2"
+    },
+    {
+      "path": "collection/yaroslavl-winter-morning.webp",
+      "bytes": 384048,
+      "sha256": "b322aa429735a7ef96bd3aec7a24034da89a1e75a5054f5938a994555339ceb4"
+    },
+    {
+      "path": "collection/yaroslavl-winter-day.webp",
+      "bytes": 434428,
+      "sha256": "552725904abdc6c83b9258ea25f2ca0ea853869985aa38f88f3c33d4af01237e"
+    },
+    {
+      "path": "collection/yaroslavl-winter-evening.webp",
+      "bytes": 353908,
+      "sha256": "81e35e0b2995aea99d6733243e501462a70e07789ca531f7bc9bfe187bad5be3"
+    },
+    {
+      "path": "collection/yaroslavl-winter-night.webp",
+      "bytes": 423144,
+      "sha256": "3b053e359535888c5dc8896eb0b10e17369bc259c430c8b1e55365897051b96d"
+    },
+    {
+      "path": "collection/nizhny-spring-morning.webp",
+      "bytes": 405398,
+      "sha256": "372a723532ca15c035084af40f8fc662f433d3b1f30630fb6735a609d724e953"
+    },
+    {
+      "path": "collection/nizhny-spring-day.webp",
+      "bytes": 422954,
+      "sha256": "170de43e16b82affc6d737bac26680925f4351bd1ef4d5a808aec6ca029a4238"
+    },
+    {
+      "path": "collection/nizhny-spring-evening.webp",
+      "bytes": 354844,
+      "sha256": "8b91e9e9330dec2d96e8cebddc31e8c0927ca1d0f81253b1f507c33c0e83bd3c"
+    },
+    {
+      "path": "collection/nizhny-spring-night.webp",
+      "bytes": 354514,
+      "sha256": "817d4d15e9245ed880a13702606cf21eaa26dba32ea77e9ee8610eab573d82af"
+    },
+    {
+      "path": "collection/nizhny-summer-morning.webp",
+      "bytes": 359162,
+      "sha256": "84fe86142cada1790266d77c4ea9159cac322d5f20b7e09212703871b6381e8f"
+    },
+    {
+      "path": "collection/nizhny-summer-day.webp",
+      "bytes": 403440,
+      "sha256": "a7d5c0c6a62771cc96238315f1286677cb27d079a741a7bce280c23ab8c50c99"
+    },
+    {
+      "path": "collection/nizhny-summer-evening.webp",
+      "bytes": 347902,
+      "sha256": "2968743e99817b6d1d9f72d2572739c22f830d6b6587fc5e19f5a159e0e3e2f2"
+    },
+    {
+      "path": "collection/nizhny-summer-night.webp",
+      "bytes": 311870,
+      "sha256": "4319deee13322f2f3d1913443c6bb3211f3df27e7f54bc9346e85edf067b54f8"
+    },
+    {
+      "path": "collection/nizhny-autumn-morning.webp",
+      "bytes": 383368,
+      "sha256": "91e7d6a1e96f6d6da808274daad243a6eb4a1708e518956695725f85c042b6e2"
+    },
+    {
+      "path": "collection/nizhny-autumn-day.webp",
+      "bytes": 429314,
+      "sha256": "fc1667456d870ac42220c00e3d97e38b568b29fb4138c14758dcbcb5e1685a5c"
+    },
+    {
+      "path": "collection/nizhny-autumn-evening.webp",
+      "bytes": 312318,
+      "sha256": "9db24a17a2d3b297aebe20ebb8210bc8f6086460277f4174860d0c895a103465"
+    },
+    {
+      "path": "collection/nizhny-autumn-night.webp",
+      "bytes": 302804,
+      "sha256": "16d6be8662271b7c0daf5e07e691e475a0ab7f838d5b32083b95335a0db22828"
+    },
+    {
+      "path": "collection/nizhny-winter-morning.webp",
+      "bytes": 402930,
+      "sha256": "bd3c1c8725fc8fb851b87943304c2488e339d4d084843add1ade3e2a5f8aede5"
+    },
+    {
+      "path": "collection/nizhny-winter-day.webp",
+      "bytes": 391838,
+      "sha256": "28c04f9f20796b01b1dd4bf82490bbb64df54bb2d8984d21fa9ac547d635a520"
+    },
+    {
+      "path": "collection/nizhny-winter-evening.webp",
+      "bytes": 365840,
+      "sha256": "d775d81392d8e5547514fecd55df4f6880cd28db41526f82044da529fc4ff868"
+    },
+    {
+      "path": "collection/nizhny-winter-night.webp",
+      "bytes": 388714,
+      "sha256": "6279c89291d3d6755b7e33c206ac0135c34ea61958123a139d660f685ffd0590"
+    },
+    {
+      "path": "collection/khabarovsk-spring-morning.webp",
+      "bytes": 431078,
+      "sha256": "d130766ab4b2eb43f029759f6bb34f748d0c18a7b1c7f41d455a912134090030"
+    },
+    {
+      "path": "collection/khabarovsk-spring-day.webp",
+      "bytes": 440986,
+      "sha256": "2d87d3af3b0c37ddc90a7742497f03a1f46bf6d24ec39b883d40b8a0cb9e5f13"
+    },
+    {
+      "path": "collection/khabarovsk-spring-evening.webp",
+      "bytes": 383806,
+      "sha256": "d9e9a8671c2d5bdc650d0aa1edd743e8e02d721289f6a056519e98362c343cf7"
+    },
+    {
+      "path": "collection/khabarovsk-spring-night.webp",
+      "bytes": 416956,
+      "sha256": "d7f0da23aac50ba3a7b3a470da1142a48480222fef28ea214765e9478c56dfcb"
+    },
+    {
+      "path": "collection/khabarovsk-summer-morning.webp",
+      "bytes": 398952,
+      "sha256": "e7d73692698778cd7cb90f2761491b63d671e810178758cc12f9c8e5b9187cd1"
+    },
+    {
+      "path": "collection/khabarovsk-summer-day.webp",
+      "bytes": 420062,
+      "sha256": "d9b8e5d908e321b8d9928c134304f711353330a612a65db860738b28791cb2b8"
+    },
+    {
+      "path": "collection/khabarovsk-summer-evening.webp",
+      "bytes": 383610,
+      "sha256": "cdad978a70cc9c10f3e75bc8666a8395200bdc7419c7f04c80483f8e04cf0dc3"
+    },
+    {
+      "path": "collection/khabarovsk-summer-night.webp",
+      "bytes": 422138,
+      "sha256": "093777ba9ff976bffeeedd13ed6443bd72cfbe8c7e15a3305d1300d9abd33552"
+    },
+    {
+      "path": "collection/khabarovsk-autumn-morning.webp",
+      "bytes": 382550,
+      "sha256": "7e7a904d75116405655b9b0e2a488f1a53944ef52810c1649455e5ce1fefc03d"
+    },
+    {
+      "path": "collection/khabarovsk-autumn-day.webp",
+      "bytes": 422458,
+      "sha256": "899ab29c300771ecbac6769dc96b4bd691a0d11d1664daa4fc2520c4939de47c"
+    },
+    {
+      "path": "collection/khabarovsk-autumn-evening.webp",
+      "bytes": 393160,
+      "sha256": "bd744ddd3a60def1f0a05c43be072210e02290c644384568d0966729d60eb923"
+    },
+    {
+      "path": "collection/khabarovsk-autumn-night.webp",
+      "bytes": 399706,
+      "sha256": "1374d582de4208603ff89674a20ac148843b917dbef3e139b48d5793f2c73756"
+    },
+    {
+      "path": "collection/khabarovsk-winter-morning.webp",
+      "bytes": 415440,
+      "sha256": "033f7a099ab27f402b533e58333b94432e2d3f60bf577963d4154e4ace93dfd8"
+    },
+    {
+      "path": "collection/khabarovsk-winter-day.webp",
+      "bytes": 434508,
+      "sha256": "b3c8d5e992dd1be102bafac299cec11915f5dfc183897d6e34fbb5d279c395aa"
+    },
+    {
+      "path": "collection/khabarovsk-winter-evening.webp",
+      "bytes": 384798,
+      "sha256": "510048069cb0fb9383775fe2906bd5cbfa04db56fc5c01538ca7db22c05b1a71"
+    },
+    {
+      "path": "collection/khabarovsk-winter-night.webp",
+      "bytes": 406246,
+      "sha256": "eb27ebec65d6ffc5a4cbd87a8837aa30ff6cdcab436a6761ae7a6e547c179047"
+    },
+    {
+      "path": "collection/kazan-spring-morning.webp",
+      "bytes": 337266,
+      "sha256": "a90f8549ab2a918ad0c820a6e1e392be8404e985da38527faca56bc3e6140d47"
+    },
+    {
+      "path": "collection/kazan-spring-day.webp",
+      "bytes": 380524,
+      "sha256": "876cd0071c257fdde99864a1a4c800620cf7a0addffa05495892e62900222316"
+    },
+    {
+      "path": "collection/kazan-spring-evening.webp",
+      "bytes": 324308,
+      "sha256": "acaff414355f79a6e0060a54b0322b2d337d986b2114040cdd19dec50bd016c7"
+    },
+    {
+      "path": "collection/kazan-spring-night.webp",
+      "bytes": 327542,
+      "sha256": "c41aed6b761f1988b2cb13d60a3c667ead119c09c022a755ba8a3197a10aac0e"
+    },
+    {
+      "path": "collection/kazan-summer-morning.webp",
+      "bytes": 322416,
+      "sha256": "b58d5ec020095d816aa34d750084ad9fc2755b67f683564210e88c07293d7af6"
+    },
+    {
+      "path": "collection/kazan-summer-day.webp",
+      "bytes": 409342,
+      "sha256": "2c8ea419dbe43ca48f584a9990d864979441b17e1db3ddb391eebd66f8bdd77e"
+    },
+    {
+      "path": "collection/kazan-summer-evening.webp",
+      "bytes": 401708,
+      "sha256": "81c02f4f9101a44bc8fd683f267236477351d20e93b2049b2f4471f0cd3f350c"
+    },
+    {
+      "path": "collection/kazan-summer-night.webp",
+      "bytes": 329018,
+      "sha256": "09ea8021300c217d94ae94daa4e2d1c0278d135a341517ad297ef0cc8cd982d3"
+    },
+    {
+      "path": "collection/kazan-autumn-morning.webp",
+      "bytes": 363764,
+      "sha256": "6da35bfdfc8efded6de28809bcf7fdc092693d1cbc9bb33741b5c1cb243b601e"
+    },
+    {
+      "path": "collection/kazan-autumn-day.webp",
+      "bytes": 413720,
+      "sha256": "a14d0ea23c972b07f2b6fb4ff107a1799ae94906a7809fc7adc7cbf0f79ad0da"
+    },
+    {
+      "path": "collection/kazan-autumn-evening.webp",
+      "bytes": 286960,
+      "sha256": "6ae59ef436d079d8645165a7ebeb7b7262930173f41e47654ee4c9577b8563e0"
+    },
+    {
+      "path": "collection/kazan-autumn-night.webp",
+      "bytes": 354436,
+      "sha256": "c64e6669ced7b669d194ee8840237fd52d62657832c0506e46027b3b94038b66"
+    },
+    {
+      "path": "collection/kazan-winter-morning.webp",
+      "bytes": 451548,
+      "sha256": "0312d3c23e93396e10f2fc6afe51c0ca018a045879a9cc9a9ef0ab4801f7b194"
+    },
+    {
+      "path": "collection/kazan-winter-day.webp",
+      "bytes": 392676,
+      "sha256": "6cfd6eb4c9813effe87e1483a0915733612482a8170f654c9983f66fe541dc67"
+    },
+    {
+      "path": "collection/kazan-winter-evening.webp",
+      "bytes": 306078,
+      "sha256": "99e34fa5976d332761b41eabbad917444986e3eba84d4b4d032e21c984381e7b"
+    },
+    {
+      "path": "collection/kazan-winter-night.webp",
+      "bytes": 362182,
+      "sha256": "ed1f292d4555ceb61597f0127ffac6502b8d160abf54e49f73635a8b30a05c4b"
+    },
+    {
+      "path": "collection/ufa-spring-morning.webp",
+      "bytes": 424662,
+      "sha256": "99284887ea92a726bcb73deb5576aea549ae3d6c6ef9fd787a7e6dd019591922"
+    },
+    {
+      "path": "collection/ufa-spring-day.webp",
+      "bytes": 440524,
+      "sha256": "d910a8a539f97ff65f7a910294c441d900d8f79fc704e79aa7b97c7c0e5bfb82"
+    },
+    {
+      "path": "collection/ufa-spring-evening.webp",
+      "bytes": 390070,
+      "sha256": "85dec02119312250c9089478311bae3b6f5ac4ce7094acfae7761e879b537e84"
+    },
+    {
+      "path": "collection/ufa-spring-night.webp",
+      "bytes": 399170,
+      "sha256": "7e7e7d7eb3ead99ba95da56922b6648e073065404218c542274b78c357733547"
+    },
+    {
+      "path": "collection/ufa-summer-morning.webp",
+      "bytes": 399162,
+      "sha256": "336920e9e5c5587cff6d9518abf75bcc4ce4602002fe8dc34525782dc3116a1b"
+    },
+    {
+      "path": "collection/ufa-summer-day.webp",
+      "bytes": 415908,
+      "sha256": "44e49d1098d75b172ece2c04b5e8ee3490b01ce2b5385d834babc4566386ecb7"
+    },
+    {
+      "path": "collection/ufa-summer-evening.webp",
+      "bytes": 424778,
+      "sha256": "b1834e82ce5f3cf9372a2867e8b5fff783f7bbfe401606308a2e98ec40e87c66"
+    },
+    {
+      "path": "collection/ufa-summer-night.webp",
+      "bytes": 355964,
+      "sha256": "e958c0d39d8af1496297b4a590b1b309f8198241df4709d0bd21eaad970b7aec"
+    },
+    {
+      "path": "collection/ufa-autumn-morning.webp",
+      "bytes": 362146,
+      "sha256": "28c1fa0c0b38b165c49da5e72df04e0d5e53f1adc2f4ec2bfaf30db2e31c6337"
+    },
+    {
+      "path": "collection/ufa-autumn-day.webp",
+      "bytes": 354964,
+      "sha256": "b71aa46a98078ee78b968ea63c3f607038315553f888725db49b673ec7b52513"
+    },
+    {
+      "path": "collection/ufa-autumn-evening.webp",
+      "bytes": 377806,
+      "sha256": "c8f25f5b86af4ac48106251b0115de5d3c585bb42df6a9d73657a32baf50ed7f"
+    },
+    {
+      "path": "collection/ufa-autumn-night.webp",
+      "bytes": 378922,
+      "sha256": "710224d827008bd7d2c017e7927aaaa92498c410b966b26159d2b010868d1e05"
+    },
+    {
+      "path": "collection/ufa-winter-morning.webp",
+      "bytes": 438956,
+      "sha256": "ab2079fdebad0c979c0c98595a5b72d538a45bbddd9dfaca30d95a435751831a"
+    },
+    {
+      "path": "collection/ufa-winter-day.webp",
+      "bytes": 455076,
+      "sha256": "8708c0af1acea6a9d38b87832959d14164293392cc0614d89283bb609e0fbeaf"
+    },
+    {
+      "path": "collection/ufa-winter-evening.webp",
+      "bytes": 424794,
+      "sha256": "b907241bde7c9f53709a40b84fcfaf7d5798391d69248a33d27b3a8124b6180d"
+    },
+    {
+      "path": "collection/ufa-winter-night.webp",
+      "bytes": 445252,
+      "sha256": "9f0af10d63cb3816d8c10ceb93b5657e2f07736b43ef5084aa05bf72be69fb15"
+    },
+    {
+      "path": "collection/vladivostok-spring-morning.webp",
+      "bytes": 419584,
+      "sha256": "ea6a7109f1c40e4e26ddd5b55e31cb6348a8f7cc517bf14c9d422bc880a02e20"
+    },
+    {
+      "path": "collection/vladivostok-spring-day.webp",
+      "bytes": 471310,
+      "sha256": "85e31e4ea3c76457cbe7984282fd97e0ecab464f0b970557b211f4fa3f0cf3fa"
+    },
+    {
+      "path": "collection/vladivostok-spring-evening.webp",
+      "bytes": 389024,
+      "sha256": "baceee9e626577ebd8d6263c1cb7a39d1178198abc19b238b86b8616304a3631"
+    },
+    {
+      "path": "collection/vladivostok-spring-night.webp",
+      "bytes": 375770,
+      "sha256": "91e59ae4f308e916faa450b80baf3648b38b564029b671f5cce2e555b24178cd"
+    },
+    {
+      "path": "collection/vladivostok-summer-morning.webp",
+      "bytes": 409576,
+      "sha256": "2e7969db7db8f83675f1f4b6a83b6effa287e4ea5c0da81bc764b45317fc836e"
+    },
+    {
+      "path": "collection/vladivostok-summer-day.webp",
+      "bytes": 461116,
+      "sha256": "a284a62db326cf46d6a65856c909ea7c8c75e7767fb30c59421c2e16594eb542"
+    },
+    {
+      "path": "collection/vladivostok-summer-evening.webp",
+      "bytes": 388536,
+      "sha256": "93f1d409698fcf226a4b01f41fd666a848de826d97631f64975cd3be7f203331"
+    },
+    {
+      "path": "collection/vladivostok-summer-night.webp",
+      "bytes": 363950,
+      "sha256": "6a7498a67eeaa9d35825d660a75d9804e644f9d985a98d0c5ed35e72b28b0518"
+    },
+    {
+      "path": "collection/vladivostok-autumn-morning.webp",
+      "bytes": 414934,
+      "sha256": "02599f856ce3bfa69d67a9e61911cbf0472262e48c94a2bff5822697402b0c4e"
+    },
+    {
+      "path": "collection/vladivostok-autumn-day.webp",
+      "bytes": 419132,
+      "sha256": "b7f29a575f39aaa3c064fe2b30196d85ec2121726cda3de88d473b72e88eabcc"
+    },
+    {
+      "path": "collection/vladivostok-autumn-evening.webp",
+      "bytes": 378222,
+      "sha256": "9f9301da9aca8b613bd7a6fd871a07400b7f4e080fb61087c192d7992505e4aa"
+    },
+    {
+      "path": "collection/vladivostok-autumn-night.webp",
+      "bytes": 371524,
+      "sha256": "df95416badc2eeca4b535583c481cb309e0f74603d828251d1a2dbbb686104f8"
+    },
+    {
+      "path": "collection/vladivostok-winter-morning.webp",
+      "bytes": 470200,
+      "sha256": "1f5af403bfa3bee90d9c359e9c6427cdd2a68f91967e97771f3bf7ad3661d2af"
+    },
+    {
+      "path": "collection/vladivostok-winter-day.webp",
+      "bytes": 501826,
+      "sha256": "8204c0495db2ffb8364ac7613a048ffe3b086df1d2876d09b743295b84dd282f"
+    },
+    {
+      "path": "collection/vladivostok-winter-evening.webp",
+      "bytes": 425906,
+      "sha256": "c09d0d8d911b6917800acb41e7884d5bb473e56ec538cae893f3df8cc62b452a"
+    },
+    {
+      "path": "collection/vladivostok-winter-night.webp",
+      "bytes": 425904,
+      "sha256": "b92e6ab1f354a4426277e1c5a743823067e257c8a303e2d1fd8061e2914cf40a"
+    },
+    {
+      "path": "collection/kaliningrad-spring-morning.webp",
+      "bytes": 485222,
+      "sha256": "2147bcecec7d5eef5e71ace4b00bf1fe2c9fffa2d54117feabc5e07f2f52b576"
+    },
+    {
+      "path": "collection/kaliningrad-spring-day.webp",
+      "bytes": 491006,
+      "sha256": "f2372a0a9e5133e3ec509391b219cf7d46725a5e63af042aa6d707bd68aeb4f9"
+    },
+    {
+      "path": "collection/kaliningrad-spring-evening.webp",
+      "bytes": 400770,
+      "sha256": "f8bd59728ea0cf61a78d28f67d71a6d7d72cf761187838d201c33012626290c3"
+    },
+    {
+      "path": "collection/kaliningrad-spring-night.webp",
+      "bytes": 420434,
+      "sha256": "f6a31159dc8c308895d75f6ea16637cc0eca8f5d609f092a4bc62b75e24f0cc8"
+    },
+    {
+      "path": "collection/kaliningrad-summer-morning.webp",
+      "bytes": 454470,
+      "sha256": "b9c5c5dcc25ba850da28184ee25daa98bb9daa450c654c430205087158a39afd"
+    },
+    {
+      "path": "collection/kaliningrad-summer-day.webp",
+      "bytes": 506754,
+      "sha256": "a21e76627126bc78a7e2bce6dd89f375731af214a1ad53b551f3bc71774fd2c0"
+    },
+    {
+      "path": "collection/kaliningrad-summer-evening.webp",
+      "bytes": 398590,
+      "sha256": "ab7d026f4c0d3958ee70affe3da739a3c57803848a71644e9c2f99017938f73d"
+    },
+    {
+      "path": "collection/kaliningrad-summer-night.webp",
+      "bytes": 383348,
+      "sha256": "e78ff956af6f83020ab4fb0fe7ff10fb4acab4383e14bfaf3001664da58f9dda"
+    },
+    {
+      "path": "collection/kaliningrad-autumn-morning.webp",
+      "bytes": 449392,
+      "sha256": "182282c485277579f324de89895a4c8d60348073652f86e554ae31ed33011d0d"
+    },
+    {
+      "path": "collection/kaliningrad-autumn-day.webp",
+      "bytes": 497222,
+      "sha256": "c5cb0016d4aaa17b9255e48e91f0ede5369ae882a39bf1e303f175839b360dbc"
+    },
+    {
+      "path": "collection/kaliningrad-autumn-evening.webp",
+      "bytes": 380104,
+      "sha256": "91b72ace9d6a1966d4073f9bffe39dec621ce9620390cf942860b4f6099ec030"
+    },
+    {
+      "path": "collection/kaliningrad-autumn-night.webp",
+      "bytes": 397746,
+      "sha256": "65bae5a41c80caa9023af159e2153ad76ee5c3c0cff6ff03a2f7f32fd86c3780"
+    },
+    {
+      "path": "collection/kaliningrad-winter-morning.webp",
+      "bytes": 462728,
+      "sha256": "2e361be4a7c7dc8d3d626032dd891c585a991adc4129876696b2a28162c85416"
+    },
+    {
+      "path": "collection/kaliningrad-winter-day.webp",
+      "bytes": 468988,
+      "sha256": "efc9bb68f45849a354fccf0f8d308ed4a45c264d687fac8b609f3f0f340e0957"
+    },
+    {
+      "path": "collection/kaliningrad-winter-evening.webp",
+      "bytes": 404138,
+      "sha256": "a4f2fd8755af32b392403c1a754cdc83bec72fa59ee5c298d54950b7c5ab0ef3"
+    },
+    {
+      "path": "collection/kaliningrad-winter-night.webp",
+      "bytes": 428514,
+      "sha256": "6520abb8bfbc322033ef64a6d16221ef6afce61fcdcb3f53c0fedfaf91f8344e"
+    },
+    {
+      "path": "collection/taiga-spring-morning.webp",
+      "bytes": 504046,
+      "sha256": "7b2195334057e791ae6b305f888b6227b01cb3110cdddd868555a35c738148c6"
+    },
+    {
+      "path": "collection/taiga-spring-day.webp",
+      "bytes": 514234,
+      "sha256": "0a4b95a4ff6e57bf853487d8ddbaa0b9c1d8b4974dc67f79c2fa0af32d4de17c"
+    },
+    {
+      "path": "collection/taiga-spring-evening.webp",
+      "bytes": 413676,
+      "sha256": "6e2a091b4962788df5f56cc7da17a286b9dc41faec0be7633ea98fd1bb0268be"
+    },
+    {
+      "path": "collection/taiga-spring-night.webp",
+      "bytes": 426026,
+      "sha256": "aa7a2eab4f6ea37428c13fc277a2b5dae43534658634db0f02e598e7b0ff52e6"
+    },
+    {
+      "path": "collection/taiga-summer-morning.webp",
+      "bytes": 468272,
+      "sha256": "2384028ea198a59340372cc256445bcbd806b6cffe0968261465f70091f67524"
+    },
+    {
+      "path": "collection/taiga-summer-day.webp",
+      "bytes": 519592,
+      "sha256": "2b61397ef641f01d171ba49bb55fd0bee566b1e04d8fd1dfa04f16d723a7aa47"
+    },
+    {
+      "path": "collection/taiga-summer-evening.webp",
+      "bytes": 466806,
+      "sha256": "964d6b1d4b504234eed6c1582b2684e8a5b032e3bc001ad6fb109eeb647c5d1d"
+    },
+    {
+      "path": "collection/taiga-summer-night.webp",
+      "bytes": 404844,
+      "sha256": "8d47865f69617625a084425da3f5e9355373cac597c290ccdb02dc01002785d7"
+    },
+    {
+      "path": "collection/taiga-autumn-morning.webp",
+      "bytes": 493086,
+      "sha256": "1581d206069bd57f8dbcd9d3ed261996f81476a38df44a289ba2f6bfab8543ff"
+    },
+    {
+      "path": "collection/taiga-autumn-day.webp",
+      "bytes": 553944,
+      "sha256": "d91ee37a1b9065f8e3c50926bd15fda4d73ba491973798933a3a34e5f60d8c84"
+    },
+    {
+      "path": "collection/taiga-autumn-evening.webp",
+      "bytes": 400782,
+      "sha256": "2915fe6b052f4237fb06bd4631f3310631d5d5abcaf3377420ad97763e495c3c"
+    },
+    {
+      "path": "collection/taiga-autumn-night.webp",
+      "bytes": 424546,
+      "sha256": "17179b171478b5c71a8c14e50707e9ecb7fa05400514acd6bc0124a874f7bc8e"
+    },
+    {
+      "path": "collection/taiga-winter-morning.webp",
+      "bytes": 462122,
+      "sha256": "22c29daa75c43dd2a929bd8422bc95e4f8bea0a5bb13f5de7c45d0c3f731f1a1"
+    },
+    {
+      "path": "collection/taiga-winter-day.webp",
+      "bytes": 479946,
+      "sha256": "4585c374a49905057259c3121907cacd78b374a979a03a6cc3f2e27f8954babd"
+    },
+    {
+      "path": "collection/taiga-winter-evening.webp",
+      "bytes": 334196,
+      "sha256": "6807ca1e5b90a4a5bfeadb20009cdd3024bd6b738fa6d8cda2142549b6347533"
+    },
+    {
+      "path": "collection/taiga-winter-night.webp",
+      "bytes": 402596,
+      "sha256": "dca67d17a0e848f349c007aa88fabe4fe3393d57eb5c524267f453dd8ad16856"
+    },
+    {
+      "path": "collection/altai-spring-morning.webp",
+      "bytes": 556680,
+      "sha256": "326e3218d13a1eec3411243a8e9233f66e1bd8822d7f7031f7c22fba364cb191"
+    },
+    {
+      "path": "collection/altai-spring-day.webp",
+      "bytes": 562990,
+      "sha256": "08e3ca4fd5dd6e04a7a25e576d87e3f7a7ae1618ec518721a8ffd635e4cbc0e1"
+    },
+    {
+      "path": "collection/altai-spring-evening.webp",
+      "bytes": 493922,
+      "sha256": "86a74f8113ffa385adf78163948c962999a540fc28393549e9390555b6b18eb3"
+    },
+    {
+      "path": "collection/altai-spring-night.webp",
+      "bytes": 498706,
+      "sha256": "748e2fb0e44335e9b7165c22f02feb4e757feac214fa4fa9ef6b2514a47c3ade"
+    },
+    {
+      "path": "collection/altai-summer-morning.webp",
+      "bytes": 526062,
+      "sha256": "af258ab5291ac3bd604e86c2efd5bda9df3ada94bcc955ca9434d5c1ef4d463a"
+    },
+    {
+      "path": "collection/altai-summer-day.webp",
+      "bytes": 561068,
+      "sha256": "8588d4b9a7c79a588ad9333942bc7af3deb186176d9cd724c62266d7ddc6c414"
+    },
+    {
+      "path": "collection/altai-summer-evening.webp",
+      "bytes": 556446,
+      "sha256": "3a301ac94cc5b4b79fe87f1af75e1ec35a0367585222b91ec8e7962e2ae596fe"
+    },
+    {
+      "path": "collection/altai-summer-night.webp",
+      "bytes": 474518,
+      "sha256": "318130c350e8be6d9e77c6b229e651f74f2d85cdb633403c4c4d8a62b179427d"
+    },
+    {
+      "path": "collection/altai-autumn-morning.webp",
+      "bytes": 538442,
+      "sha256": "ea651fed5f38a0824e2eacb319210b73889814513d2b19f4ccf40b72f5ce4af5"
+    },
+    {
+      "path": "collection/altai-autumn-day.webp",
+      "bytes": 562052,
+      "sha256": "30183a9f348fc88cace832bc636383b62b5a0df33643d4466a5c1ef64187bc56"
+    },
+    {
+      "path": "collection/altai-autumn-evening.webp",
+      "bytes": 477468,
+      "sha256": "9ac52c3d1d7422e61c1d9b21ae138664adb4176c046087e20115bb0adf1a934c"
+    },
+    {
+      "path": "collection/altai-autumn-night.webp",
+      "bytes": 487268,
+      "sha256": "f21ea7ceee6a7da0142c042c7bbee53f1ac091bd53432f0cfecdcefe2d85babc"
+    },
+    {
+      "path": "collection/altai-winter-morning.webp",
+      "bytes": 551080,
+      "sha256": "f8e32420331c07180288ef2cf1e36ef38abe0cec399d7ad2236d6ce53f16fdb2"
+    },
+    {
+      "path": "collection/altai-winter-day.webp",
+      "bytes": 578190,
+      "sha256": "a085747f4a0193404eda116a920baddaa685e1d42e41d20f65c49ad0e899bb39"
+    },
+    {
+      "path": "collection/altai-winter-evening.webp",
+      "bytes": 453866,
+      "sha256": "a28165a76df31ccd0537920190a89ae303773b9f13dda543551e2d241d7be0f9"
+    },
+    {
+      "path": "collection/altai-winter-night.webp",
+      "bytes": 546150,
+      "sha256": "f4e03d7e5c840d4bb2a02b67e6ef8bc5dd58c51be276cad3f63d40ccf6122c46"
+    },
+    {
+      "path": "collection/baikal-spring-morning.webp",
+      "bytes": 372068,
+      "sha256": "abaffcfc73253ac085104620b953cd5cffe72ff912f3e89b7b26fcfc75aa0c67"
+    },
+    {
+      "path": "collection/baikal-spring-day.webp",
+      "bytes": 380526,
+      "sha256": "6715e8c229db71491324c40fb5ba220b97572afcd3cc42365e38117f0c055194"
+    },
+    {
+      "path": "collection/baikal-spring-evening.webp",
+      "bytes": 352014,
+      "sha256": "56520622448c7b7753622180ef3a630a6de25a9daa6a473234998a5b8625ea20"
+    },
+    {
+      "path": "collection/baikal-spring-night.webp",
+      "bytes": 333856,
+      "sha256": "b8849bd548cffff0210ca2b85f76cc246e9f4cea1ae6c45eb37935d22eac1322"
+    },
+    {
+      "path": "collection/baikal-summer-morning.webp",
+      "bytes": 370000,
+      "sha256": "b67d6350053157f7c71b101f387bbd5ccb892bb1f97cce1e97437665fa5dff45"
+    },
+    {
+      "path": "collection/baikal-summer-day.webp",
+      "bytes": 387338,
+      "sha256": "abc3ad4c8f67cc44522457789f99f8d0a26f7045bc343df08cbdab9b05718998"
+    },
+    {
+      "path": "collection/baikal-summer-evening.webp",
+      "bytes": 393314,
+      "sha256": "211e261992b892d5a8716d1a7e754045e6fbbba424ee8b7dbaceb5ca5128e49e"
+    },
+    {
+      "path": "collection/baikal-summer-night.webp",
+      "bytes": 313694,
+      "sha256": "6f69aed22c46d323cb30428e040e07e0b593c6503ab190014c4ef6106a68f16b"
+    },
+    {
+      "path": "collection/baikal-autumn-morning.webp",
+      "bytes": 385212,
+      "sha256": "979d18d11ff6d8bb938809da746f8916a4e5da022115891edcd932237c326a27"
+    },
+    {
+      "path": "collection/baikal-autumn-day.webp",
+      "bytes": 400414,
+      "sha256": "fa63873f1e1e8e24d7c59a2a384b196a2fc8c3f49a0b52814608bee0a0fa9ecd"
+    },
+    {
+      "path": "collection/baikal-autumn-evening.webp",
+      "bytes": 316152,
+      "sha256": "fdd9210cb95fe239fe40781be2829676a8b9aff9beb9c264971f983a3155d3e7"
+    },
+    {
+      "path": "collection/baikal-autumn-night.webp",
+      "bytes": 353618,
+      "sha256": "1b91bc033b060e4ee382721b59499b454e20a3ab11764acb8da1c87702e3091d"
+    },
+    {
+      "path": "collection/baikal-winter-morning.webp",
+      "bytes": 421884,
+      "sha256": "2d265882797166472a26974b7eea39b0eb27b7ca1caf127de5360584bc1399fa"
+    },
+    {
+      "path": "collection/baikal-winter-day.webp",
+      "bytes": 459288,
+      "sha256": "42da265bf2bcb0c5a07f723844da4b4025e5db590da9cd80679315a4b6511702"
+    },
+    {
+      "path": "collection/baikal-winter-evening.webp",
+      "bytes": 366168,
+      "sha256": "0ca46bc77c19de55a80795f2319ae19e15b690000a7097685341e4da22511dc7"
+    },
+    {
+      "path": "collection/baikal-winter-night.webp",
+      "bytes": 416514,
+      "sha256": "73eb356d055b76eb22acf8013b54f1842da8541d941c45cefa9323af8d406ce2"
+    },
+    {
+      "path": "collection/arctic-seasonless-morning.webp",
+      "bytes": 224054,
+      "sha256": "397f022cf9447b1089ad5c95179573e48cdb9c8931054d4618ddde214d83730d"
+    },
+    {
+      "path": "collection/arctic-seasonless-day.webp",
+      "bytes": 119852,
+      "sha256": "b2ccfccd511be18cdbada5d48eb9033ff36f816a664c5ed533128adb09d9390c"
+    },
+    {
+      "path": "collection/arctic-seasonless-evening.webp",
+      "bytes": 200886,
+      "sha256": "1c7d944ea6400b57998b11ffa27f8cadd938d59be719722a71d48f9943b81d32"
+    },
+    {
+      "path": "collection/arctic-seasonless-night.webp",
+      "bytes": 184680,
+      "sha256": "00f5c4ad94c53859bd90c471b1316a7ac34e5a2783b2786d6dc3ec339ae6ccaf"
+    },
+    {
+      "path": "collection/antarctic-seasonless-morning.webp",
+      "bytes": 250540,
+      "sha256": "423c1bdcf098c981b406561c127f9eb075db2d55ead82bd5095b06cd03362580"
+    },
+    {
+      "path": "collection/antarctic-seasonless-day.webp",
+      "bytes": 122682,
+      "sha256": "09cb7d4bffd59ff779464e0bfbd9bd725ff95c6bd1451f2b255b1a29cc542cc5"
+    },
+    {
+      "path": "collection/antarctic-seasonless-evening.webp",
+      "bytes": 201312,
+      "sha256": "a25b21d9a4551c08089cdf9b1c30298b7503e6c517a47ffb1f28566370e5d0f2"
+    },
+    {
+      "path": "collection/antarctic-seasonless-night.webp",
+      "bytes": 171830,
+      "sha256": "4e7dc52ae48861968542768503b8a61155a48d1cf28a6800c1ed43f5cd2bfb62"
+    },
+    {
+      "path": "collection/ruskeala-seasonless-morning.webp",
+      "bytes": 557776,
+      "sha256": "1d0c813cb28e5f2c0cf8fac218d665746447922bb84850e5d6889793f158970f"
+    },
+    {
+      "path": "collection/ruskeala-seasonless-day.webp",
+      "bytes": 514200,
+      "sha256": "485b721dc2d7738e7ebd92197182f3a9fe7a5bb899be3a626872883002df388e"
+    },
+    {
+      "path": "collection/ruskeala-seasonless-evening.webp",
+      "bytes": 492782,
+      "sha256": "cd329227a0e9d59a84335946fba203c4e0752a153c6416bc3f9219487a0972ac"
+    },
+    {
+      "path": "collection/ruskeala-seasonless-night.webp",
+      "bytes": 424470,
+      "sha256": "b1cb91d5c049d6c404b617c342adc62bb173cca67462e25ccb64553efb4bdf32"
+    },
+    {
+      "path": "collection/pskov-krom-spring-morning.webp",
+      "bytes": 363728,
+      "sha256": "ec542814eb93a9dac74cdf18dc00d4eac08e2b4cc9441dcf134983757fa42013"
+    },
+    {
+      "path": "collection/pskov-krom-spring-day.webp",
+      "bytes": 402458,
+      "sha256": "b24c6938289847c1754d457d9908b9f40cfa79df309b6b84a21402efa6af9c58"
+    },
+    {
+      "path": "collection/pskov-krom-spring-evening.webp",
+      "bytes": 403094,
+      "sha256": "ab3dc27bc820775a97e78b75b8eb72691f5838d2a2b089d3b0d3ef863622ab19"
+    },
+    {
+      "path": "collection/pskov-krom-spring-night.webp",
+      "bytes": 379680,
+      "sha256": "58a1b2adff11689db3d7460b70b677246efae225b16a81338458d2e4ff9dea53"
+    },
+    {
+      "path": "collection/pskov-krom-summer-morning.webp",
+      "bytes": 343518,
+      "sha256": "ab1b7206558b3a66d836a145c98f2c293656ec9a1b8ac7baf088342c03d91941"
+    },
+    {
+      "path": "collection/pskov-krom-summer-day.webp",
+      "bytes": 414044,
+      "sha256": "c34ec31995cf5385c0af1d5ab95bb4469153f9f45c04d4009ec09ecbfafc0f93"
+    },
+    {
+      "path": "collection/pskov-krom-summer-evening.webp",
+      "bytes": 380398,
+      "sha256": "3e47521293cdef7202df8426f9556d38a3b5a9e58321301e5a2935b2c5f345c5"
+    },
+    {
+      "path": "collection/pskov-krom-summer-night.webp",
+      "bytes": 376676,
+      "sha256": "caf106d934e4b739350aef4dc375a6b9b2df4c046c96ea57569905a1a9877e85"
+    },
+    {
+      "path": "collection/pskov-krom-autumn-morning.webp",
+      "bytes": 346790,
+      "sha256": "e5fcdb2b9d76475d6890baec3ceadf813c3e4760677dc51e6fa5558cc877ffba"
+    },
+    {
+      "path": "collection/pskov-krom-autumn-day.webp",
+      "bytes": 386924,
+      "sha256": "c41581d6d090bc3e94320d62f4d2f56bdb53d6f0771a72888568b6ede900af4f"
+    },
+    {
+      "path": "collection/pskov-krom-autumn-evening.webp",
+      "bytes": 376942,
+      "sha256": "23de801d0509c442df54962536dc47b4fe7fa4221274ec14df61fc5d8539eca3"
+    },
+    {
+      "path": "collection/pskov-krom-autumn-night.webp",
+      "bytes": 393324,
+      "sha256": "ba6c5fdec6957be92c98872f48267a0cd8d1825f39639752f6e17cda1b8f66f4"
+    },
+    {
+      "path": "collection/pskov-krom-winter-morning.webp",
+      "bytes": 376816,
+      "sha256": "b4c20c118193402675be8d45269ba80e14606b06334da9a6f0a47d2a237fbc1f"
+    },
+    {
+      "path": "collection/pskov-krom-winter-day.webp",
+      "bytes": 400886,
+      "sha256": "4ec62a35779cc5333df49482c39fa0242ca1894bba25d179f38292af60aaab94"
+    },
+    {
+      "path": "collection/pskov-krom-winter-evening.webp",
+      "bytes": 326788,
+      "sha256": "26a9e31325a07516a2576daa57439fc75bec9bc402e6c11b6602c653d7142ab3"
+    },
+    {
+      "path": "collection/pskov-krom-winter-night.webp",
+      "bytes": 407246,
+      "sha256": "731a8dc2be7318980b5fb9424f5b21e27dd31e85159b238997ecf80e61d26b6c"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-spring-morning.webp",
+      "bytes": 257328,
+      "sha256": "fcf4ee7b4ba3d03176ab9abef0150d4875c064a2032cfbe79cb61a7fd3a3deb2"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-spring-day.webp",
+      "bytes": 257862,
+      "sha256": "ea6782f1e691003035a4d63fe96f031f2c6f7adceb555cb42cc8de4497acc7c2"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-spring-evening.webp",
+      "bytes": 279406,
+      "sha256": "10c2261d406e11075113f28c54faca0b468b7c521d0cae3c14f466d5f55a67b7"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-spring-night.webp",
+      "bytes": 248542,
+      "sha256": "cb50aaf4ca70ef1a8efa35f241b2a24dbc6c044971d7ace01bcf19f617d1f926"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-summer-morning.webp",
+      "bytes": 291310,
+      "sha256": "30a1cbfa5ac8736d281ab5810d68d5f1ab0d626c21b1b6fa1c46247b25d85982"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-summer-day.webp",
+      "bytes": 255456,
+      "sha256": "93f78a2582f5743dc598f033f9d107277e86ecb24a700d2565e0e57cbd37eabb"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-summer-evening.webp",
+      "bytes": 331370,
+      "sha256": "7dd6df0be3e0a7d4ad45d926bb9f78c15df8c42f0472381d04ebb2a297efc039"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-summer-night.webp",
+      "bytes": 274390,
+      "sha256": "c3f601db4f138da1b1c604ecdd0032e137595a3fb7f1cfb721b3364a00fd9a46"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-autumn-morning.webp",
+      "bytes": 339522,
+      "sha256": "2a04f91be1b14757bc2b1b08cbae94403291d0d2900954e47433c3076221e34f"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-autumn-day.webp",
+      "bytes": 319786,
+      "sha256": "35f4bdb1a3afac149e6f6df7d1174a4e8cac5de26689741a71e07b2934393aac"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-autumn-evening.webp",
+      "bytes": 313552,
+      "sha256": "2be4d634375fdbc0ffeb2e6cc32437a8f943fc5caeb6384a794d5920d1df82ed"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-autumn-night.webp",
+      "bytes": 327512,
+      "sha256": "443ab24dbfe33eaa42db6697b44cbd84ee4d3705f1f7b01b4610b3f5856b2ad8"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-winter-morning.webp",
+      "bytes": 239352,
+      "sha256": "d8c9309d62f69d5f7182c6c5de415cd00f6170b133207755700776856702d13c"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-winter-day.webp",
+      "bytes": 304778,
+      "sha256": "31e038b4a7ed857418cf9fbf3bdb18a7af0ba46bc5b1aec664f827add677b2bc"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-winter-evening.webp",
+      "bytes": 267102,
+      "sha256": "2d572d94dd93a467d659e12ba33f890a20492228e298a2c3d858c30109f0aa77"
+    },
+    {
+      "path": "collection/petersburg-lakhta-flags-winter-night.webp",
+      "bytes": 262366,
+      "sha256": "3434bfa3f9c2f9b54f009e00daa4461a713bf4280a5d16dd12946b2ad3c04249"
+    },
+    {
+      "path": "collection/petersburg-fortress-spring-morning.webp",
+      "bytes": 238792,
+      "sha256": "66bfa17cc8abea3f75ecec810cf3a3819b0ff6faaf7a48466d38dd81b6a374bd"
+    },
+    {
+      "path": "collection/petersburg-fortress-spring-day.webp",
+      "bytes": 297056,
+      "sha256": "9feed83eecfb1703b3fe3992f5abe97f81645fd2f5c42d96a3b79f4e2e94f59c"
+    },
+    {
+      "path": "collection/petersburg-fortress-spring-evening.webp",
+      "bytes": 302676,
+      "sha256": "9d6624a9d1a0f189cb46c267681456b82d7744daa6ed6565c92b831400e2031f"
+    },
+    {
+      "path": "collection/petersburg-fortress-spring-night.webp",
+      "bytes": 287626,
+      "sha256": "c8fe366a3ee5645730504e1c946da64bda96abbe3b6c09d388fb422182b4012c"
+    },
+    {
+      "path": "collection/petersburg-fortress-summer-morning.webp",
+      "bytes": 231444,
+      "sha256": "a067c1a369d07c20b6011472a3fd5f0e3319cd24de6a1cc769ba0d64ae1d17ad"
+    },
+    {
+      "path": "collection/petersburg-fortress-summer-day.webp",
+      "bytes": 311356,
+      "sha256": "d89c2e799496179fbb15eb209fd3cf74a66c82bdc63e50adc59147912d8abaf7"
+    },
+    {
+      "path": "collection/petersburg-fortress-summer-evening.webp",
+      "bytes": 317248,
+      "sha256": "1f9d742d2e0fafed6b5b57a6ad11e1a756104a8df8748421709398479fd90475"
+    },
+    {
+      "path": "collection/petersburg-fortress-summer-night.webp",
+      "bytes": 282064,
+      "sha256": "fec2b47ded30226206c9b96faae96e192db1afcaaf0c071810ce2182fd4013c6"
+    },
+    {
+      "path": "collection/petersburg-fortress-autumn-morning.webp",
+      "bytes": 260010,
+      "sha256": "0edcdf90dd357b82cbb5d696fdc988191abd8e044629ea06007097867877bd4d"
+    },
+    {
+      "path": "collection/petersburg-fortress-autumn-day.webp",
+      "bytes": 352870,
+      "sha256": "689fbe0496bb197dd7acb4601f29e106f6ba38f1f897d5c80ad701925822620f"
+    },
+    {
+      "path": "collection/petersburg-fortress-autumn-evening.webp",
+      "bytes": 311104,
+      "sha256": "a8e0601e0ed0c23dc841875bf8c3da335d08fc4aa3ce6d9f30a0d7c9c327c640"
+    },
+    {
+      "path": "collection/petersburg-fortress-autumn-night.webp",
+      "bytes": 320006,
+      "sha256": "497671c6f78960b517a516dcc6c0fe548f3dd0dae9898f9a12d6a7d1d96348e2"
+    },
+    {
+      "path": "collection/petersburg-fortress-winter-morning.webp",
+      "bytes": 295922,
+      "sha256": "844ea8deb2fc80e6042dc8bfa6a32478dda58c5c21632393436960e1b91aab49"
+    },
+    {
+      "path": "collection/petersburg-fortress-winter-day.webp",
+      "bytes": 318928,
+      "sha256": "ee8228fec35191280b167d715878ef78d6e4797fce6045c2aa812aad3067fbdc"
+    },
+    {
+      "path": "collection/petersburg-fortress-winter-evening.webp",
+      "bytes": 290228,
+      "sha256": "5f8b63f6f7ff8b839fcffc03a13dabe31ac4002f6b2dc6df49c00edeae250483"
+    },
+    {
+      "path": "collection/petersburg-fortress-winter-night.webp",
+      "bytes": 316400,
+      "sha256": "a5004f0e07647a4ed82e55247b40615354ef02a1371f13a4fc20da5d48f6c3a4"
+    },
+    {
+      "path": "collection/petersburg-hermitage-spring-morning.webp",
+      "bytes": 437852,
+      "sha256": "5e6b0c8d7db6b0410c0da0d5f1d847e2f60433182384f0ca67a39e7d2a2f3083"
+    },
+    {
+      "path": "collection/petersburg-hermitage-spring-day.webp",
+      "bytes": 472192,
+      "sha256": "178886862511171b3e257f17a5b1db6bcde083033ab34a794e8112a042ee7ce7"
+    },
+    {
+      "path": "collection/petersburg-hermitage-spring-evening.webp",
+      "bytes": 460488,
+      "sha256": "9ba5130a390037496eb386cc3c65918f24e837d09d9642a445f12a6891ba7924"
+    },
+    {
+      "path": "collection/petersburg-hermitage-spring-night.webp",
+      "bytes": 452530,
+      "sha256": "8661806fbf62ee7e5f435f53cd75865e0b39b14bd3b09e4084e48051d4d11968"
+    },
+    {
+      "path": "collection/petersburg-hermitage-summer-morning.webp",
+      "bytes": 432620,
+      "sha256": "8b4dd7959a24e9decbe49aa1cb320d3147ead11332f7d7f5fc0ce79e3efe22ce"
+    },
+    {
+      "path": "collection/petersburg-hermitage-summer-day.webp",
+      "bytes": 492382,
+      "sha256": "2a663b363b0719f633e2cec5e5d384970c7ea06e4489971f62185bf2f761a858"
+    },
+    {
+      "path": "collection/petersburg-hermitage-summer-evening.webp",
+      "bytes": 482174,
+      "sha256": "4b75af0a6f54386f26ca69a6e62535116b09778fb2f61cac9071ed6505bb15b9"
+    },
+    {
+      "path": "collection/petersburg-hermitage-summer-night.webp",
+      "bytes": 474844,
+      "sha256": "e6525f9730cbbae7b7a5fd9ff378e74e28295f803086b3dd6261430066b422e5"
+    },
+    {
+      "path": "collection/petersburg-hermitage-autumn-morning.webp",
+      "bytes": 457414,
+      "sha256": "0291b40568f52c2884f5d1a7cd2a829ceba0baed66174c84575d1572ba5db924"
+    },
+    {
+      "path": "collection/petersburg-hermitage-autumn-day.webp",
+      "bytes": 504668,
+      "sha256": "7ce850b71721af360e58ade4ba715f772ebd1e819187f72b81b8b7c19162180a"
+    },
+    {
+      "path": "collection/petersburg-hermitage-autumn-evening.webp",
+      "bytes": 504362,
+      "sha256": "da4b95fc4494d428ff45a07717c5bc40fce72a8de93d5f12cb3d76ee8c6324d5"
+    },
+    {
+      "path": "collection/petersburg-hermitage-autumn-night.webp",
+      "bytes": 489056,
+      "sha256": "5844c8f4cf72eacdd346ddc3851f336eb39b972437c1622a7177b8674c08d660"
+    },
+    {
+      "path": "collection/petersburg-hermitage-winter-morning.webp",
+      "bytes": 401466,
+      "sha256": "531f8b09236bce11d1b39849f6861c7f40ae9f5bdba38a728147ad8a172635ab"
+    },
+    {
+      "path": "collection/petersburg-hermitage-winter-day.webp",
+      "bytes": 409346,
+      "sha256": "23623da663a52d5fe459577c84328dc8bc0357d456c99852f4cae3a735a5afd8"
+    },
+    {
+      "path": "collection/petersburg-hermitage-winter-evening.webp",
+      "bytes": 418598,
+      "sha256": "a13d0a668e57b750097610ff8d2f4f8ae5bcdb5abc88527cbd30059b33a06ed5"
+    },
+    {
+      "path": "collection/petersburg-hermitage-winter-night.webp",
+      "bytes": 479460,
+      "sha256": "22eca801ed6a97b43bf01c4998245355761c5f5f0553e55e80326b856ca35d0d"
+    },
+    {
+      "path": "collection/petersburg-kazan-spring-morning.webp",
+      "bytes": 420922,
+      "sha256": "ba5a47b338e15e1d4e0a245586e8848737308fb1179ef09a886ca064196f30f9"
+    },
+    {
+      "path": "collection/petersburg-kazan-spring-day.webp",
+      "bytes": 454176,
+      "sha256": "45804594e162fe275c39a8989eaec5de501d0882b3219765e35496496039d3d7"
+    },
+    {
+      "path": "collection/petersburg-kazan-spring-evening.webp",
+      "bytes": 400850,
+      "sha256": "6644ef9697c1acb6ad81f8bf852671f34cbdab01938cc717c5ce68147f463ef5"
+    },
+    {
+      "path": "collection/petersburg-kazan-spring-night.webp",
+      "bytes": 398268,
+      "sha256": "a3eee5308bca5c8df6570eda6d077c7dc3bd6e8ef301124102f8357c09bc1839"
+    },
+    {
+      "path": "collection/petersburg-kazan-summer-morning.webp",
+      "bytes": 416014,
+      "sha256": "0e675a256ee74298b2d961c446ba68aad8ba548e375995dfe4210beeb9797f3f"
+    },
+    {
+      "path": "collection/petersburg-kazan-summer-day.webp",
+      "bytes": 455822,
+      "sha256": "08d0530c16ed1151d57e01471498364a0541d7769dde914c4723bcd16103dd94"
+    },
+    {
+      "path": "collection/petersburg-kazan-summer-evening.webp",
+      "bytes": 412694,
+      "sha256": "d0b6de956aafd9401d1fbe830ed2c6b3611fe7f2c888d922fe293bc360ef96fa"
+    },
+    {
+      "path": "collection/petersburg-kazan-summer-night.webp",
+      "bytes": 434026,
+      "sha256": "b82363316a9e635c971eeca004822fabdf392e2306fe4e2e45ab412d4d3f3ec0"
+    },
+    {
+      "path": "collection/petersburg-kazan-autumn-morning.webp",
+      "bytes": 440224,
+      "sha256": "6f721f4797f9680939381d1597107de10e8484c644fe4e0a2e5058f1542ecf60"
+    },
+    {
+      "path": "collection/petersburg-kazan-autumn-day.webp",
+      "bytes": 461074,
+      "sha256": "06bec8ec2f8723776ab84928e85fbaced5463bef1ced307da4b66c9886ae0d50"
+    },
+    {
+      "path": "collection/petersburg-kazan-autumn-evening.webp",
+      "bytes": 438756,
+      "sha256": "3ff210ab12c4202a00d83a503cb1d87da5fa403f71ce99a71761f48d49623958"
+    },
+    {
+      "path": "collection/petersburg-kazan-autumn-night.webp",
+      "bytes": 437514,
+      "sha256": "b70c01d5a4ffc7eeaf467fb7a8d64a8e324d49fe5b164bad921cb1c266de6c08"
+    },
+    {
+      "path": "collection/petersburg-kazan-winter-morning.webp",
+      "bytes": 428680,
+      "sha256": "08331fb1b0d2d038a3714ea0584d8245b656c3fb4ab6deb5e50442c0fd0683e0"
+    },
+    {
+      "path": "collection/petersburg-kazan-winter-day.webp",
+      "bytes": 428110,
+      "sha256": "5d4789ec9ed694ba552f249fbe2f93497d6c015a94984e9f94ca692d0c39d2ec"
+    },
+    {
+      "path": "collection/petersburg-kazan-winter-evening.webp",
+      "bytes": 407302,
+      "sha256": "a4a3527c7761a75a07a26f92c02f0ee60e36f33e430b989cbb2ee0772e7d2ce6"
+    },
+    {
+      "path": "collection/petersburg-kazan-winter-night.webp",
+      "bytes": 423162,
+      "sha256": "cc45f61c6709fff439249d6f3edf9d4c8dbb212ea10929028d94212cf000aeee"
+    },
+    {
+      "path": "collection/msal-spring-morning.webp",
+      "bytes": 409398,
+      "sha256": "14583374e301654fa9f57ab582b8550c0305796258de432f0386629719c8836c"
+    },
+    {
+      "path": "collection/msal-spring-day.webp",
+      "bytes": 422546,
+      "sha256": "888413b2494e6662c47c8a5bdbf82ba7ae7333a1b9e28fbf25fac82a6f9fa7e4"
+    },
+    {
+      "path": "collection/msal-spring-evening.webp",
+      "bytes": 324344,
+      "sha256": "63c714262ebecdcd53ddc18083eda8544d950fe604da2accc2ad3af18c577a0e"
+    },
+    {
+      "path": "collection/msal-spring-night.webp",
+      "bytes": 296030,
+      "sha256": "86216aa42fb1d71e760d0a23c3eecb3db3f11ddfa7d94e1d9c16fe9143e43e81"
+    },
+    {
+      "path": "collection/msal-summer-morning.webp",
+      "bytes": 367934,
+      "sha256": "aaa50036470a70852186cbac0e2745e27190f9fb81b1d1b14fa8286c7c9c4c16"
+    },
+    {
+      "path": "collection/msal-summer-day.webp",
+      "bytes": 388634,
+      "sha256": "e2843b7bdf0d7fb142863d72a0c8adcf2efaf7c1f641b1a4f655e5bd457506ea"
+    },
+    {
+      "path": "collection/msal-summer-evening.webp",
+      "bytes": 383162,
+      "sha256": "11c8c5208d67a1fe20da328dacc8f5b300dd529ee73397a652c7fa453f6a0b46"
+    },
+    {
+      "path": "collection/msal-summer-night.webp",
+      "bytes": 363424,
+      "sha256": "d8078b65679aa399c506dbf43513b84a9aa637bfee7d2f48daddd8e1dfd77f33"
+    },
+    {
+      "path": "collection/msal-autumn-morning.webp",
+      "bytes": 396100,
+      "sha256": "fffc32f017fdee95d328bdb69aae75e97eb83808f2721da528cce7ee6a3cc8bd"
+    },
+    {
+      "path": "collection/msal-autumn-day.webp",
+      "bytes": 444852,
+      "sha256": "a1143704e69f339e5bb96d4bbaa9d895693bd46f251f8eb9ee43a1e57f7ebe79"
+    },
+    {
+      "path": "collection/msal-autumn-evening.webp",
+      "bytes": 365494,
+      "sha256": "a8673688b31f627a57af544bb5171bca1846ea9c81529154b6716f9f7d8a4352"
+    },
+    {
+      "path": "collection/msal-autumn-night.webp",
+      "bytes": 332432,
+      "sha256": "b758b04e04e2ea4985eef18911b670d872102534ab0069cb367145d77c3d4a7d"
+    },
+    {
+      "path": "collection/msal-winter-morning.webp",
+      "bytes": 363160,
+      "sha256": "2ae852e198a538ddac3179c8c48bfae7b124a0987039754bf7484be726970274"
+    },
+    {
+      "path": "collection/msal-winter-day.webp",
+      "bytes": 383964,
+      "sha256": "46219a950ab8e651a7d41443acc03675ea142ff48beed7bad5788c0f53461097"
+    },
+    {
+      "path": "collection/msal-winter-evening.webp",
+      "bytes": 363570,
+      "sha256": "389b5669fe7a2a575c92d6c1284c2da978f8afe02558f316704ba5c82a10bf27"
+    },
+    {
+      "path": "collection/msal-winter-night.webp",
+      "bytes": 331080,
+      "sha256": "0d1016512b5016afa45551b63c1d14d7cd1b7faec1b4dcfc39c49d240f49a437"
+    },
+    {
+      "path": "collection/novgorod-millennium-spring-morning.webp",
+      "bytes": 523708,
+      "sha256": "3a98b33129981839479d289175257c0d4169e01cf73db7768ca7ca653a9c6c90"
+    },
+    {
+      "path": "collection/novgorod-millennium-spring-day.webp",
+      "bytes": 490694,
+      "sha256": "7962d5b23ad6209ae89036060c59ba39fdcf011b6b92698810fa38947aad8255"
+    },
+    {
+      "path": "collection/novgorod-millennium-spring-evening.webp",
+      "bytes": 502174,
+      "sha256": "5223228e6798c6cd742beb84dacc9925d71de4947b1875568ad880bd4dd56f27"
+    },
+    {
+      "path": "collection/novgorod-millennium-spring-night.webp",
+      "bytes": 475046,
+      "sha256": "b4ea8378c9305a7f3d39ea92150830fffd45518a4c843b1a793eceb8b9ce3b99"
+    },
+    {
+      "path": "collection/novgorod-millennium-summer-morning.webp",
+      "bytes": 481508,
+      "sha256": "f2cb1072c4e89b9a0e8f1dfbef69de4827603758140b57d368ded2553b354472"
+    },
+    {
+      "path": "collection/novgorod-millennium-summer-day.webp",
+      "bytes": 472664,
+      "sha256": "a1bf72f0ce589403ce3ec7ca4af3777ca05185fc8797585c20aa98e8cd9d966e"
+    },
+    {
+      "path": "collection/novgorod-millennium-summer-evening.webp",
+      "bytes": 479078,
+      "sha256": "6e2e144135ac0aaf9bf9b46f34bd2b9372523481fcd33e8be17b3c455662a45f"
+    },
+    {
+      "path": "collection/novgorod-millennium-summer-night.webp",
+      "bytes": 383990,
+      "sha256": "09c2c71239b72321eac1556c1610331e647dd7d08a86d91c3af4f1f8181952e4"
+    },
+    {
+      "path": "collection/novgorod-millennium-autumn-morning.webp",
+      "bytes": 485440,
+      "sha256": "5b8fc24cdfd4b7ef60393d6d70fe10505c46bce626c1d01b09969fdc8b33455e"
+    },
+    {
+      "path": "collection/novgorod-millennium-autumn-day.webp",
+      "bytes": 469302,
+      "sha256": "4d5a03285e511c9ba32e614e68e0a01b4bae3503151bebfd40bb9d4f760125ab"
+    },
+    {
+      "path": "collection/novgorod-millennium-autumn-evening.webp",
+      "bytes": 445314,
+      "sha256": "1d3128e0522f9bb79c0bd244b6bb55016d54b8323dce9e3eb22603189f2559c7"
+    },
+    {
+      "path": "collection/novgorod-millennium-autumn-night.webp",
+      "bytes": 459008,
+      "sha256": "30537294e535d04c9b096ebdb854a8c0bdea638fd3d4f6070f04129dc43020e2"
+    },
+    {
+      "path": "collection/novgorod-millennium-winter-morning.webp",
+      "bytes": 510976,
+      "sha256": "74310500d5bb9712280cd37509e032798d8fb3259ece9cc5f0e8617af279a2ef"
+    },
+    {
+      "path": "collection/novgorod-millennium-winter-day.webp",
+      "bytes": 526900,
+      "sha256": "94cd9b8f9d82b3c59b88d76f8a21d14cd04c8afa3b87f52a572f40394c34fa77"
+    },
+    {
+      "path": "collection/novgorod-millennium-winter-evening.webp",
+      "bytes": 475020,
+      "sha256": "1e365a2a0ece951da63273cc20f370299cd1d1ec53ca0fbfaf3fc3ae04d364d3"
+    },
+    {
+      "path": "collection/novgorod-millennium-winter-night.webp",
+      "bytes": 447798,
+      "sha256": "41ee23c7938da8858fa406f10fe3b7562b732f6cc5165ca980d42d6fc6e213fc"
+    },
+    {
+      "path": "collection/novgorod-nevsky-spring-morning.webp",
+      "bytes": 454470,
+      "sha256": "9f0ce06e7ea80429d843b46d0736788695f2ea3f4878a1b30fd8b93ba868a851"
+    },
+    {
+      "path": "collection/novgorod-nevsky-spring-day.webp",
+      "bytes": 473596,
+      "sha256": "1b9a8283483125b2f9f88dfe2fc60e945e7ff88896f5b679965b0448e67cfd01"
+    },
+    {
+      "path": "collection/novgorod-nevsky-spring-evening.webp",
+      "bytes": 438230,
+      "sha256": "50b3798612e9d03ec77f166926909d43c32d1d6be04a5e74ea1b95d0331f0818"
+    },
+    {
+      "path": "collection/novgorod-nevsky-spring-night.webp",
+      "bytes": 391288,
+      "sha256": "fea3d6b0cde29946c64a500c21eac5bab265beaa1519ec8b5b5f31944ead0ef0"
+    },
+    {
+      "path": "collection/novgorod-nevsky-summer-morning.webp",
+      "bytes": 412656,
+      "sha256": "7ea816c0471ead17f94be86757d2646c1a771aad870895f836f21f9e21dc2a28"
+    },
+    {
+      "path": "collection/novgorod-nevsky-summer-day.webp",
+      "bytes": 413608,
+      "sha256": "e5e41260c46bfb70fdf51090d8f01259c0640c1b0b8f41c92c7f7ff17e20e5a7"
+    },
+    {
+      "path": "collection/novgorod-nevsky-summer-evening.webp",
+      "bytes": 436612,
+      "sha256": "3294fd7e77e4af9184bd1e6a0f768a0a08fb726b8fa64a77f836746785af2df4"
+    },
+    {
+      "path": "collection/novgorod-nevsky-summer-night.webp",
+      "bytes": 339864,
+      "sha256": "9aca4dd4662e4e66cbdd248ee9ac0ccd243691e672b10ca34173f1a8746b0691"
+    },
+    {
+      "path": "collection/novgorod-nevsky-autumn-morning.webp",
+      "bytes": 400436,
+      "sha256": "2ca842826abcf578d1e5eca0d6c9cc8dc7a6fd299e746b2529b971ba413e9585"
+    },
+    {
+      "path": "collection/novgorod-nevsky-autumn-day.webp",
+      "bytes": 442500,
+      "sha256": "f455e0e07bf62e93e52792802a4e33478fb44fff3cc449ebb42918d0f7edf0d1"
+    },
+    {
+      "path": "collection/novgorod-nevsky-autumn-evening.webp",
+      "bytes": 396146,
+      "sha256": "2a7d9f9dde60a496752389d52f4ff0f047e502b70cf6d45f8b5f2cd9e9439149"
+    },
+    {
+      "path": "collection/novgorod-nevsky-autumn-night.webp",
+      "bytes": 390362,
+      "sha256": "e63db1637b5a747cfc7d86af9265c3bb5a4a0a1247fdd63ada0092d3f32fd69e"
+    },
+    {
+      "path": "collection/novgorod-nevsky-winter-morning.webp",
+      "bytes": 418810,
+      "sha256": "7b3f5c7bdbed31a44d81d4a316ff064ed931d4defe7b942f99d811df4323dcaa"
+    },
+    {
+      "path": "collection/novgorod-nevsky-winter-day.webp",
+      "bytes": 438886,
+      "sha256": "65a586afba950508ed69e04913a0745268309c31dc82d4d0bb644fe0e86d41f1"
+    },
+    {
+      "path": "collection/novgorod-nevsky-winter-evening.webp",
+      "bytes": 346310,
+      "sha256": "cb9ea5cfc4d6d5ed3fa640021adacf5b6324414284698556fea6608078ef26d4"
+    },
+    {
+      "path": "collection/novgorod-nevsky-winter-night.webp",
+      "bytes": 405058,
+      "sha256": "8d4d174fb24bbc9ae5d285dc60db1b5ae467fecc724bb89784b535077a7ad517"
+    },
+    {
+      "path": "collection/novgorod-volkhov-spring-morning.webp",
+      "bytes": 327236,
+      "sha256": "0c888877a1a2bacf7c9e83a927951a61aecdd1ea2ff61ec822e227d6d188048b"
+    },
+    {
+      "path": "collection/novgorod-volkhov-spring-day.webp",
+      "bytes": 367464,
+      "sha256": "8c143d8c56824e026d98e74144f518cdda1f58d694453bdd15a6aaa61909ae9b"
+    },
+    {
+      "path": "collection/novgorod-volkhov-spring-evening.webp",
+      "bytes": 342284,
+      "sha256": "4b90b3070b5677250da1b3510cb4551d4e1dd0f0fefa5b6a2565c5290fcdd680"
+    },
+    {
+      "path": "collection/novgorod-volkhov-spring-night.webp",
+      "bytes": 357184,
+      "sha256": "888785787614d5396aca48cea6d683cbe8a9dbaf32573ff7d086135b3dafac07"
+    },
+    {
+      "path": "collection/novgorod-volkhov-summer-morning.webp",
+      "bytes": 310614,
+      "sha256": "93e64d9f2b6c1358fdbb1964d9f2cb41974208a27b36cc8549f1c32654977ed5"
+    },
+    {
+      "path": "collection/novgorod-volkhov-summer-day.webp",
+      "bytes": 357378,
+      "sha256": "a4e7472f99978cb5e6b3e138e9abfb4bbbab00d7ae97be897f1d217faf417a29"
+    },
+    {
+      "path": "collection/novgorod-volkhov-summer-evening.webp",
+      "bytes": 362076,
+      "sha256": "e6273c13439998bce31551fb8864064f82b275bb94d2716b99241719501f6049"
+    },
+    {
+      "path": "collection/novgorod-volkhov-summer-night.webp",
+      "bytes": 330552,
+      "sha256": "9c4928b2a2c97ea0159b7089ea6bb05451a6dc5ed0f77ad4d4ccf4322ad116be"
+    },
+    {
+      "path": "collection/novgorod-volkhov-autumn-morning.webp",
+      "bytes": 359750,
+      "sha256": "718f048f738d0a564dac87ec8e3b64a53d9b421b914631fafe49f4004c6e272e"
+    },
+    {
+      "path": "collection/novgorod-volkhov-autumn-day.webp",
+      "bytes": 436282,
+      "sha256": "4389565602ce7b055316b25b926a65f84829999b33a58f16aeb494320755b348"
+    },
+    {
+      "path": "collection/novgorod-volkhov-autumn-evening.webp",
+      "bytes": 385084,
+      "sha256": "e4f788dfbce5396a2c85a74ee35000b2577d94c8f1c8c90d21e415252c66080d"
+    },
+    {
+      "path": "collection/novgorod-volkhov-autumn-night.webp",
+      "bytes": 393448,
+      "sha256": "f00c614bbd85485123bd082c39d525e3090a1f5dc45674b8a86fbc3333e6cb25"
+    },
+    {
+      "path": "collection/novgorod-volkhov-winter-morning.webp",
+      "bytes": 416430,
+      "sha256": "b3a80d6440e639295f7e943352084ffdf5e0cde412c84832c85c6ee0f081ecde"
+    },
+    {
+      "path": "collection/novgorod-volkhov-winter-day.webp",
+      "bytes": 431328,
+      "sha256": "03216b8f4360361d4f15250d6fab8c3353326fbcc0e51d1b0794eea6f04e4066"
+    },
+    {
+      "path": "collection/novgorod-volkhov-winter-evening.webp",
+      "bytes": 362054,
+      "sha256": "0c9c3844bc55bb8dd5376db01e25c038d9eaf410da8a3700d16b0e6f13efbcc1"
+    },
+    {
+      "path": "collection/novgorod-volkhov-winter-night.webp",
+      "bytes": 371842,
+      "sha256": "4a1902e446e307432cb2050b1463780094f5dc1da091b69367b271af94ae082b"
+    },
+    {
+      "path": "collection/rgup-spring-morning.webp",
+      "bytes": 582044,
+      "sha256": "b7ce084c7eebbdf84502936d7580ac29daeb8db4e550b8ca9cf57cf203ca6917"
+    },
+    {
+      "path": "collection/rgup-spring-day.webp",
+      "bytes": 610912,
+      "sha256": "bc93462ee0b02344ecd6f87ff374676bbccfaefbda6065f0bc6d0ae19f4a3a84"
+    },
+    {
+      "path": "collection/rgup-spring-evening.webp",
+      "bytes": 534832,
+      "sha256": "f274d1ccd2b7faf8c0ebf43d451c8626e48f4516f2e5393595bed9c627dd8a76"
+    },
+    {
+      "path": "collection/rgup-spring-night.webp",
+      "bytes": 511458,
+      "sha256": "0ae94cd4a93768e6cd34234e11fe876b1c180a164caba6a6cc6382f029550b0e"
+    },
+    {
+      "path": "collection/rgup-summer-morning.webp",
+      "bytes": 617014,
+      "sha256": "1dd721f334fd41c1991341a8033313fd52115fb56f087d556c207048fef62aa8"
+    },
+    {
+      "path": "collection/rgup-summer-day.webp",
+      "bytes": 669414,
+      "sha256": "9682a692d20463fdee0c3486fe43ea7711da41bd9febd96f7b35865ad124762c"
+    },
+    {
+      "path": "collection/rgup-summer-evening.webp",
+      "bytes": 626428,
+      "sha256": "d8aacb2210048751bb44295c37397a9abbec9709bfeb4394e4732643e96d5185"
+    },
+    {
+      "path": "collection/rgup-summer-night.webp",
+      "bytes": 554388,
+      "sha256": "20b5c38ff54e3ded98d775b76a0aa35630eed71f64f19989b1c7e26057fcf319"
+    },
+    {
+      "path": "collection/rgup-autumn-morning.webp",
+      "bytes": 587126,
+      "sha256": "93dc7729656dd6829d4241cf63cb48b94f0a161d915363add9688d2c9bb0c490"
+    },
+    {
+      "path": "collection/rgup-autumn-day.webp",
+      "bytes": 547534,
+      "sha256": "56725f1c625725bc7fc92e1690db440e04e2a8029504c3d047275cc839bfa462"
+    },
+    {
+      "path": "collection/rgup-autumn-evening.webp",
+      "bytes": 512498,
+      "sha256": "537f53db499afe9110ed042d1dfbb4f215441138b2496b8284c2313572de1da5"
+    },
+    {
+      "path": "collection/rgup-autumn-night.webp",
+      "bytes": 531598,
+      "sha256": "a44d2edb1cc3d0641e4a338431747234970285d37312a60d5cdce549d15cd64a"
+    },
+    {
+      "path": "collection/rgup-winter-morning.webp",
+      "bytes": 594084,
+      "sha256": "af0b27c71dbae9b569235e61a6ab39efb229c12520d453292cc7bdf97ca5793b"
+    },
+    {
+      "path": "collection/rgup-winter-day.webp",
+      "bytes": 598698,
+      "sha256": "d92a958dfb5032946c2aca057b87264ff52831c33f8e5d39ab9a579144c29ad1"
+    },
+    {
+      "path": "collection/rgup-winter-evening.webp",
+      "bytes": 553888,
+      "sha256": "4d5b2510708ceaf9641be0d9aecf8b5a61fba49ecc87283a74021b133ed009a4"
+    },
+    {
+      "path": "collection/rgup-winter-night.webp",
+      "bytes": 533828,
+      "sha256": "bc23b30ee4439ed8f45ed55f7945e917ce54344d1bc8ffb1185be5f48f5084e0"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-spring-morning.webp",
+      "bytes": 327308,
+      "sha256": "8057bb61113555dca5264da8e72fca0ff944e8c19c8babb50ff6e19094f2635f"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-spring-day.webp",
+      "bytes": 422566,
+      "sha256": "29ace1c37fa0525a1292b9491131401bfbff107438a4afe60724c1e4d33f1c13"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-spring-evening.webp",
+      "bytes": 370756,
+      "sha256": "8fb95f04564f7c0826bfde00fec5e47fec5b619205ed2d54d93980bddc039b07"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-spring-night.webp",
+      "bytes": 398286,
+      "sha256": "8641ca620b54d41f2c327d27a629fc18739ab22cfa01bf3a8e4d2bc76ef0f4b9"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-summer-morning.webp",
+      "bytes": 392012,
+      "sha256": "48363fae9eee2e53238bf4763b1a4cea46657b41f8200ed1eed258683b490d86"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-summer-day.webp",
+      "bytes": 369488,
+      "sha256": "a1c7b9ef5b40db6160e15be1b0f48810940ffd8b2c6f05ebe69de802cfa574c4"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-summer-evening.webp",
+      "bytes": 372756,
+      "sha256": "6a119035615ad8983b8410ccb65c8107f88cffcfdfe4cdd252cb8e2a34bfdb08"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-summer-night.webp",
+      "bytes": 326158,
+      "sha256": "fb47a7e65e01a0f659a2b89c035c74da6bd18f541058fd1b0ace06dc20428d20"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-autumn-morning.webp",
+      "bytes": 353852,
+      "sha256": "c7be73b0dff92100e4bbe114c5445ed57bc2e2c5ee9919b25435792c480bdeb4"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-autumn-day.webp",
+      "bytes": 439280,
+      "sha256": "d2b9e735e5fbd32e0f1827f69fdd97d5b82789d1d74e3ef02f8f2bd933ed4a58"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-autumn-evening.webp",
+      "bytes": 399354,
+      "sha256": "ef2a30ace38dbdaaa2aac87b453e953eff50d1a935baf7f5dc15232341f29689"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-autumn-night.webp",
+      "bytes": 390650,
+      "sha256": "b22b183bf48e2c46d3732490cae714123bfbc6ec4bb9fd870ec95da22e36eb40"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-winter-morning.webp",
+      "bytes": 425366,
+      "sha256": "a93723ba3d0a08f987518476fe87dd62ffff8023a2acfd390c5576130dea0a4f"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-winter-day.webp",
+      "bytes": 432352,
+      "sha256": "7c78e9360b4ee016b2b0276836c266f55223110286339a1a1a9bf8b53bc6364d"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-winter-evening.webp",
+      "bytes": 434060,
+      "sha256": "170894e3289576da584c935da273edeca174510cfa04cc361bea5f420367224c"
+    },
+    {
+      "path": "collection/novgorod-victory-kremlin-winter-night.webp",
+      "bytes": 433336,
+      "sha256": "33f20b152881fd9b7df09e6aae2ae2a4f33aec4a5262c188d59faf00958ded56"
+    },
+    {
+      "path": "collection/novgorod-square-spring-morning.webp",
+      "bytes": 363078,
+      "sha256": "c01732963148320111ecb1b2c8de437fe0bedb97b2966297295b54487f0928ef"
+    },
+    {
+      "path": "collection/novgorod-square-spring-day.webp",
+      "bytes": 362428,
+      "sha256": "8102156719e7d01c0e6d81babfcd4986d2950e1d18e62567624e26ba4ccb1278"
+    },
+    {
+      "path": "collection/novgorod-square-spring-evening.webp",
+      "bytes": 359802,
+      "sha256": "5ca83edc73a8c807cdbdfd11a9232b232749770c58adb05d677bbae11e292a5f"
+    },
+    {
+      "path": "collection/novgorod-square-spring-night.webp",
+      "bytes": 358608,
+      "sha256": "c10fedd53752408e72e7a73cefcecb25d9ffd98aa00f3326b680b02bed0894b2"
+    },
+    {
+      "path": "collection/novgorod-square-summer-morning.webp",
+      "bytes": 386608,
+      "sha256": "4bba86d91ee0d8cae69112861123f7f40c72014794ee7a8a5f8d4c192bb44290"
+    },
+    {
+      "path": "collection/novgorod-square-summer-day.webp",
+      "bytes": 411630,
+      "sha256": "c0c2d71b95451854a1150926d9cf9bf8d19fc57c90fc0e415cd4bffa838d9d22"
+    },
+    {
+      "path": "collection/novgorod-square-summer-evening.webp",
+      "bytes": 415156,
+      "sha256": "4eab31ef2b74dec88ac3635487138c43c2aa6aa98c4ef2a8fa1735303bd1d74e"
+    },
+    {
+      "path": "collection/novgorod-square-summer-night.webp",
+      "bytes": 397976,
+      "sha256": "cae487bdd429c956112d4e1451bd17fcc5989734eafdd1155c6d709f2eadee6d"
+    },
+    {
+      "path": "collection/novgorod-square-autumn-morning.webp",
+      "bytes": 366542,
+      "sha256": "22720728e163cb44ea8472ce3bb7b7b34127ae253f30bb85c278a4e8ddd2b084"
+    },
+    {
+      "path": "collection/novgorod-square-autumn-day.webp",
+      "bytes": 400410,
+      "sha256": "02eb0a93b5ce5d382e73b7c3132e999faf737ba438f8ba92f8933e27bcf60f1a"
+    },
+    {
+      "path": "collection/novgorod-square-autumn-evening.webp",
+      "bytes": 400488,
+      "sha256": "dbf8ce4d3b0aba2681b23c1f2327d0cee045fa9d3f7fc2b655594be17f96ec00"
+    },
+    {
+      "path": "collection/novgorod-square-autumn-night.webp",
+      "bytes": 423572,
+      "sha256": "7e9bea0bbde234429fd2e6130523f5c69863e96242a740566ecee2776e3ab227"
+    },
+    {
+      "path": "collection/novgorod-square-winter-morning.webp",
+      "bytes": 378116,
+      "sha256": "fb310884ef069fa77389e24e028d98e3478aa00ca098af9100d66cb7d11db6b6"
+    },
+    {
+      "path": "collection/novgorod-square-winter-day.webp",
+      "bytes": 409612,
+      "sha256": "07f5bae1cb0a73652b163ae4b313aa2e42cf64009e161e082666b2c9c5e9354a"
+    },
+    {
+      "path": "collection/novgorod-square-winter-evening.webp",
+      "bytes": 289316,
+      "sha256": "e290fc5957af47702834076c15efbcea04cfc2b7d7fc65c271c5d1197a6b83e3"
+    },
+    {
+      "path": "collection/novgorod-square-winter-night.webp",
+      "bytes": 338348,
+      "sha256": "072634e63d52599ec8fb1de0349c9f58c771e1b08082ce44114c2757766dadd7"
+    },
+    {
+      "path": "collection/chelyuskin-spring-morning.webp",
+      "bytes": 378510,
+      "sha256": "07fda1ea2bacb49532dfd24897313321290320989e49368a889c9e07638e5451"
+    },
+    {
+      "path": "collection/chelyuskin-spring-day.webp",
+      "bytes": 358216,
+      "sha256": "c27d397dd0d610e7dd7157eff5208ec8763bff41584c7f0018c33b738565f4b6"
+    },
+    {
+      "path": "collection/chelyuskin-spring-evening.webp",
+      "bytes": 357422,
+      "sha256": "add6350996694ea7c097a5a6447e75ee6efd7411375db6c32b9ff9f8d0d017b7"
+    },
+    {
+      "path": "collection/chelyuskin-spring-night.webp",
+      "bytes": 391380,
+      "sha256": "0e5c8b41850935b58e1e6add4acf05b58fe00ad37c752edd2c0e80afb27c22d0"
+    },
+    {
+      "path": "collection/chelyuskin-summer-morning.webp",
+      "bytes": 419542,
+      "sha256": "24394e47d53fdbcf779528d17da401dc5399004beb3755f7bed0264e70b60528"
+    },
+    {
+      "path": "collection/chelyuskin-summer-day.webp",
+      "bytes": 421482,
+      "sha256": "2101f2605713fa814f023bea368fdb7518116b36b52a71c1636f8d45fe9fef31"
+    },
+    {
+      "path": "collection/chelyuskin-summer-evening.webp",
+      "bytes": 392690,
+      "sha256": "44dd2e45e439f1be42622e1bb3ff3bf763938ce3e32edd0e695289e17fd9ca26"
+    },
+    {
+      "path": "collection/chelyuskin-summer-night.webp",
+      "bytes": 392760,
+      "sha256": "887c2bab1711d19de2744f80736c4f6f9962cb893ab5365a9b99baf4e3b887bb"
+    },
+    {
+      "path": "collection/chelyuskin-autumn-morning.webp",
+      "bytes": 395232,
+      "sha256": "420e470e5b54a5600ecdf8a2e7102498977b8c231c94cf3b05a920e52d93d845"
+    },
+    {
+      "path": "collection/chelyuskin-autumn-day.webp",
+      "bytes": 399784,
+      "sha256": "631c4e2a8eaf0eea40cc6dbe9ecb32fc1e656c0dd92db4fae92c5e046e14b017"
+    },
+    {
+      "path": "collection/chelyuskin-autumn-evening.webp",
+      "bytes": 365078,
+      "sha256": "e164cf12448b42f92ba6aa935254a28e4afb75259dfb161a04ee66409f873fe9"
+    },
+    {
+      "path": "collection/chelyuskin-autumn-night.webp",
+      "bytes": 401106,
+      "sha256": "b3227c32a869712ad7e89e55b188195fb5ee5ea82f6796e1c93597d7195dd8c2"
+    },
+    {
+      "path": "collection/chelyuskin-winter-morning.webp",
+      "bytes": 405718,
+      "sha256": "78b3183ccff22a2dce53adc7424da2cb795272d6df5d2981b7390c3f430e606a"
+    },
+    {
+      "path": "collection/chelyuskin-winter-day.webp",
+      "bytes": 322780,
+      "sha256": "327db72f67388200ffbc0dff7a774ecbc047d0501327b3e23aba6c1ea44d6e5c"
+    },
+    {
+      "path": "collection/chelyuskin-winter-evening.webp",
+      "bytes": 299334,
+      "sha256": "3495f422bb46ee2fe128e0f72f0f4dc1c743c7d92a18afc55d60c2c231c083fe"
+    },
+    {
+      "path": "collection/chelyuskin-winter-night.webp",
+      "bytes": 368970,
+      "sha256": "8c6989f29896501c70224b2bb8ccfcc296e9025581ea947ab658b5485e4fd4a0"
+    },
+    {
+      "path": "collection/dikson-spring-morning.webp",
+      "bytes": 493370,
+      "sha256": "1d07cb76c88ba8c8a2d76b28b8555c8b9178225def13fd501a75eccf9cd5391c"
+    },
+    {
+      "path": "collection/dikson-spring-day.webp",
+      "bytes": 511432,
+      "sha256": "166ec99ce8606d484ce205f9313d6118313aded5ca49572e88ae2628827986c3"
+    },
+    {
+      "path": "collection/dikson-spring-evening.webp",
+      "bytes": 458200,
+      "sha256": "fa69c0b09b904700df505d9327d4607d652bea8230eb38902f83bd70453caa03"
+    },
+    {
+      "path": "collection/dikson-spring-night.webp",
+      "bytes": 467972,
+      "sha256": "fe6f0286133ec4e370e018d5e81b449143bd1b942a69802ac2e6dd66c07b661d"
+    },
+    {
+      "path": "collection/dikson-summer-morning.webp",
+      "bytes": 507754,
+      "sha256": "640f90486891b5581405494d7e6894e52a5a809704ccfb3d8899fd7421ad99d7"
+    },
+    {
+      "path": "collection/dikson-summer-day.webp",
+      "bytes": 561054,
+      "sha256": "6e66833c3d54c04cf46f729dd8a77003fee70dddb091aefd159e13ea83e50698"
+    },
+    {
+      "path": "collection/dikson-summer-evening.webp",
+      "bytes": 536254,
+      "sha256": "7194f387d1334beb8a42e93860e16d9f9dd9677cb744685e662fb30a004b397e"
+    },
+    {
+      "path": "collection/dikson-summer-night.webp",
+      "bytes": 532410,
+      "sha256": "c6969fe6e04c4290385762b43fe1fe4398e10833c1f93f9507fbf606d49b5fcf"
+    },
+    {
+      "path": "collection/dikson-autumn-morning.webp",
+      "bytes": 518892,
+      "sha256": "85358be353d259a7a9bfcc2e631a28b8313a8f9d5cd6e29d425b21b0a61fae06"
+    },
+    {
+      "path": "collection/dikson-autumn-day.webp",
+      "bytes": 526530,
+      "sha256": "eddb628ee9f71472b2c9dbe06287331583f3804fa26e0fcc3e9289265396fb6a"
+    },
+    {
+      "path": "collection/dikson-autumn-evening.webp",
+      "bytes": 470752,
+      "sha256": "596333f33c9581808557ba1009476da3884c65f99fce64c6bea03d57a9a59993"
+    },
+    {
+      "path": "collection/dikson-autumn-night.webp",
+      "bytes": 475752,
+      "sha256": "8eb6959ed95107778f16000403b6deaee6ca55b5b2b03fa44426ca4dde1d5bd5"
+    },
+    {
+      "path": "collection/dikson-winter-morning.webp",
+      "bytes": 520294,
+      "sha256": "a7036d08079df29b8a5f6532e574de6214c99f2b78f752acb27569e47c78018e"
+    },
+    {
+      "path": "collection/dikson-winter-day.webp",
+      "bytes": 538198,
+      "sha256": "af034a89587230f2d23c329dcbab1f21375efae33122b2468eee14dbfb381898"
+    },
+    {
+      "path": "collection/dikson-winter-evening.webp",
+      "bytes": 461532,
+      "sha256": "3fdc7dfe62fd192038afb9ba5be7f4f3dd9ef62efc83c12020b5e457d34613fb"
+    },
+    {
+      "path": "collection/dikson-winter-night.webp",
+      "bytes": 496140,
+      "sha256": "f0d25f3d441b31a1edae24a5d81f9b1d738ce8d9ae8682d49396c6aebf4409b0"
+    },
+    {
+      "path": "collection/tiksi-spring-morning.webp",
+      "bytes": 491978,
+      "sha256": "ce581be7d9e9cc16b00212cf942cc9f636aa025c57912c2c94290301791175aa"
+    },
+    {
+      "path": "collection/tiksi-spring-day.webp",
+      "bytes": 511934,
+      "sha256": "78599ea82425add6e1441306334b3b20acfddc9e8ae75f1a62668cb6c51ab521"
+    },
+    {
+      "path": "collection/tiksi-spring-evening.webp",
+      "bytes": 494998,
+      "sha256": "7200e9dd0fba33583d2e70db516f4c01275f182c1859f07aadc41db362082613"
+    },
+    {
+      "path": "collection/tiksi-spring-night.webp",
+      "bytes": 489644,
+      "sha256": "b41c75b3b87c65f42770bb4ae50acf4927a28a7e3ece232eaf7c019211b7e0c8"
+    },
+    {
+      "path": "collection/tiksi-summer-morning.webp",
+      "bytes": 500284,
+      "sha256": "92f1dffd2e16848669484db9bc3bfa95a45f45ff9b8c85515d3fc9c38cc0f406"
+    },
+    {
+      "path": "collection/tiksi-summer-day.webp",
+      "bytes": 554818,
+      "sha256": "ef130fab4e5a591a51ad768edc57fc8d381dc837f2b1d0df58ed896c31467fd0"
+    },
+    {
+      "path": "collection/tiksi-summer-evening.webp",
+      "bytes": 513628,
+      "sha256": "e5bc90e924b35253c85f6002a34dec1e1d474577cb977af0a15de4ab288c3fd8"
+    },
+    {
+      "path": "collection/tiksi-summer-night.webp",
+      "bytes": 491108,
+      "sha256": "5aa44c48a61e111c08b9d1af9f575211712d309ba183f33db4bcc8f360527ac2"
+    },
+    {
+      "path": "collection/tiksi-autumn-morning.webp",
+      "bytes": 487824,
+      "sha256": "39c6ce43229c7d4618ebcfc1aa28063e84ad02ee5afeedcd65c4ee2ebe1a51a6"
+    },
+    {
+      "path": "collection/tiksi-autumn-day.webp",
+      "bytes": 520102,
+      "sha256": "d93c68f718b0e79f5b2b76859f803989d02858c32859369b67936341f8e6958d"
+    },
+    {
+      "path": "collection/tiksi-autumn-evening.webp",
+      "bytes": 458760,
+      "sha256": "13dfa04baa077c2cf0fbc4171867a2a828b18623f22ade21d9b5e908b58781b7"
+    },
+    {
+      "path": "collection/tiksi-autumn-night.webp",
+      "bytes": 515410,
+      "sha256": "971c0125bade88f50b0227850ab4e2d6112025bbef7ea7a645f31ae753d0e1d7"
+    },
+    {
+      "path": "collection/tiksi-winter-morning.webp",
+      "bytes": 476396,
+      "sha256": "576f77d76a51c9dc9d647b7b9332e1232b2027c404e546c49721d7ec3089dd95"
+    },
+    {
+      "path": "collection/tiksi-winter-day.webp",
+      "bytes": 468204,
+      "sha256": "1290f501109f3a229e191ae92b63d6e73a60d04eb65239741b25998d3ad803da"
+    },
+    {
+      "path": "collection/tiksi-winter-evening.webp",
+      "bytes": 421396,
+      "sha256": "5d9d883b2e2ec41265d3f9f966c60728150388a9ab572627a6c2f97328b13e9a"
+    },
+    {
+      "path": "collection/tiksi-winter-night.webp",
+      "bytes": 455072,
+      "sha256": "7b6e87eee687ee3baf9283496db3de8230a5664fb768e579e7369ad5142b587c"
+    },
+    {
+      "path": "autumn-street.webp",
+      "bytes": 394014,
+      "sha256": "034a54e65bcb65e755de47dee4488e1815a9e91fb91f7593f9ba3f3a544d2d8c"
+    },
+    {
+      "path": "sakura-river.webp",
+      "bytes": 536832,
+      "sha256": "68b960d57a0d9f309de64cd4c3e35bc71e92801d35730837907b78063781f545"
+    },
+    {
+      "path": "rainy-tram.webp",
+      "bytes": 465116,
+      "sha256": "380bb7b858e80eaa5eb870cf1088a9d5e1327548142ff02c156e7fbd97f69304"
+    },
+    {
+      "path": "summer-seaside.webp",
+      "bytes": 442230,
+      "sha256": "2c3d28b27299375729426e0ef8b6b9c588dd1fa13f64e06d8ed0612c30860847"
+    },
+    {
+      "path": "winter-onsen.webp",
+      "bytes": 400532,
+      "sha256": "a6259d56c494dbd7aaf09bb62ae66d8ae825d26350408556a33c51a400208bc3"
+    },
+    {
+      "path": "moss-forest.webp",
+      "bytes": 450020,
+      "sha256": "7ce154ad4f393418a684bec8eb7c992439d5abb9e7d0c6e68717e2cb288326c5"
+    },
+    {
+      "path": "star-observatory.webp",
+      "bytes": 261942,
+      "sha256": "a314c080dabb6089eb4582289cee55d9235e2c5ba0e7c2bbe4fee6ab42a5e67c"
+    },
+    {
+      "path": "golden-terraces.webp",
+      "bytes": 383446,
+      "sha256": "003e58516bb703b7e50a100e8a1d8dd43ee2a7a49cdadb8245b9cab690857ce6"
+    },
+    {
+      "path": "rainy-library.webp",
+      "bytes": 330098,
+      "sha256": "ae90eb19d1309d6f0feeeddeab668e78013dac5f48d5908d7a01e5f0d3c021e1"
+    },
+    {
+      "path": "lotus-garden.webp",
+      "bytes": 393336,
+      "sha256": "3211305e234530d7944019d74434907e888f5454290a2bcf4b4c157139086484"
+    },
+    {
+      "path": "desert-train.webp",
+      "bytes": 312936,
+      "sha256": "fda9cac6d92294f7e422ff64e0ffad93263ac2c492d5261e47b2e11cb79e9636"
+    },
+    {
+      "path": "snow-lanterns.webp",
+      "bytes": 392890,
+      "sha256": "380b741fe0dfa98df925b4c26f54640e008a833bc9e20f09a52c3f94aa13bfc9"
+    },
+    {
+      "path": "one-header.webp",
+      "bytes": 297056,
+      "sha256": "9feed83eecfb1703b3fe3992f5abe97f81645fd2f5c42d96a3b79f4e2e94f59c"
+    }
+  ]
+}

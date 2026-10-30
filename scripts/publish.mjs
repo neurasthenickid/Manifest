@@ -1,0 +1,13 @@
+import {readFile,readdir} from 'node:fs/promises';import {spawnSync} from 'node:child_process';
+import {verifyProof,createDrafts} from './release-integrity.mjs';
+const c=JSON.parse(await readFile('release.config.json','utf8')),manifest=JSON.parse(await readFile('manifest.json','utf8')),v=manifest.version;
+if((await readFile('LICENSE','utf8')).includes('Licensing decision pending')||(await readFile('IMAGE_LICENSE','utf8')).includes('Image licensing pending'))throw new Error('Approved full license texts are required before publication');
+if(c.author!==JSON.parse(await readFile('manifest.json','utf8')).author)throw new Error('Set manifest.author to the approved public author');
+if(!c.repository||!c.codeLicense||!c.imageLicense||!c.author||c.repository!==process.env.GH_REPO)throw new Error('Publication blocked: repository, authorship and approved code/image licenses must be configured');
+const git=spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'});if(git.status!==0)throw Error('Checked public checkout required');const commit=git.stdout.trim();
+const proof=JSON.parse(await readFile('dist/verified-source.json','utf8'));if(commit!==process.env.CHECKED_COMMIT)throw Error('Workflow checkout changed');await verifyProof(proof,commit);
+const kind=process.argv.includes('--collection-only')?'collection-only':process.argv.includes('--collection-and-code')?'collection-and-code':'code-only';
+const run=args=>spawnSync('gh',args,{encoding:'utf8'});
+const collectionAssets=kind==='code-only'?[]:[...(await readdir('dist/collection')).map(n=>'dist/collection/'+n),'dist/packages/header-collection-'+c.collectionVersion+'.zip'],codeAssets=['dist/light/main.js','dist/light/manifest.json','dist/light/styles.css','dist/SHA256SUMS.txt','dist/packages/life-planner-'+v+'-full.zip','dist/packages/sizes-and-checksums.json'];
+for(const path of [...collectionAssets,...(kind==='collection-only'?[]:codeAssets)])if(!Object.hasOwn(proof.artifacts,path))throw Error('Unchecked artifact requested for release: '+path);
+createDrafts(run,{repository:c.repository,commit,version:v,collectionTag:c.collectionTag,collectionVersion:c.collectionVersion,kind,collectionAssets,codeAssets});

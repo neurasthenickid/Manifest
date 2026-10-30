@@ -1,0 +1,684 @@
+.life-planner{--lp-accent:var(--interactive-accent,#7765bc);background:var(--lp-background,transparent);font-family:var(--font-text,system-ui,sans-serif);font-size:var(--font-text-size,16px);color:var(--text-normal,#222);line-height:1.5;max-width:100%;min-width:0;container-type:inline-size}
+.lp-calendar-connection{margin-top:24px;padding-top:18px;border-top:1px solid var(--background-modifier-border,#bbb)}.lp-calendar-connection>button{display:block;margin:10px 0;max-width:100%}.lp-calendar-connection>small{display:block;margin:8px 0}.lp-calendar-connection .lp-setting-row{min-height:44px;cursor:pointer}.life-planner .lp-calendar-connection input[type=checkbox]{width:20px;height:20px;min-width:20px;flex:none;margin:0}.lp-connection-issue{margin:12px 0;padding:12px;border:1px solid var(--background-modifier-border,#bbb);border-radius:10px}.lp-connection-issue button{margin:4px}
+.life-planner *{box-sizing:border-box}.life-planner button,.life-planner input,.life-planner select,.life-planner textarea{font:inherit}
+.life-planner button{height:auto;min-height:44px;white-space:normal;overflow-wrap:anywhere;text-align:left;padding:8px 12px;cursor:pointer;border:1px solid var(--background-modifier-border,#ddd);border-radius:9px;box-shadow:none;background:var(--background-primary,#fff);color:var(--text-normal,#222)}
+.life-planner button:hover{background:var(--background-secondary,#f5f5f5)}.life-planner button:focus-visible,.life-planner input:focus-visible{outline:2px solid var(--lp-accent);outline-offset:2px}.life-planner button:disabled{opacity:.55;cursor:wait}
+.life-planner .lp-primary{background:var(--lp-accent);color:var(--text-on-accent,#fff)}.life-planner .lp-danger,.lp-error{color:var(--text-error,#bd3333)}
+.life-planner h2,.life-planner h3,.life-planner h4{margin:0 0 12px}.life-planner h3{font-size:1.2em}.life-planner h4{font-size:1em}.life-planner p{margin:8px 0}
+.lp-status:empty{display:none}.lp-status{padding:8px;background:var(--background-secondary,#f4f4f4);border-radius:8px}.lp-nav,.lp-links,.lp-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.lp-nav{margin:12px 0}.lp-tab{border-bottom:3px solid currentColor!important}.lp-tab.lp-day{color:#927bcd}.lp-tab.lp-week{color:#338978}.lp-tab.lp-month{color:#b68636}.lp-tab.lp-quarter{color:#bc6a85}.lp-tab.lp-year{color:#588ac1}.lp-tab.is-active{font-weight:750;background:var(--background-secondary,#f5f5f5)}
+.lp-period{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;align-items:center;margin:20px 0;text-align:center}.lp-period>button{text-align:center}.lp-period h2{font-size:clamp(1.5em,5cqw,2.3em);line-height:1.25;margin:2px 0 6px}.lp-eyebrow{text-transform:uppercase;letter-spacing:.1em;font-size:.7em;color:var(--text-muted,#777)}.lp-muted{color:var(--text-muted,#757575);font-size:.88em}.lp-links button{border-left:4px solid var(--lp-area,var(--lp-accent));font-size:.9em}
+.lp-section{border-top:1px solid var(--background-modifier-border,#ddd);padding:22px 0 12px;margin-top:18px}.lp-week-strip{display:grid;grid-template-columns:repeat(7,minmax(56px,1fr));gap:4px;overflow-x:auto;margin-top:18px}.lp-week-strip button{font-size:.75em;text-align:center;padding:6px}.life-planner .is-today{color:var(--text-success,#258357);font-weight:bold;border-bottom:3px solid #389969}.life-planner .is-selected{outline:2px solid var(--lp-accent);outline-offset:-2px}
+.lp-calendar-scroll{overflow:auto;max-height:420px;margin-top:14px;border:1px solid var(--background-modifier-border,#ddd);border-radius:10px;overscroll-behavior:contain}.lp-calendar-grid{display:grid;grid-template-columns:minmax(240px,1fr)}.lp-seven{display:grid;grid-template-columns:repeat(7,minmax(135px,1fr));min-width:945px}.lp-day-column{border-right:1px solid var(--background-modifier-border,#ddd);min-width:0}.lp-day-heading{position:sticky;top:0;z-index:3;width:100%;text-align:center!important;border-radius:0!important;font-size:.83em!important}.lp-timeline{height:960px;position:relative}.life-planner .lp-hour{position:absolute;left:0;width:100%;height:40px;min-height:40px;border:0;border-top:1px solid var(--background-modifier-border,#eee);border-radius:0;background:transparent;padding:0 4px;font-size:10px;color:var(--text-muted,#888);display:flex;align-items:flex-start}.life-planner .lp-event{position:absolute;min-height:30px;font-size:11px;line-height:1.2;padding:3px;border:1px solid var(--lp-accent);background:var(--background-secondary,#efecf7);border-left:3px solid var(--lp-accent);overflow:hidden;z-index:2}.lp-untimed{margin:8px 0;overflow-x:auto;min-width:0}.lp-untimed.lp-seven{display:flex}.lp-untimed-day{padding:8px;border:1px solid var(--background-modifier-border,#ddd);border-radius:8px;flex:1;min-width:135px;font-size:.8em}.lp-untimed-day strong{display:block}.lp-untimed-day button{width:100%;margin-top:4px;font-size:.9em}.lp-section details>button{display:block;margin:6px 0}.lp-section summary{cursor:pointer;min-height:44px;padding:10px 0}
+.lp-month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;margin:14px 0}.lp-month-grid>span{text-align:center}.lp-month-cell{min-width:0;min-height:80px;border:1px solid var(--background-modifier-border,#ddd);border-radius:6px;overflow:hidden;padding:2px}.lp-month-cell>button:first-child{display:block;width:100%;text-align:center;padding:4px;border:0}.life-planner .lp-month-event{display:block;width:100%;min-height:32px;font-size:.66em;line-height:1.15;padding:3px;border:0;background:var(--background-secondary,#eee);margin:2px 0}.lp-month-cell small{font-size:.6em}.lp-month-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px}
+.lp-form{padding:18px;border:2px solid var(--lp-accent);border-radius:12px;margin:14px 0;background:var(--background-primary,#fff);max-width:100%}.lp-field{display:flex;flex-direction:column;gap:6px;margin:10px 0;min-width:0;flex:1}.lp-field span{font-size:.9em}.lp-field input:not([type=checkbox]),.lp-field select,.lp-field textarea{width:100%;min-width:0;min-height:44px;border:1px solid var(--background-modifier-border,#bbb);border-radius:6px;padding:8px;background:var(--background-primary,#fff);color:inherit}.lp-field textarea{resize:vertical}.lp-field input[type=checkbox]{width:24px;height:24px}.lp-form>.lp-actions{background:var(--background-primary,#fff);padding:8px 0}
+.lp-selection{position:absolute;left:42px;right:2px;background:var(--lp-accent);opacity:.25;border:2px solid var(--lp-accent);pointer-events:none;z-index:4}.lp-resize-handle{position:absolute;bottom:0;left:0;right:0;height:12px;cursor:ns-resize;border-bottom:3px double var(--lp-accent)}.lp-scope{padding:14px;border:2px solid var(--lp-accent);border-radius:12px;margin:14px 0}.lp-scope button{margin:4px}
+.lp-task-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:10px 0;border-bottom:1px solid var(--background-modifier-border,#eee)}.lp-task-row .lp-check{flex:1 1 200px}.lp-task-row>button{font-size:.8em}.lp-check{display:flex;align-items:center;min-height:44px;gap:10px;cursor:pointer;overflow-wrap:anywhere}.lp-check input{flex-shrink:0;width:22px;height:22px;margin:0}.lp-checklist{padding:14px;border:1px solid var(--background-modifier-border,#ddd);border-radius:10px;margin:12px 0}.lp-checklist .lp-check{display:flex}.lp-empty{padding:16px;background:var(--background-secondary,#f5f5f5);border-radius:8px;font-size:.9em}
+.lp-slider{padding:14px 0;border-bottom:1px solid var(--background-modifier-border,#eee)}.lp-slider label{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.lp-slider output{font-size:1.3em;font-weight:650}.lp-slider input[type=range]{grid-column:1/-1;width:100%;margin:0;min-height:44px}.lp-slider button{margin:4px 6px 0 0;font-size:.8em}.lp-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.lp-metric{display:flex;flex-direction:column;padding:15px;border-radius:10px;background:var(--background-secondary,#f4f4f4)}.lp-metric strong{font-size:1.5em}.lp-metric span{font-size:.8em;color:var(--text-muted,#777)}.lp-footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0}.lp-footer button{font-size:.8em}
+@container (max-width:430px){.lp-nav{gap:4px}.lp-nav button{font-size:.8em;padding:6px 9px}.lp-form{padding:10px}.lp-month-cell{min-height:70px}.lp-links{gap:4px}.lp-links button{font-size:.8em;padding:6px}.lp-period{gap:6px}.lp-task-row>small{width:100%}}
+.lp-kanban{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:12px;overflow-x:auto;padding:4px 0 12px}.lp-kanban-column{background:var(--background-secondary,#f4f4f4);border-radius:10px;padding:12px;min-height:160px}.lp-kanban-card{padding:12px;border:1px solid var(--background-modifier-border,#ddd);border-left:4px solid var(--lp-area);border-radius:8px;background:var(--background-primary,#fff);margin:10px 0}.lp-kanban-card .lp-check{align-items:flex-start}.lp-kanban-card .lp-field{font-size:.85em}.lp-kanban-card>button{font-size:.8em}.life-planner button[aria-pressed=true]{outline:2px solid var(--lp-accent);outline-offset:-2px}
+
+
+/* Wide layout applies only while planner widgets are mounted in this note. */
+.lp-wide-note { --file-line-width: 1400px; --line-width: 1400px; }
+.markdown-preview-view.lp-wide-note.is-readable-line-width .markdown-preview-sizer { max-width: min(1400px, 100%); width: 100%; }
+.markdown-source-view.lp-wide-note.is-readable-line-width .cm-sizer, .markdown-source-view.lp-wide-note.is-readable-line-width .cm-content, .markdown-source-view.lp-wide-note.is-readable-line-width .cm-line { max-width: min(1400px, 100%); }
+.markdown-preview-view.lp-wide-note { padding: 24px 28px; }
+.life-planner[data-module]:not([data-module="all"]) { padding: 16px 0; }
+.life-planner .lp-section { border: 1px solid var(--background-modifier-border,#dedde4); border-radius: 16px; padding: 24px; margin: 0; background: var(--lp-background,var(--background-primary,#fff)); }
+.life-planner[data-module="all"] .lp-section { margin: 28px 0; }
+.life-planner .lp-section>h3 { font-size: 1.25em; margin-bottom: 20px; }
+.life-planner .lp-period { margin: 22px 0; }
+.life-planner .lp-period h2 { font-size: clamp(1.35em,3cqw,2em); }
+.life-planner .lp-actions>.lp-field { flex: 0 1 240px; margin: 0; }
+.life-planner .lp-calendar-scroll { max-height: none; overflow-x: auto; overflow-y: hidden; border-radius: 12px; margin-top: 20px; overscroll-behavior: auto; }
+.life-planner .lp-calendar-grid { grid-template-columns: 52px minmax(0,1fr); }
+.life-planner .lp-calendar-grid.lp-seven { grid-template-columns: 52px repeat(7,minmax(110px,1fr)); min-width: 822px; }
+.life-planner .lp-day-column { border-right: 1px solid var(--background-modifier-border,#ddd); }
+.life-planner .lp-day-heading { min-height: 48px; height: 48px; font-size: .8em; background: var(--background-secondary,#f5f5f7); }
+.life-planner .lp-time-axis { position: sticky; left: 0; z-index: 4; background: var(--lp-background,var(--background-primary,#fff)); border-right: 1px solid var(--background-modifier-border,#ddd); }
+.life-planner .lp-axis-heading { box-sizing:border-box;height: 48px; display: flex; align-items: flex-start; padding-top:8px;justify-content: center; font-size: 10px; color: var(--text-muted,#777); }
+.life-planner .lp-axis-hours { position: relative; z-index:5; height: 960px; }
+.life-planner .lp-axis-hours span { position: absolute; width: 100%; text-align: center; font-size: .733em; color: var(--text-muted,#777); padding:0;line-height:1.1;transform:translateY(-100%); }
+.life-planner .lp-event { left: 4px; font-size: 12px; text-align: left; justify-content: flex-start; align-items: flex-start; border-radius: 8px; padding: 7px; color: var(--text-normal,#222); background: color-mix(in srgb,var(--lp-accent) 16%,var(--background-primary,#fff)); border-left-width: 4px; }
+.life-planner .lp-hour { background: transparent; }
+.life-planner .lp-untimed.lp-seven { display: grid; grid-template-columns: repeat(7,minmax(110px,1fr)); min-width: 0; }
+.life-planner .lp-untimed { overflow-x: auto; }
+.life-planner .lp-untimed-day { min-width: 110px; padding: 10px; font-size: .8em; }
+.life-planner .lp-task-row { padding: 12px 8px; border-radius: 8px; }
+.life-planner .is-complete { background: color-mix(in srgb,var(--text-success,#29865a) 10%,var(--background-primary,#fff)); color: var(--text-success,#29865a); }
+.life-planner .is-complete .lp-check span { text-decoration: line-through; }
+.life-planner .is-complete input { accent-color: var(--text-success,#29865a); }
+.life-planner .lp-completed-group { margin-top: 20px; }
+.life-planner .lp-completed-group h4 { color: var(--text-success,#29865a); }
+.life-planner .lp-kanban { grid-template-columns: repeat(3,minmax(210px,1fr)); }
+.life-planner .lp-kanban-card { position: relative; padding: 16px; cursor: grab; }
+.life-planner .lp-kanban-card .lp-check { padding-right: 30px; }
+.life-planner .lp-card-menu { position: absolute; right: 8px; top: 8px; z-index: 5; }
+.life-planner .lp-card-menu summary { width: 36px; min-height: 36px; padding: 4px; text-align: center; list-style: none; font-size: 22px; }
+.life-planner .lp-card-menu[open] { padding: 6px; border-radius: 10px; background: var(--background-primary,#fff); box-shadow: 0 4px 24px #0003; }
+.life-planner .lp-card-menu button { display: block; width: 100%; font-size: .85em; }
+.life-planner .lp-list-menu { font-size: .85em; float: right; margin-left: 14px; }
+.life-planner .lp-list-menu summary { padding: 8px; }
+.life-planner .lp-habit-checklist, .life-planner .lp-morning-checklist, .life-planner .lp-evening-checklist { border: 0; padding: 8px 0; clear: both; }
+.life-planner .lp-habit-checklist .lp-check input { accent-color: var(--lp-accent); }
+.life-planner .lp-slider { padding: 18px 0; }
+.life-planner .lp-slider input { accent-color: var(--lp-accent); }
+.life-planner .lp-area-metrics { display: grid; grid-template-columns: repeat(auto-fit,minmax(135px,1fr)); gap: 12px; margin: 18px 0; }
+.life-planner .lp-area-metric { padding: 16px; border-left: 4px solid var(--lp-area); border-radius: 10px; background: var(--background-secondary,#f5f5f7); display: flex; flex-direction: column; gap: 8px; }
+.life-planner .lp-area-metric output { font-size: 1.7em; font-weight: 650; }
+.life-planner .lp-area-metric small { color: var(--text-muted,#777); }
+.life-planner .lp-area-plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 10px; }
+.life-planner .lp-area-plan { border-left: 3px solid var(--lp-area); border-radius: 8px; padding: 4px 12px; background: var(--background-secondary,#f5f5f7); }
+.life-planner .lp-area-plan button { display: block; width: 100%; margin: 6px 0; font-size: .85em; }
+.life-planner .lp-rating-chart { display: block; width: 100%; max-width: 680px; max-height: 280px; margin: 20px 0; }
+.life-planner .lp-radar { max-width: 280px; }
+.life-planner progress { width: 100%; accent-color: var(--lp-accent); }
+@container (max-width:600px) { .life-planner .lp-section { padding: 16px; border-radius: 12px; } .life-planner .lp-calendar-grid.lp-seven { grid-template-columns: 48px repeat(7,125px); min-width: 923px; } .life-planner .lp-untimed-day { min-width: 125px; } .life-planner .lp-list-menu { float: none; margin-left: 0; } }
+@media (max-width:600px) { .markdown-preview-view.lp-wide-note { padding: 12px; } }
+
+.life-planner .lp-untimed.lp-seven{padding-left:52px}
+
+.life-planner button.is-complete{text-decoration:line-through}
+
+/* Completed labels remain readable in both light and dark themes. */
+.life-planner { --lp-success: var(--color-green,color-mix(in srgb,var(--text-success,#29865a) 70%,var(--text-normal,#222))); }
+.life-planner .is-complete { background: color-mix(in srgb,var(--lp-success) 10%,var(--background-primary,#fff)); color: var(--lp-success); }
+.life-planner .is-complete input { accent-color: var(--lp-success); }
+.life-planner .lp-completed-group h4 { color: var(--lp-success); }
+.life-planner .lp-calendar-scroll { overflow: visible; }
+.life-planner .lp-axis-heading { position: sticky; top: 0; z-index: 4; background: var(--lp-background,var(--background-primary,#fff)); }
+.life-planner .lp-selection { left: 4px; right: 4px; }
+.life-planner .lp-list-menu summary { min-width: 36px; text-align: center; list-style: none; font-size: 1.25em; }
+@container (max-width:900px) { .life-planner .lp-calendar-scroll { overflow-x: auto; overflow-y: hidden; } }
+
+/* M5.6: accepted compact visual language; sphere accents remain AREAS. */
+.life-planner .lp-section{padding:20px 22px;border-radius:10px;margin:22px 0;background:var(--lp-background,var(--background-primary));border:1px solid var(--background-modifier-border)}
+.life-planner h3{font-size:1.1em}.life-planner button{min-height:32px;border-radius:7px;padding:5px 10px;font-size:.92em}
+.life-planner .lp-task-row{display:flex;align-items:flex-start;gap:10px;padding:9px 10px;border-left:3px solid var(--lp-area);border-bottom:1px solid var(--background-modifier-border);min-height:0}
+.life-planner .lp-task-row .lp-check{flex:1;align-items:flex-start;margin:0}.lp-task-body{display:block}.lp-task-body strong{font-weight:550}.lp-task-body small{display:block;margin-top:3px;font-size:.85em}
+.life-planner .lp-task-row.is-complete{background:color-mix(in srgb,var(--lp-success) 5%,transparent)}.life-planner .is-complete .lp-task-body strong{text-decoration:line-through;color:var(--lp-success)}.life-planner .is-complete .lp-task-body small{text-decoration:none}
+.lp-row-menu{position:relative}.life-planner .lp-row-menu summary{min-height:24px;padding:0 5px;list-style:none}.lp-row-menu[open]>button{display:block;white-space:nowrap}
+.life-planner .lp-kanban{gap:12px}.life-planner .lp-kanban-column{padding:10px;min-height:0;border-radius:7px}.life-planner .lp-kanban-column h4{font-size:.86em;margin:0 0 10px;font-weight:550;color:var(--text-muted)}
+.life-planner .lp-kanban-card{padding:10px 11px;min-height:0;margin:0 0 8px;border-radius:6px;border-left:3px solid var(--lp-area)}.life-planner .lp-kanban-card .lp-check{margin:0;padding-right:20px;align-items:flex-start}.life-planner .lp-kanban-card small{font-size:.83em;margin-top:3px}.life-planner .lp-kanban-card.is-complete .lp-check span{color:var(--lp-success);text-decoration:line-through}
+.life-planner .lp-completed-group h4{font-size:.92em;margin:16px 0 10px}
+.lp-widget-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}.life-planner .lp-widget-header h3{margin:0}.life-planner .lp-task-toolbar{margin:0;align-items:center}.life-planner .lp-task-toolbar .lp-field{width:160px;margin:0}.life-planner .lp-task-toolbar .lp-field>span{display:none}.lp-area-plan summary>small{display:block;margin:5px 0;font-size:.78em}.lp-area-plan summary>progress{height:5px;display:block}
+.life-planner .lp-period{margin:18px 0}.life-planner .lp-period h2.is-today{color:var(--lp-success)}
+.life-planner .lp-sphere-tab{border-bottom:2px solid var(--lp-area,var(--lp-accent));background:transparent}.life-planner .lp-sphere-tab[aria-pressed=true]{background:color-mix(in srgb,var(--lp-area,var(--lp-accent)) 16%,var(--background-primary));border-color:var(--lp-area,var(--lp-accent))}
+.life-planner .lp-area-rating{border-left:3px solid var(--lp-area)}.life-planner .lp-area-rating input[type=range]{accent-color:var(--lp-area)}
+.life-planner .lp-slider{margin:10px 0}.life-planner .lp-slider label>span{font-size:.9em}.life-planner .lp-slider output{font-size:1.3em;font-weight:600}
+.lp-mini-months{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}.lp-mini-month{min-width:0}.life-planner .lp-mini-title{display:block;margin:0 auto 10px;border:0;text-transform:capitalize;font-weight:600}
+.lp-mini-grid{display:grid;grid-template-columns:30px repeat(7,minmax(0,1fr));gap:3px;text-align:center}.lp-mini-week-label{font-size:.8em;color:var(--text-muted);padding:6px 0}.life-planner .lp-mini-grid button{padding:3px;min-height:30px;border:0;background:transparent;font-size:.86em}.life-planner .lp-mini-week{color:var(--text-muted)}.life-planner .lp-mini-grid .is-outside{opacity:.38}
+.life-planner .lp-mini-grid .is-today,.life-planner .lp-week-strip .is-today{color:var(--lp-success);border:2px solid var(--lp-success);border-radius:5px;background:color-mix(in srgb,var(--lp-success) 13%,var(--background-primary));font-weight:650;opacity:1}
+.life-planner .lp-mini-grid .is-selected{box-shadow:inset 0 -3px var(--lp-accent)}.lp-mini-date.has-note::after{content:'·';display:block;height:3px;line-height:1px;color:var(--lp-accent)}
+.life-planner .lp-hour{min-height:0}.life-planner .lp-event{background:color-mix(in srgb,var(--lp-area,var(--lp-accent)) 18%,var(--background-primary));border-left-color:var(--lp-area,var(--lp-accent));border-color:var(--lp-area,var(--lp-accent));font-size:.82em;min-height:18px}
+.life-planner .lp-outside-hours{padding:12px;border-top:1px solid var(--background-modifier-border)}.lp-outside-hours>button{display:block;margin:5px 0}
+.markdown-preview-view.lp-wide-note{--file-line-width:var(--lp-note-width,1400px)}.markdown-preview-view.lp-wide-note.is-readable-line-width .markdown-preview-sizer{max-width:min(var(--lp-note-width,1400px),100%)}
+.lp-wide-note{--file-line-width:var(--lp-note-width,1400px);--line-width:var(--lp-note-width,1400px)}.markdown-source-view.lp-wide-note.is-readable-line-width .cm-sizer,.markdown-source-view.lp-wide-note.is-readable-line-width .cm-content,.markdown-source-view.lp-wide-note.is-readable-line-width .cm-line{max-width:min(var(--lp-note-width,1400px),100%)}
+.lp-mini-months{grid-template-columns:repeat(3,minmax(0,1fr))}@container(max-width:950px){.lp-mini-months{grid-template-columns:repeat(2,minmax(0,1fr))}}@container(max-width:600px){.lp-mini-months{grid-template-columns:1fr}}
+.life-planner.lp-settings{max-width:1100px}.lp-settings-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}.life-planner .lp-settings-tabs button[aria-pressed=true]{background:color-mix(in srgb,var(--lp-accent) 18%,var(--background-primary));border-color:var(--lp-accent)}
+.lp-settings-body{padding:18px;border:1px solid var(--background-modifier-border);border-radius:10px}.lp-setting-row{display:flex;align-items:center;gap:9px;padding:10px 0;border-bottom:1px solid var(--background-modifier-border)}.lp-setting-row>strong,.lp-setting-row>span:first-child{flex:1}.lp-settings .lp-field{margin:12px 0}.lp-settings-body>button{margin:5px}.lp-layout-preview{width:min(1200px,95vw)}.lp-template-description{font:var(--font-text-size) var(--font-text);color:var(--text-muted)}
+.life-planner.lp-sidebar{padding:8px}.lp-sidebar .lp-mini-grid{grid-template-columns:24px repeat(7,minmax(0,1fr))}.life-planner .lp-area-plan progress{width:100%;accent-color:var(--lp-area)}
+.life-planner.lp-comfortable .lp-task-row,.life-planner.lp-comfortable .lp-kanban-card{padding-top:16px;padding-bottom:16px}
+@media(max-width:600px){.life-planner button,.life-planner .lp-row-menu summary,.life-planner .lp-mini-grid button{min-height:44px}.lp-mini-months{grid-template-columns:1fr}.life-planner .lp-row-menu summary{padding:10px}.life-planner .lp-kanban-card{padding:12px}.lp-settings-body{padding:12px}}
+
+/* M5.7: own range controls must survive Obsidian's input styling. */
+.life-planner[data-module]:not([data-module="all"]){padding:0}
+.life-planner .lp-sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.life-planner .lp-rating-card{padding:16px 22px;position:relative}
+.life-planner .lp-rating-card h3{margin:0 0 14px;padding-right:230px}
+.life-planner .lp-rating-hint{position:absolute;right:22px;top:18px;font-size:.75em;color:var(--text-muted,#777)}
+@container(max-width:600px){.life-planner .lp-rating-card h3{padding-right:0}.life-planner .lp-rating-hint{position:static;display:block;margin:-6px 0 8px}}
+.life-planner .lp-slider{padding:0;margin:0;border:0}
+.life-planner .lp-slider label{grid-template-columns:minmax(0,1fr) auto;gap:18px}
+.life-planner .lp-slider output{grid-column:2;grid-row:1;min-width:32px;text-align:right;font-size:1.4em}
+.life-planner .lp-slider input[type=range]{appearance:none;-webkit-appearance:none;grid-column:1;grid-row:1;display:block;width:100%;height:28px;min-height:28px;max-height:28px;padding:0;margin:0;background:transparent;border:0;border-radius:0;box-shadow:none;cursor:pointer;--lp-track:var(--background-modifier-border,#555);--lp-fill:var(--lp-area,var(--lp-accent))}
+.life-planner .lp-slider input[type=range]::-webkit-slider-runnable-track{height:6px;border:0;border-radius:8px;background:linear-gradient(to right,var(--lp-fill) 0 var(--lp-slider-progress),var(--lp-track) var(--lp-slider-progress) 100%)}
+.life-planner .lp-slider input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:16px;height:16px;margin-top:-5px;border:0;border-radius:50%;background:var(--lp-fill);box-shadow:none}
+.life-planner .lp-slider input[type=range]::-moz-range-track{height:6px;border:0;border-radius:8px;background:var(--lp-track)}
+.life-planner .lp-slider input[type=range]::-moz-range-progress{height:6px;border-radius:8px;background:var(--lp-fill)}
+.life-planner .lp-slider input[type=range]::-moz-range-thumb{width:16px;height:16px;border:0;border-radius:50%;background:var(--lp-fill)}
+.life-planner .lp-period h2.is-selected{outline:0}.life-planner .lp-period h2.is-today{border:0;background:transparent}
+.life-planner .is-complete .lp-check .lp-task-body{ text-decoration:none }
+.life-planner .lp-section{background:var(--lp-background,var(--background-secondary,#f4f4f4))}
+.markdown-preview-view.lp-wide-note .inline-title{display:none}
+.lp-sidebar-nav{display:grid;grid-template-columns:32px minmax(0,1fr) 32px;gap:4px;align-items:center;margin-bottom:10px}
+.life-planner .lp-sidebar-nav button{min-height:32px;padding:3px;text-align:center;white-space:nowrap}
+.life-planner .lp-sidebar-nav .lp-mini-title{margin:0;font-size:.9em;background:transparent}
+.life-planner.lp-sidebar .lp-mini-grid{gap:2px;grid-template-columns:24px repeat(7,minmax(0,1fr));align-items:center}
+.life-planner.lp-sidebar .lp-mini-grid button{width:100%;aspect-ratio:1;min-height:0;height:auto;padding:0;font-size:12px;text-align:center;justify-self:center;max-width:36px}
+.life-planner.lp-sidebar .lp-mini-grid .is-selected{outline:0}
+.life-planner.lp-sidebar .lp-mini-grid .is-today{border:2px solid var(--lp-success);color:var(--lp-success)}
+.life-planner .lp-sidebar-today{display:block;margin:10px auto 0}
+.life-planner .lp-mini-date{position:relative}.life-planner .lp-mini-date.has-note::after{position:absolute;bottom:3px;left:50%;transform:translateX(-50%)}
+
+/* Shared concept skin across Reading and Live Preview; normal notes stay untouched. */
+.life-planner.lp-concept{--background-primary:#ffffff;--background-secondary:#f3f5f8;--background-modifier-border:#d7dce4;--text-normal:#272b36;--text-muted:#687387;--lp-success:#25845a;font-family:system-ui,sans-serif;font-size:15px;line-height:1.5}
+.life-planner.lp-concept button{min-height:32px;padding:5px 10px}
+.markdown-preview-view.lp-wide-note:has(.lp-concept),.markdown-source-view.lp-wide-note.is-live-preview:has(.lp-concept){background:#ffffff}
+body.theme-dark .markdown-preview-view.lp-wide-note:has(.lp-concept),body.dark .markdown-preview-view.lp-wide-note:has(.lp-concept),body.theme-dark .markdown-source-view.lp-wide-note.is-live-preview:has(.lp-concept),body.dark .markdown-source-view.lp-wide-note.is-live-preview:has(.lp-concept){background:#1b1d20}
+body.theme-dark .life-planner.lp-concept,body.dark .life-planner.lp-concept{--background-primary:#1b1d20;--background-secondary:#212429;--background-modifier-border:#353941;--text-normal:#e8eaf0;--text-muted:#a5aebb;--lp-success:#70c39b}
+.lp-wide-note .inline-title{display:none}
+.lp-wide-note .markdown-rendered:has(>.life-planner),.markdown-source-view.lp-wide-note .cm-embed-block:has(.life-planner){padding:0!important;margin:0!important;border:0;box-shadow:none;background:transparent}
+.life-planner .lp-section{margin:0 0 22px;padding:18px 20px}.life-planner[data-module=area-ratings] .lp-section:last-child{margin-bottom:22px}
+.life-planner .lp-rating-card{padding:16px 20px}.life-planner .lp-rating-hint{right:20px}.life-planner h3{font-size:17px;font-weight:650;line-height:1.4}
+.life-planner .lp-task-toolbar .lp-field{width:140px;flex:0 0 140px}.life-planner .lp-task-toolbar .lp-field select{min-height:32px;padding:4px 8px}
+.life-planner .lp-task-toolbar>button{flex-shrink:0;white-space:nowrap}.life-planner.lp-concept .lp-hour{min-height:0}
+.life-planner.lp-concept .lp-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;padding:0;border:1px solid #727984;border-radius:3px;background:transparent;position:relative;cursor:pointer}
+.life-planner.lp-concept .lp-check input[type=checkbox]:checked{background:var(--lp-success);border-color:var(--lp-success)}.life-planner.lp-concept .lp-check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:-3px 0 0;text-align:center;color:var(--background-primary);font-size:16px;font-weight:700}.life-planner.lp-concept .lp-check input[type=checkbox]:disabled{opacity:.6;cursor:default}
+.life-planner .lp-task-toolbar{flex-wrap:nowrap}.life-planner button,.life-planner select{font-size:13px}
+.life-planner .lp-check{min-height:30px}.life-planner .lp-task-row .lp-check input{width:18px;height:18px;margin-top:3px}
+.life-planner .lp-slider.is-unrated input[type=range]{--lp-fill:var(--background-modifier-border);--lp-slider-progress:0%!important}
+.life-planner .lp-day-heading.is-selected{outline:0;box-shadow:inset 0 -2px var(--lp-accent)}.life-planner .lp-day-heading.is-today{color:var(--lp-success);box-shadow:inset 0 -2px var(--lp-success)}
+.life-planner .lp-links button{background:transparent;border:0;border-radius:0;border-bottom:2px solid var(--lp-area,var(--lp-accent));padding:4px 9px;min-height:30px}
+.life-planner .lp-area-plan progress::-webkit-progress-bar{background:var(--background-modifier-border);border-radius:5px}.life-planner .lp-area-plan progress::-webkit-progress-value{background:var(--lp-area);border-radius:5px}
+.life-planner .lp-area-plan progress::-moz-progress-bar{background:var(--lp-area);border-radius:5px}
+.life-planner .lp-area-plan progress{appearance:none;-webkit-appearance:none;border:0;background:var(--background-modifier-border);color:var(--lp-area);height:5px;border-radius:5px}
+
+/* Shared visible slider geometry; native input retains keyboard/touch semantics. */
+.life-planner .lp-range-control{grid-column:1;grid-row:1;position:relative;height:28px;min-width:0;display:block;--lp-fill:var(--lp-area,var(--lp-accent))}
+.life-planner .lp-range-track{position:absolute;left:8px;right:8px;top:50%;transform:translateY(-50%);height:6px;border-radius:8px;background:var(--background-modifier-border)}
+.life-planner .lp-range-fill{position:absolute;inset:0 auto 0 0;width:var(--lp-slider-progress);background:var(--lp-fill);border-radius:8px}
+.life-planner .lp-range-thumb{position:absolute;left:var(--lp-slider-progress);top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:var(--lp-fill);box-shadow:0 0 0 2px var(--background-secondary)}
+.life-planner .lp-slider .lp-range-control input[type=range]{position:absolute;inset:0;width:100%;opacity:0;z-index:1}
+.life-planner .lp-range-control:has(input:focus-visible) .lp-range-track{outline:2px solid var(--lp-accent);outline-offset:5px}
+.life-planner .lp-slider.is-unrated .lp-range-control{--lp-fill:var(--text-muted)}.life-planner .lp-slider.is-unrated .lp-range-fill{width:0}
+.life-planner .lp-mini-week,.life-planner .lp-month-week{padding:0!important;white-space:nowrap!important;overflow-wrap:normal;word-break:normal;min-width:0;font-variant-numeric:tabular-nums}
+.life-planner .lp-radar{width:min(100%,520px);max-width:520px;max-height:none;height:auto;display:block;margin:24px auto}
+.life-planner .lp-month-week{align-self:start;height:44px;min-height:44px;border:0;background:transparent;color:var(--text-muted);text-align:center}
+.life-planner .lp-month-scroll{overflow-x:auto;max-width:100%}.life-planner .lp-month-grid{grid-template-columns:36px repeat(7,minmax(0,1fr));min-width:640px}
+.life-planner .lp-month-cell{height:128px;min-height:128px}.life-planner .lp-month-cell .lp-month-event,.life-planner .lp-month-cell .lp-month-more{min-height:24px;height:24px;padding:3px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;word-break:normal;font-size:12px}
+@container(max-width:600px){.life-planner .lp-range-control{height:44px}.life-planner .lp-slider .lp-range-control input[type=range]{height:44px;min-height:44px;max-height:44px}.life-planner .lp-month-cell{height:212px;min-height:212px}.life-planner .lp-month-cell .lp-month-event,.life-planner .lp-month-cell .lp-month-more{min-height:44px;height:44px}}
+@container(max-width:600px){.life-planner .lp-section{padding:16px}.life-planner .lp-task-toolbar{flex-wrap:wrap}.life-planner .lp-task-toolbar .lp-field{width:130px}.life-planner button,.life-planner select{min-height:44px}}
+@container(max-width:600px){.life-planner.lp-concept button{min-height:44px}.life-planner.lp-sidebar .lp-mini-grid button{min-height:0}.life-planner.lp-sidebar .lp-sidebar-nav button{min-height:32px}}
+.lp-parent-context{margin:0 0 14px;border-left:3px solid var(--lp-accent);padding-left:12px;color:var(--text-muted)}.lp-parent-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 0}.lp-parent-row strong{color:var(--text-normal)}.lp-parent-row small{flex:1}.lp-task-parent{font-size:12px;color:var(--text-muted)}.lp-daily-details{margin:12px 0}.life-planner .lp-daily-details>summary{font-size:12px;min-height:28px;padding:5px 0}
+
+/* M5.11: compact month and quantified lower-level statistics. */
+.life-planner .lp-task-row.is-carried .lp-task-body>strong,.life-planner .lp-kanban-card.is-carried .lp-check>span{color:#e4747f}
+.life-planner .lp-month-cell{height:100px;min-height:100px}.life-planner .lp-month-cell .lp-month-event{font-size:13px!important;font-weight:550}
+.life-planner .lp-stat-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.life-planner .lp-stat-tabs button{white-space:normal}
+.life-planner .lp-table-scroll{overflow-x:auto}.life-planner .lp-task-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:13px}.life-planner .lp-task-table th,.life-planner .lp-task-table td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--background-modifier-border);white-space:nowrap}.life-planner .lp-task-table th:first-child{text-align:left}.life-planner .lp-task-chart{max-width:820px;max-height:none}
+@container(max-width:600px){.life-planner .lp-month-cell{height:184px;min-height:184px}.life-planner .lp-task-table th,.life-planner .lp-task-table td{padding:8px}}
+
+.life-planner .lp-month-cell>button:first-child{height:24px;min-height:24px;padding:0}.life-planner .lp-month-cell .lp-month-event,.life-planner .lp-month-cell .lp-month-more{height:18px;min-height:18px;line-height:18px;padding:0 4px}.life-planner .lp-month-cell .lp-month-event{font-size:14px!important}
+@container(max-width:600px){.life-planner .lp-month-cell{height:200px;min-height:200px}.life-planner .lp-month-cell>button:first-child,.life-planner .lp-month-cell .lp-month-event,.life-planner .lp-month-cell .lp-month-more{height:44px;min-height:44px;line-height:normal}}
+
+/* M5.12: compact daily controls and a separate optional note skin. */
+.life-planner .lp-sidebar-today{margin:0 auto 10px}
+.life-planner .lp-rating-card h3{padding-right:0}
+.life-planner .lp-habit-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;border-bottom:1px solid var(--background-modifier-border);margin-top:4px;min-height:44px}
+.life-planner .lp-habit-row:last-child{border-bottom:0}
+.life-planner .lp-habit-row>.lp-list-menu{grid-column:2;grid-row:1;float:none;margin:0;position:relative}
+.life-planner .lp-habit-row>.lp-habit-checklist{grid-column:1;grid-row:1;clear:none;margin:0;padding:0}
+.life-planner .lp-level-totals{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;font-variant-numeric:tabular-nums}
+.life-planner .lp-level-totals span{border:1px solid var(--background-modifier-border);border-radius:7px;padding:4px 9px}
+.life-planner[data-style]{font-family:var(--lp-font,system-ui)}
+.lp-wide-note .markdown-preview-sizer,.lp-wide-note .cm-content{font-family:var(--lp-note-font,var(--font-text,system-ui))}
+.life-planner .lp-note-banner{width:100%;height:auto;aspect-ratio:3/1;overflow:hidden;border-radius:14px;margin:0 0 16px;background:var(--background-secondary)}
+.life-planner .lp-note-banner img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;margin:0}
+.life-planner .lp-banner-caption{display:block;margin:-9px 2px 12px;color:var(--text-muted);font-size:11px;line-height:1.3;text-align:right;letter-spacing:.01em}
+.life-planner .lp-mini-months>.lp-mini-month{padding:14px 10px;border:1px solid color-mix(in srgb,var(--lp-accent) 25%,var(--background-modifier-border,#62646c));border-radius:10px;background:color-mix(in srgb,var(--lp-accent) 3%,var(--background-primary,#202226));align-self:start}
+.life-planner .lp-mini-months{gap:18px}
+.life-planner .lp-nav .lp-tab{color:var(--lp-period-color);border-bottom-color:var(--lp-period-color)!important}
+body:not(.theme-dark):not(.dark) .life-planner .lp-nav .lp-tab{color:color-mix(in srgb,var(--lp-period-color) 40%,#232632)}
+.life-planner .lp-weekday-picker{display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;border:0;padding:0;margin:12px 0;min-width:0}
+.life-planner .lp-weekday-picker .lp-field{display:flex;flex-direction:row-reverse;justify-content:flex-end;align-items:center;gap:6px;width:auto;min-height:44px;margin:0;padding:4px 6px}
+.life-planner .lp-weekday-picker input[type=checkbox]{width:18px;height:18px;min-height:18px;margin:0}
+.life-planner .lp-manager{padding:18px;border:1px solid var(--background-modifier-border,#62646c);border-radius:10px;margin:12px 0}
+.life-planner .lp-manager-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 0;border-bottom:1px solid var(--background-modifier-border,#62646c)}
+.life-planner .lp-manager-row strong{flex:1;min-width:140px}.life-planner .lp-manager-row small{flex-basis:100%}
+.life-planner .lp-style-button{margin-left:auto}
+.life-planner[data-style]:not([data-style=plain]) .lp-section{background:color-mix(in srgb,var(--lp-accent) 6%,var(--background-secondary));border-color:color-mix(in srgb,var(--lp-accent) 22%,var(--background-modifier-border))}
+.life-planner[data-style]:not([data-style=plain]) .lp-section>h3{color:var(--lp-accent)}
+body:not(.theme-dark):not(.dark) .life-planner[data-style]:not([data-style=plain]) .lp-section>h3{color:color-mix(in srgb,var(--lp-accent) 35%,#232632)}
+/* Area identity remains independent of the selected decorative theme. */
+.life-planner .lp-section.lp-area-rating>h3,.life-planner[data-style]:not([data-style=plain]) .lp-section.lp-area-rating>h3{color:var(--lp-area)}
+body:not(.theme-dark):not(.dark) .life-planner .lp-section.lp-area-rating>h3,body:not(.theme-dark):not(.dark) .life-planner[data-style]:not([data-style=plain]) .lp-section.lp-area-rating>h3{color:color-mix(in srgb,var(--lp-area) 65%,#232632)}
+.markdown-source-view.lp-wide-note .cm-embed-block:has(.life-planner),.lp-wide-note .markdown-rendered:has(.life-planner),.lp-wide-note .block-language-life-planner,.lp-wide-note .cm-preview-code-block:has(.life-planner),.lp-wide-note .cm-html-embed:has(.life-planner){background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+.lp-wide-note .cm-embed-block:has(.life-planner)::before,.lp-wide-note .cm-embed-block:has(.life-planner)::after{background:transparent!important;border:0!important}
+@container(max-width:600px){.life-planner .lp-style-button{margin-left:0}.life-planner .lp-habit-row .lp-list-menu summary{min-width:44px;min-height:44px}.life-planner .lp-level-totals{font-size:13px}}
+
+/* One dashboard owns its spacing, instead of a chain of host code-block frames. */
+.life-planner[data-module=all] .lp-space{margin:30px 0 38px;padding:20px;border:1px solid color-mix(in srgb,var(--lp-accent) 25%,var(--background-modifier-border));border-radius:18px;background:color-mix(in srgb,var(--lp-accent) 3%,var(--background-primary));box-shadow:0 8px 24px #00000008}
+.life-planner .lp-space-title{margin:0 0 16px!important;font-size:15px!important;font-weight:650;letter-spacing:.02em;color:var(--text-muted);display:flex;align-items:center;gap:10px}
+.life-planner .lp-space-title::before{content:'';width:6px;height:20px;border-radius:3px;background:var(--lp-accent)}
+.life-planner .lp-space-ratings .lp-space-title::before{background:#4e9b83}.life-planner .lp-space-rhythm .lp-space-title::before{background:#c98e46}
+.life-planner[data-module=all] .lp-space .lp-section{margin:0;padding:16px 0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.life-planner[data-module=all] .lp-space .lp-section+.lp-section{border-top:1px solid color-mix(in srgb,var(--lp-accent) 12%,var(--background-modifier-border));margin-top:10px}
+.life-planner[data-module=all] .lp-space-ratings .lp-section{padding:16px;border:1px solid var(--background-modifier-border);border-radius:10px;background:color-mix(in srgb,var(--lp-period-color) 10%,var(--background-secondary));margin:10px 0}
+.life-planner .lp-month-cell{height:76px;min-height:76px}.life-planner .lp-month-cell .lp-month-event{height:22px;min-height:22px;line-height:22px;background:transparent}
+.life-planner .lp-task-chart{width:100%;max-width:1000px;max-height:none;display:block;margin:18px auto 0}
+.life-planner .lp-chart-scroll{overflow-x:auto;max-width:100%}.life-planner .lp-chart-scroll .lp-task-chart{min-width:680px}
+.life-planner .lp-chart-scroll{min-width:0;overscroll-behavior-x:contain}
+.life-planner .lp-chart-scroll .lp-task-chart{max-width:none;margin:18px 0 0}
+.life-planner .lp-task-chart-labels{display:grid;box-sizing:border-box;padding:0 24px 10px 48px;gap:0;font-size:.95em;line-height:1.4}
+.life-planner .lp-task-chart-labels>span{min-width:0;padding:0 8px;text-align:center;white-space:normal;overflow-wrap:anywhere}
+.life-planner .lp-chart-legend{display:flex;flex-wrap:wrap;gap:10px 24px;margin:8px 0;font-size:13px}.life-planner .lp-chart-legend span::before{content:'';display:inline-block;width:10px;height:10px;margin-right:7px;border-radius:3px;background:var(--lp-series)}
+.lp-wide-note .cm-embed-block:has(.life-planner)>div,.lp-wide-note .cm-preview-code-block:has(.life-planner)>div{background:transparent!important;border:0!important;box-shadow:none!important}
+@container(max-width:600px){.life-planner[data-module=all] .lp-space{padding:12px;margin:20px 0 28px;border-radius:12px}.life-planner .lp-month-cell{height:144px;min-height:144px}.life-planner .lp-month-cell .lp-month-event{height:44px;min-height:44px;line-height:normal}.life-planner .lp-space-title{font-size:14px!important}.life-planner .lp-task-chart{min-width:0}}
+
+/* M5.16: forms use the browser top layer; saves never insert a status row above the note. */
+.life-planner .lp-dialog{position:fixed;inset:0;width:min(680px,calc(100vw - 24px));max-width:calc(100vw - 24px);max-height:calc(100dvh - 32px);margin:auto;padding:0;border:0;border-radius:12px;overflow:auto;overscroll-behavior:contain;background:var(--background-primary,#fff);color:var(--text-normal,#222);font:inherit;box-sizing:border-box}
+.life-planner .lp-dialog::backdrop{background:rgb(0 0 0 / .55)}
+.life-planner .lp-dialog .lp-form{margin:0;box-sizing:border-box}
+.life-planner .lp-dialog .lp-scope{padding:18px}
+.life-planner .lp-weekday-picker .lp-field{flex:0 0 auto}
+.life-planner .lp-parent-area{color:var(--lp-area);font-size:.85em;border:1px solid color-mix(in srgb,var(--lp-area) 45%,transparent);border-radius:6px;padding:3px 7px}
+.life-planner .lp-status:not(:empty),.life-planner .lp-undo-panel:not(:empty){position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:1000;max-width:calc(100vw - 32px);padding:10px 14px;border:1px solid var(--background-modifier-border,#aaa);border-radius:8px;background:var(--background-primary,#fff);box-shadow:0 4px 18px #0003}
+.life-planner .lp-status:not(:empty){bottom:74px}
+.life-planner .lp-switch-hit{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;cursor:pointer}
+.life-planner input.lp-toggle{appearance:none;-webkit-appearance:none;width:42px;height:24px;min-height:24px;margin:0;border:0;border-radius:12px;background:var(--background-modifier-border,#aaa);position:relative;cursor:pointer}
+.life-planner input.lp-toggle::before{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;left:3px;box-shadow:0 1px 3px #0004}
+.life-planner input.lp-toggle:checked{background:var(--lp-accent)}
+.life-planner input.lp-toggle:checked::before{left:21px}
+.life-planner input.lp-toggle:focus-visible{outline:2px solid var(--lp-accent);outline-offset:3px}
+
+/* Checkboxes inherit the current note accent in both native Obsidian and the preview. */
+.life-planner input[type=checkbox]:not(.lp-toggle){appearance:none;-webkit-appearance:none;position:relative;flex-shrink:0;padding:0;border:1px solid var(--background-modifier-border,#888);border-radius:4px;background:transparent;cursor:pointer;accent-color:var(--lp-accent)}
+.life-planner input[type=checkbox]:not(.lp-toggle):checked{background:var(--lp-accent);border-color:var(--lp-accent)}
+.life-planner input[type=checkbox]:not(.lp-toggle):checked::after{content:'✓';position:absolute;inset:0;display:grid;place-items:center;line-height:1;font-size:15px;font-weight:750;color:var(--background-primary,#fff);background:none;mask:none;-webkit-mask:none}
+.life-planner input[type=checkbox]:not(.lp-toggle):disabled{opacity:.6;cursor:default}
+.life-planner input[type=checkbox]:not(.lp-toggle):focus-visible{outline:2px solid var(--lp-accent);outline-offset:3px}
+
+.life-planner .lp-issues:not(:empty){position:fixed;bottom:124px;left:50%;transform:translateX(-50%);z-index:1001;width:min(600px,calc(100vw - 32px));max-height:35dvh;overflow:auto;padding:12px;box-sizing:border-box;background:var(--background-primary,#fff);border:1px solid #e4747f;border-radius:8px;box-shadow:0 4px 18px #0003}
+
+.life-planner.lp-concept input[type=checkbox]:not(.lp-toggle):checked{background:var(--lp-accent);border-color:var(--lp-accent)}
+.life-planner.lp-concept input[type=checkbox]:not(.lp-toggle):checked::after{inset:0;display:grid;place-items:center;line-height:1;font-size:15px;font-weight:750;color:var(--background-primary,#fff);background:none;mask:none;-webkit-mask:none}
+
+/* M5.17: date arrows stay with their own date, including narrow panes. */
+.life-planner .lp-period{grid-template-columns:44px minmax(0,max-content) 44px;justify-content:center;column-gap:18px}
+.life-planner .lp-period>div{min-width:0;max-width:100%;overflow-wrap:anywhere}
+@container(max-width:600px){.life-planner .lp-period{grid-template-columns:44px minmax(0,1fr) 44px;max-width:460px;margin-left:auto;margin-right:auto;column-gap:8px}}
+/* The free text remains ordinary editable Markdown; only its own planner callout is styled. */
+.lp-wide-note .callout[data-callout=lp-notes]{--callout-icon:pencil-line;border:1px solid color-mix(in srgb,var(--lp-note-accent,var(--interactive-accent)) 32%,transparent);border-left:4px solid var(--lp-note-accent,var(--interactive-accent));border-radius:16px;padding:18px 22px;margin:30px 0;background:color-mix(in srgb,var(--lp-note-accent,var(--interactive-accent)) 6%,var(--background-primary,#fff));box-shadow:none;font-family:var(--lp-note-font,var(--font-text,system-ui))}
+.lp-wide-note .callout[data-callout=lp-notes] .callout-title{color:var(--lp-note-accent,var(--interactive-accent));gap:10px;margin-bottom:10px}
+body:not(.theme-dark):not(.dark) .lp-wide-note .callout[data-callout=lp-notes] .callout-title{color:color-mix(in srgb,var(--lp-note-accent,var(--interactive-accent)) 35%,#232632)}
+.lp-wide-note .callout[data-callout=lp-notes] .callout-content{min-height:80px;color:var(--text-normal,#222)}
+.lp-wide-note .callout[data-callout=lp-notes] .callout-content>:last-child{margin-bottom:0}
+@media(max-width:600px){.lp-wide-note .callout[data-callout=lp-notes]{padding:16px;margin:22px 0}}
+
+/* M5.20: approved soft capsules, centered Today group and sphere tiles. */
+.life-planner .lp-style-tools{display:flex;justify-content:flex-end;margin:0 0 12px}
+.life-planner .lp-style-tools .lp-style-button{margin:0;border-radius:24px;padding:8px 14px}
+.life-planner .lp-style-tools{gap:8px;flex-wrap:wrap}
+.life-planner .lp-style-random{background:color-mix(in srgb,var(--lp-accent) 16%,var(--background-primary));color:var(--lp-accent);border-color:color-mix(in srgb,var(--lp-accent) 45%,transparent)}
+.life-planner .lp-theme-collection{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.life-planner .lp-theme-collection-button{border-radius:18px;padding:7px 12px;min-height:40px}
+.life-planner .lp-theme-collection-button[aria-pressed=true]{background:color-mix(in srgb,var(--lp-accent) 20%,var(--background-primary));border-color:var(--lp-accent);color:var(--lp-accent);font-weight:650}
+.life-planner .lp-nav{justify-content:center;gap:15px;margin:12px auto 0;max-width:100%}
+.life-planner .lp-period-tabs{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;min-width:0}
+.life-planner .lp-nav .lp-tab{border:0!important;border-radius:24px;min-height:44px;padding:9px 14px;font-size:14px;background:color-mix(in srgb,var(--lp-period-color) 10%,var(--background-primary));white-space:nowrap;outline:0}
+.life-planner .lp-nav .lp-tab.is-active{background:color-mix(in srgb,var(--lp-period-color) 24%,var(--background-primary));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--lp-period-color) 60%,transparent);font-weight:650}
+.life-planner .lp-nav .lp-tab:focus-visible{outline:2px solid var(--lp-period-color);outline-offset:2px}
+.life-planner .lp-today-group{display:flex;align-items:center;gap:15px;flex-shrink:0}
+.life-planner .lp-nav-divider{height:23px;width:1px;display:block;background:var(--background-modifier-border)}
+.life-planner .lp-today-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:9px 14px;font-size:14px;border:0;border-radius:24px;white-space:nowrap;color:#8adf83;background:color-mix(in srgb,#8adf83 10%,var(--background-primary));box-shadow:inset 0 0 0 1px color-mix(in srgb,#8adf83 24%,var(--background-primary))}
+.life-planner .lp-today-button:hover{background:color-mix(in srgb,#8adf83 18%,var(--background-primary))}
+.life-planner .lp-navigation-icon{display:inline-flex;align-items:center;justify-content:center;flex:none;width:16px;height:16px}
+.life-planner .lp-navigation-icon svg{width:16px;height:16px;stroke:currentColor}
+.life-planner .lp-week-strip{grid-template-columns:repeat(7,minmax(84px,1fr))}
+.life-planner .lp-week-strip button{white-space:nowrap;overflow-wrap:normal;word-break:normal;font-size:12px;padding:8px!important}
+.life-planner .lp-period{grid-template-columns:44px minmax(0,240px) 44px;justify-content:center;align-items:center;gap:24px;max-width:480px;margin:25px auto 26px;padding:12px;border-radius:24px;background:color-mix(in srgb,var(--lp-period-color) 10%,var(--background-secondary))}
+.life-planner .lp-period-heading{min-height:112px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-width:0}
+.life-planner .lp-period h2{font-size:27px;line-height:1.25;margin:4px 0 2px;text-align:center;color:var(--lp-period-color);width:100%}
+.life-planner .lp-period .lp-muted{min-height:20px;font-size:12px}
+.life-planner .lp-mini-months>.lp-mini-month{align-self:stretch}
+.life-planner .lp-mini-months .lp-mini-grid{grid-template-rows:32px repeat(6,30px);align-items:stretch}
+@media(max-width:600px){.life-planner .lp-mini-months .lp-mini-grid{grid-template-rows:32px repeat(6,44px)}}
+.life-planner .lp-timeline .lp-event{box-sizing:border-box;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:1px;min-height:0;margin:0;padding:3px 7px;border:0;border-left:3px solid var(--lp-area,var(--lp-accent));border-bottom:1px solid var(--background-modifier-border);border-radius:0;background:color-mix(in srgb,var(--lp-area,var(--lp-accent)) 5%,var(--lp-background,var(--background-primary)));color:var(--text-normal);overflow:hidden}
+.life-planner .lp-timeline .lp-event-title,.life-planner .lp-timeline .lp-event-time{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.15}
+.life-planner .lp-timeline .lp-event-title{font-size:12px;font-weight:600}
+.life-planner .lp-timeline .lp-event-time{font-size:11px;color:var(--text-muted)}
+.life-planner .lp-timeline .lp-event:focus-visible{outline:2px solid var(--lp-area,var(--lp-accent));outline-offset:-2px;z-index:3}
+.life-planner .lp-timeline .lp-event .lp-resize-handle{height:7px;border-bottom:2px solid var(--lp-area,var(--lp-accent));opacity:.65}
+.life-planner .lp-period-arrow{display:grid;place-items:center;width:44px;height:44px;min-height:44px;padding:0;border:0;border-radius:50%;background:var(--background-primary);color:var(--text-muted)}
+.life-planner .lp-links{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));justify-content:center;gap:7px;margin:0;padding:14px 0;border-top:1px solid var(--background-modifier-border)}
+.life-planner .lp-links .lp-sphere-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:61px;padding:9px 4px;border:0;border-radius:12px;white-space:nowrap;color:var(--lp-area,var(--lp-accent));background:color-mix(in srgb,var(--lp-area,var(--lp-accent)) 7%,var(--background-primary))}
+.life-planner .lp-links .lp-sphere-tab[aria-pressed=true]{outline:0;font-weight:650;background:color-mix(in srgb,var(--lp-area,var(--lp-accent)) 18%,var(--background-primary));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--lp-area,var(--lp-accent)) 50%,transparent)}
+.life-planner .lp-links .lp-sphere-tab:focus-visible{outline:2px solid var(--lp-area,var(--lp-accent));outline-offset:2px}
+body:not(.theme-dark):not(.dark) .life-planner .lp-today-button{color:color-mix(in srgb,#8adf83 25%,#125515)}
+body:not(.theme-dark):not(.dark) .life-planner .lp-links .lp-sphere-tab{color:color-mix(in srgb,var(--lp-area,var(--lp-accent)) 40%,#232632)}
+@container(max-width:550px){
+ .life-planner .lp-nav{gap:12px}
+ .life-planner .lp-period-tabs{flex-basis:100%;max-width:300px;margin-inline:auto}
+ .life-planner .lp-nav-divider{display:none}
+ .life-planner .lp-period{grid-template-columns:44px minmax(0,1fr) 44px;gap:12px;padding:12px 8px;max-width:480px}
+ .life-planner .lp-period h2{font-size:22px}
+ .life-planner .lp-links{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+/* Six equal capsules include Today in the mobile layout. */
+@media(max-width:600px){.life-planner .lp-nav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:8px!important}.life-planner .lp-period-tabs,.life-planner .lp-today-group{display:contents!important}.life-planner .lp-nav-divider{display:none!important}.life-planner .lp-nav button{width:100%;min-height:44px;justify-content:center;margin:0!important}.life-planner .lp-style-tools{display:flex;gap:8px;flex-wrap:wrap}.life-planner .lp-style-tools button{min-height:44px}}
+.life-planner .lp-note-banner{position:relative;isolation:isolate}.life-planner .lp-note-banner.lp-banner-error:after{content:'Не удалось открыть обложку';position:absolute;inset:0;display:grid;place-items:center;background:var(--background-secondary)}
+
+.life-planner{overflow-anchor:none}
+.life-planner .lp-note-banner>img{position:absolute;inset:0}
+.life-planner .lp-header-preview-status{display:block;text-align:center;margin-top:12px;color:var(--text-muted)}
+.life-planner .lp-header-preview-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body:not(.theme-dark):not(.dark) .life-planner .lp-period h2{color:color-mix(in srgb,var(--lp-period-color) 40%,#232632)}
+
+.life-planner .lp-period h2.is-today{color:var(--lp-period-color)}
+
+.life-planner .lp-links{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;--lp-capsule-gap:8px;gap:var(--lp-capsule-gap);max-width:720px;margin-inline:auto;width:100%}
+.life-planner .lp-links .lp-sphere-tab{min-width:0;min-height:61px;white-space:normal;overflow-wrap:anywhere;font-size:.95em;padding:10px 8px;width:100%;height:100%}
+.life-planner .lp-links .lp-sphere-tab span:not(.lp-navigation-icon){min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center}
+.life-planner .lp-links>.lp-sphere-tab:first-child{grid-column:1}
+.life-planner .lp-links>.lp-sphere-tab:last-child:nth-child(3n+1):not(:first-child){grid-column:2}
+.life-planner .lp-links>.lp-sphere-tab:last-child:nth-child(3n+2){grid-column:3}
+@container(max-width:300px){
+ .life-planner .lp-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .life-planner .lp-links>.lp-sphere-tab:last-child:nth-child(3n+1):not(:first-child),.life-planner .lp-links>.lp-sphere-tab:last-child:nth-child(3n+2){grid-column:auto}
+ .life-planner .lp-links>.lp-sphere-tab:last-child:nth-child(2n+1):not(:first-child){grid-column:1/-1;width:calc((100% - var(--lp-capsule-gap))/2);justify-self:center}
+}
+.life-planner .lp-area-setting{padding:12px;margin-block:12px;border:1px solid var(--background-modifier-border);border-radius:12px;overflow-wrap:anywhere}
+.life-planner .lp-area-metrics{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+.life-planner .lp-area-metric{min-width:0;overflow-wrap:anywhere}
+.life-planner .lp-area-metric progress{width:100%;height:14px;accent-color:var(--lp-area)}
+.life-planner .lp-area-wheel-legend{padding-left:24px;overflow-wrap:anywhere}
+.life-planner .lp-task-emoji{font-family:"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif;font-weight:400;font-style:normal;letter-spacing:normal;display:inline-block;vertical-align:baseline;font-size:1em;line-height:1.2}
+.life-planner .lp-task-shortcut{margin-top:10px}
+.life-planner .lp-task-shortcut[hidden]{display:none}
+.life-planner .lp-task-jump{display:flex;align-items:center;gap:8px;min-height:44px;max-width:100%;padding:8px 2px;border:0;border-radius:4px;background:transparent;color:var(--text-muted,#757575);font-size:.8em}
+.life-planner .lp-task-jump:hover{background:var(--background-secondary,#f5f5f5);color:var(--text-normal,#222)}
+.life-planner .lp-task-jump .lp-navigation-icon{width:16px;height:16px;flex:none;margin:0}
+.life-planner .lp-task-connection>small{display:block;margin:8px 0}
+.life-planner .lp-task-sync-status{padding:12px;margin:10px 0;background:var(--background-secondary,#f5f5f5);border-left:3px solid var(--lp-accent);overflow-wrap:anywhere}
+.life-planner .lp-task-sync-status.is-working{font-weight:650}
+
+/* Mobile area grid stays intact; desktop uses compact wrapping capsules. */
+@container (min-width:621px){
+ .life-planner .lp-links{display:flex;flex-wrap:wrap;justify-content:center;max-width:none;gap:7px}
+ .life-planner .lp-links .lp-sphere-tab{flex-direction:row;gap:7px;min-height:44px;width:auto;height:auto;max-width:280px;padding:9px 14px;border-radius:999px;flex:0 1 auto}
+}
+.life-planner .lp-timeline .lp-event-short{justify-content:center;padding:1px 7px}
+.life-planner .lp-timeline .lp-event-short .lp-event-time{display:none}
+.life-planner .lp-cloud-connection{max-width:760px}
+.life-planner .lp-cloud-connection input:not([type=checkbox]),.life-planner .lp-cloud-connection select{min-width:0;max-width:100%;width:100%}
+.life-planner .lp-cloud-connection details{margin:10px 0;min-width:0}
+.life-planner .lp-cloud-status{padding:10px;border-left:3px solid var(--lp-accent);overflow-wrap:anywhere;min-height:44px}
+.life-planner .lp-cloud-status.is-working{font-weight:600}
+.life-planner .lp-cloud-connection .lp-connection-issue{overflow-wrap:anywhere}
+
+/* Approved area settings: compact rows on desktop, two action rows on narrow screens. */
+.life-planner .lp-area-settings-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:920px}
+.life-planner .lp-area-settings-heading h3{margin:0}
+.life-planner .lp-area-settings-heading button{display:inline-flex;align-items:center;gap:6px}
+.life-planner .lp-area-settings-list{max-width:920px;min-width:0}
+.life-planner .lp-area-setting-compact{display:grid;grid-template-columns:minmax(120px,1fr) auto auto auto;align-items:center;gap:10px;margin:0;padding:12px 0;border:0;border-bottom:1px solid var(--background-modifier-border);border-radius:0;background:transparent}
+.life-planner .lp-area-identity{display:flex;align-items:center;gap:10px;min-width:0}
+.life-planner .lp-area-mark{display:flex;align-items:center;justify-content:center;flex-shrink:0;min-width:34px;min-height:34px;border-radius:10px;color:var(--lp-area);background:color-mix(in srgb,var(--lp-area) 12%,var(--background-primary))}
+.life-planner .lp-area-name{min-width:0;overflow-wrap:anywhere}
+.life-planner .lp-section h3{overflow-wrap:anywhere}
+.life-planner .lp-area-setting-toggle{gap:7px;justify-content:flex-start;color:var(--text-muted);white-space:nowrap}
+.life-planner .lp-area-setting-toggle input.lp-toggle:checked{background:var(--lp-area)}
+.life-planner .lp-area-order{display:flex;gap:5px}
+.life-planner .lp-area-order .svg-icon,.life-planner .lp-area-settings-heading .svg-icon,.life-planner .lp-area-mark .svg-icon{width:20px;height:20px;display:block}
+.life-planner .lp-area-order button{display:inline-flex;align-items:center;justify-content:center;width:44px;min-height:44px;padding:7px}
+.life-planner .lp-area-editor{grid-column:1/-1;display:grid;grid-template-columns:minmax(120px,1fr) 90px minmax(130px,1fr) auto;gap:10px;align-items:end;padding:12px;border-radius:9px;background:var(--background-secondary)}
+.life-planner .lp-area-editor[hidden]{display:none}
+.life-planner .lp-area-editor .lp-field{min-width:0;margin:0}
+.life-planner .lp-area-editor input,.life-planner .lp-area-editor select{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+.life-planner .lp-area-open-note{grid-column:1/-1;justify-self:start}
+@container(max-width:550px){
+ .life-planner .lp-area-settings-heading button{width:100%;justify-content:center}
+ .life-planner .lp-area-setting-compact{grid-template-columns:minmax(0,1fr) auto;gap:8px}
+ .life-planner .lp-area-setting-toggle span{display:none}
+ .life-planner .lp-area-order{grid-column:1;grid-row:2}
+ .life-planner .lp-area-edit{grid-column:2;grid-row:2}
+ .life-planner .lp-area-editor{grid-template-columns:minmax(0,1fr) 80px;padding:10px}
+ .life-planner .lp-area-editor>button{grid-column:1/-1;justify-self:start}
+}
+.lp-wide-note .callout[data-callout=lp-notes] .lp-free-notes-edit{margin-left:auto;font-family:var(--font-interface);font-size:var(--font-ui-small);min-height:36px;padding:4px 10px;color:var(--lp-accent,#d5ad7b);background:transparent;border:1px solid var(--background-modifier-border);border-radius:8px;cursor:pointer}
+.lp-wide-note .callout[data-callout=lp-notes] .callout-content{cursor:text}
+.life-planner .lp-kanban-tabs,.life-planner .lp-task-drag-handle,.life-planner .lp-mobile-task-menu{display:none}
+.life-planner .lp-header-layout{display:block}
+.life-planner .lp-section-gear,.life-planner .lp-definition-gear{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px;background:transparent;border:0;color:var(--text-muted);flex-shrink:0}
+.life-planner .lp-section-gear svg,.life-planner .lp-definition-gear svg,.life-planner .lp-task-drag-handle svg{width:18px;height:18px}
+.life-planner .lp-habit-row{display:flex;align-items:center;gap:8px}
+.life-planner .lp-habit-row .lp-checklist{flex:1;min-width:0}
+.life-planner .lp-habit-row .lp-definition-gear{order:1}
+.life-planner .lp-program-header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.life-planner .lp-program-header h4{min-width:0;overflow-wrap:anywhere;margin:0}
+.life-planner .lp-frame-close{min-width:44px;min-height:44px}
+.life-planner .lp-dialog{top:var(--lp-viewport-top,0px);bottom:auto;max-height:calc(min(100dvh,var(--lp-viewport-height,100dvh)) - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));margin-block:12px;padding-bottom:env(safe-area-inset-bottom,0px)}
+.life-planner .lp-dialog:not(.lp-action-sheet):not(.lp-full-frame){top:calc(var(--lp-viewport-top,0px) + min(100dvh,var(--lp-viewport-height,100dvh))/2);transform:translateY(-50%);margin-block:0}
+.life-planner .lp-dialog.lp-full-frame{width:min(1200px,calc(100vw - 24px));padding:12px;top:calc(var(--lp-viewport-top,0px) + min(100dvh,var(--lp-viewport-height,100dvh))/2);transform:translateY(-50%);margin-block:0}
+.life-planner .lp-full-frame h3{margin:0 0 8px;font-size:1em;overflow-wrap:anywhere}
+.life-planner .lp-full-frame>img{display:block;width:100%;height:auto;max-height:calc(min(100dvh,var(--lp-viewport-height,100dvh)) - 160px);object-fit:contain;margin:12px 0 0}
+.life-planner.lp-mobile .lp-header-layout{display:flex;flex-direction:column}
+.life-planner.lp-mobile .lp-header-layout .lp-style-tools{order:-1;margin:0 0 8px;gap:8px;align-self:flex-end}
+.life-planner.lp-mobile .lp-style-tools .lp-style-button{min-height:44px;min-width:44px;padding:8px 4px;border:0;border-radius:6px;background:transparent;color:var(--text-muted);font-size:12px;white-space:normal}
+.life-planner.lp-mobile .lp-note-banner{aspect-ratio:2/1;cursor:zoom-in}
+.life-planner.lp-mobile .lp-note-banner img{object-position:var(--lp-mobile-focus,50%) center}
+.life-planner.lp-mobile .lp-banner-caption{min-height:2.5em;line-height:1.25}
+.life-planner.lp-mobile .lp-nav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:8px!important}
+.life-planner.lp-mobile .lp-period-tabs,.life-planner.lp-mobile .lp-today-group{display:contents!important}
+.life-planner.lp-mobile .lp-nav-divider{display:none!important}
+.life-planner.lp-mobile .lp-nav button{width:100%;height:44px;min-height:44px;justify-content:center;margin:0!important;padding:8px 5px!important}
+.life-planner.lp-mobile .lp-today-button{position:relative}
+.life-planner.lp-mobile .lp-nav .lp-today-button:before{content:'';position:absolute;left:-4px;top:25%;height:50%;width:1px;background:var(--background-modifier-border)}
+.life-planner.lp-mobile .lp-nav .lp-today-button:after{content:'';position:absolute;top:-4px;left:22%;width:56%;height:1px;background:var(--background-modifier-border)}
+.life-planner.lp-mobile .lp-kanban{display:block;overflow:visible;touch-action:pan-y pinch-zoom}
+.life-planner.lp-mobile .lp-kanban-tabs,.life-planner.lp-kanban-tab-portal .lp-kanban-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;position:sticky;top:6px;padding:6px 0;background:var(--background-primary,#fff);border-radius:8px;z-index:3}
+.life-planner .lp-kanban-tabs>button{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:3px;min-width:0;min-height:52px;padding:7px 3px;border-radius:12px;white-space:normal;overflow-wrap:anywhere;line-height:1.25;font-size:.85em;background:var(--background-secondary,#f4f4f4);color:var(--text-normal)}
+.life-planner .lp-kanban-tabs>button[aria-selected=true]{border-color:var(--lp-accent);box-shadow:inset 0 0 0 1px var(--lp-accent)}
+.life-planner .lp-kanban-tabs.has-drop-targets>button{outline:1px dashed var(--lp-accent);outline-offset:-3px}
+.life-planner .lp-kanban-tabs>button.is-drop-target{background:color-mix(in srgb,var(--lp-accent) 28%,var(--background-primary));outline:2px solid var(--lp-accent)}
+.life-planner.lp-mobile .lp-kanban-column{display:none;padding:10px 0;background:transparent}
+.life-planner.lp-mobile .lp-kanban-column.is-selected{display:block}
+.life-planner.lp-mobile .lp-kanban-column>h4{display:none}
+.life-planner.lp-mobile .lp-kanban-card{cursor:default;position:relative;min-height:92px;box-sizing:border-box;padding:12px 48px 12px 12px;overflow-wrap:anywhere}
+.life-planner.lp-mobile .lp-kanban-card>.lp-task-drag-handle{display:flex;position:absolute;right:0;top:40px;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:10px;border:0;background:transparent;color:var(--text-muted);touch-action:none;cursor:grab}
+.life-planner.lp-mobile .lp-mobile-task-menu{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px;border:0;background:transparent;color:var(--text-muted);flex-shrink:0}
+.life-planner.lp-mobile .lp-kanban-card>.lp-mobile-task-menu{position:absolute;right:0;top:0}
+.life-planner.lp-mobile .lp-row-menu,.life-planner.lp-mobile .lp-card-menu{display:none}
+.life-planner.lp-mobile .lp-task-row{align-items:flex-start;min-width:0}
+.life-planner.lp-mobile .lp-task-row .lp-check{min-width:0;flex:1}
+.life-planner.lp-mobile .lp-task-body,.life-planner.lp-mobile .lp-kanban-card .lp-check>span{min-width:0;overflow-wrap:anywhere}
+.life-planner.lp-mobile .lp-range-control input[type=range]{touch-action:none}
+.life-planner.lp-mobile .lp-range-control{height:44px}
+.life-planner.lp-mobile .lp-slider .lp-range-control input[type=range]{height:44px;min-height:44px;max-height:44px}
+.life-planner.lp-mobile .lp-dialog.lp-action-sheet{top:auto;bottom:calc(100dvh - var(--lp-viewport-top,0px) - min(100dvh,var(--lp-viewport-height,100dvh)));width:calc(100vw - 16px);max-width:calc(100vw - 16px);margin:0 auto;border-radius:18px 18px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));box-sizing:border-box;transform:none}
+.life-planner .lp-action-sheet h3{overflow-wrap:anywhere;margin:0 0 12px;padding-right:0}
+.life-planner .lp-action-sheet>button{display:block;width:100%;min-height:44px;margin:6px 0;padding:10px 12px;white-space:normal;text-align:left}
+.life-planner .lp-action-sheet>.lp-sheet-close{color:var(--text-muted);text-align:right;background:transparent;border:0}
+.life-planner .lp-sheet-status[aria-pressed=true]{background:color-mix(in srgb,var(--lp-accent) 15%,var(--background-primary))}
+.life-planner.lp-kanban-tab-portal{container-type:normal!important;position:fixed;inset:0;pointer-events:none;z-index:30;background:transparent!important;padding:0!important;margin:0!important;border:0!important}
+.life-planner.lp-kanban-tab-portal .lp-kanban-tabs{pointer-events:auto;box-shadow:0 4px 16px rgb(0 0 0/.15)}
+.life-planner .lp-task-drag-ghost{position:fixed;z-index:31;pointer-events:none;opacity:.8;max-width:calc(100vw - 24px);box-sizing:border-box;background:var(--background-primary,#fff);border-radius:8px;padding:12px;border:1px solid var(--lp-accent);color:var(--text-normal);font:inherit}
+.lp-wide-note .lp-free-notes{padding:0!important;margin:24px 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:var(--text-normal);font-family:var(--font-text)}
+.lp-wide-note .lp-notes-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.lp-wide-note .lp-notes-heading h2{margin:0;overflow-wrap:anywhere}
+.lp-wide-note .lp-free-notes .callout-content{min-height:44px;margin:12px 0 0;padding:0}
+.lp-wide-note .lp-free-notes-edit{min-width:44px;min-height:44px;padding:8px 12px;border:1px solid var(--background-modifier-border);border-radius:10px;color:var(--text-muted);font-family:var(--font-interface);font-size:var(--font-ui-small);background:transparent;cursor:pointer}
+.life-planner.lp-mobile .lp-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.life-planner.lp-mobile .lp-links .lp-sphere-tab{flex-direction:column;max-width:none;width:100%;min-height:61px;padding:9px 4px;white-space:normal}
+.life-planner.lp-mobile .lp-links>.lp-sphere-tab:last-child:nth-child(3n+1):not(:first-child){grid-column:2}
+.life-planner.lp-mobile .lp-links>.lp-sphere-tab:last-child:nth-child(3n+2){grid-column:3}
+@container(max-width:300px){.life-planner.lp-mobile .lp-links{grid-template-columns:repeat(2,minmax(0,1fr))}.life-planner.lp-mobile .lp-links>.lp-sphere-tab:last-child{grid-column:auto;width:100%;justify-self:stretch}.life-planner.lp-mobile .lp-links>.lp-sphere-tab:last-child:nth-child(2n+1):not(:first-child){grid-column:1/-1;width:calc((100% - 7px)/2);justify-self:center}}
+.life-planner .lp-header-collection{padding:14px;border:1px solid var(--background-modifier-border,#7775);border-radius:12px;margin-block:12px}
+.life-planner .lp-header-collection small{display:block;margin-top:8px;line-height:1.5;overflow-wrap:anywhere}
+.life-planner .lp-header-download-actions{display:flex;flex-wrap:wrap;gap:8px}.life-planner .lp-header-download-actions button{min-height:44px;white-space:normal}
+.life-planner .lp-header-collection progress{width:100%;margin-block:8px}.life-planner .lp-banner-placeholder{aspect-ratio:3/1;box-sizing:border-box;display:grid;place-content:center;text-align:center;padding:16px;border:1px solid var(--background-modifier-border,#7775);border-radius:12px;margin:0}
+.life-planner.lp-mobile .lp-banner-placeholder{aspect-ratio:2/1}.life-planner .lp-image-error{position:absolute;inset:0;display:grid;place-content:center;padding:16px;text-align:center}.life-planner .lp-note-banner.lp-banner-error{position:relative}
+
+/* Same appearance as the previous inline constants; geometry stays dynamic. */
+.life-planner.lp-kanban-tab-portal .lp-kanban-tabs.is-drag-pinned{position:fixed;z-index:20}
+.lp-header-focus-range{touch-action:none}
+
+/* Header loading/error state must override the component display rules. */
+.life-planner .lp-note-banner>img[hidden],.life-planner .lp-note-banner>.lp-image-error[hidden]{display:none}
+.life-planner .lp-note-banner.lp-banner-error:after{content:none}
+
+/* Mobile feedback: date digits never wrap; a border cannot change grid widths. */
+.life-planner .lp-mini-grid button,.life-planner .lp-month-cell>button:first-child,.life-planner .lp-day-heading{box-sizing:border-box;min-width:0;white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.life-planner .lp-mini-grid .lp-mini-date{display:grid;place-items:center;padding-inline:0;line-height:1.2}
+.life-planner .lp-mini-week-label{white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.life-planner .lp-mini-grid{min-width:0;grid-template-columns:minmax(20px,.7fr) repeat(7,minmax(0,1fr))}
+/* One scroller and one set of columns for the entire timed/untimed week. */
+.life-planner .lp-calendar-scroll{overflow-x:auto;overflow-y:hidden;max-height:none}
+.life-planner .lp-calendar-grid{align-items:stretch}
+.life-planner .lp-day-column{display:flex;flex-direction:column}
+.life-planner .lp-day-heading{flex:none;box-sizing:border-box}
+.life-planner .lp-timeline{flex:none}
+
+
+.life-planner .lp-untimed-day{box-sizing:border-box;flex:1;min-width:0;width:100%;margin:0;border:0;border-top:1px solid var(--background-modifier-border);border-radius:0;padding:8px;overflow-wrap:anywhere}
+.life-planner .lp-untimed-day button{box-sizing:border-box;min-width:0;max-width:100%;width:100%;white-space:normal;overflow-wrap:anywhere;border-radius:6px;height:auto}
+.life-planner .lp-untimed-axis{display:block;padding:18px 2px 10px;font-size:10px;text-align:center}
+/* Month follows the same compact calendar as quarter/year; details stay in page flow. */
+.life-planner .lp-month-compact{display:none}
+.life-planner.lp-mobile .lp-month-scroll{display:none}
+.life-planner.lp-mobile .lp-month-compact{display:block;margin-top:14px;min-width:0}
+.life-planner .lp-month-compact .lp-mini-grid{gap:2px}
+.life-planner .lp-month-compact .lp-mini-date{height:44px;min-height:44px;position:relative;font-size:.9em}
+.life-planner .lp-month-compact .lp-mini-week{height:44px;min-height:44px}
+.life-planner .lp-month-indicator{position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--lp-accent)}
+.life-planner .lp-month-details{margin-top:16px;border-top:1px solid var(--background-modifier-border);padding-top:12px;min-width:0}
+.life-planner .lp-month-details>h4{margin:0 0 8px}
+.life-planner .lp-month-details>button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.life-planner .lp-month-detail{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:100%;box-sizing:border-box;margin-top:8px;border-left:3px solid var(--lp-area)}
+.life-planner .lp-month-detail strong,.life-planner .lp-month-detail small{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:left}
+
+.life-planner .lp-untimed-day button{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:1.3;max-height:calc(3.9em + 12px);overflow:hidden}
+
+/* Statistics cards: intrinsic em widths respond to text enlargement as well as phones. */
+.life-planner .lp-task-stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(8em,calc((100% - 10px)/2))),1fr));gap:10px;align-items:start;max-width:48em}
+.life-planner .lp-task-stat-card{box-sizing:border-box;min-width:0;background:var(--background-secondary);border-left:3px solid var(--lp-area);border-radius:11px;overflow-wrap:anywhere}
+.life-planner .lp-task-stat-card summary{padding:13px;list-style:none}
+.life-planner .lp-task-stat-card summary::-webkit-details-marker{display:none}
+.life-planner .lp-task-stat-name{font-weight:600}
+.life-planner .lp-task-stat-value{font-size:1.55em;line-height:1.4;font-variant-numeric:tabular-nums;margin-top:10px;overflow-wrap:anywhere}
+.life-planner .lp-task-stat-card progress{display:block;width:100%;height:5px;margin-top:13px;accent-color:var(--lp-area)}
+.life-planner .lp-task-stat-hint{font-size:.8em;color:var(--text-muted);margin-top:13px}
+.life-planner .lp-task-stat-metrics{margin:0 13px;padding:10px 0 13px;border-top:1px solid var(--background-modifier-border)}
+.life-planner .lp-task-stat-metrics>div{display:flex;justify-content:space-between;gap:8px;padding:4px 0;font-size:.85em}
+.life-planner .lp-task-stat-empty{padding:13px;min-height:10em}
+.life-planner .lp-task-stat-empty-message{margin:18px 0 7px}
+.life-planner .lp-stat-day-picker{margin:12px 0 18px}
+.life-planner .lp-stat-date-row{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:8px;align-items:end}
+.life-planner .lp-stat-date-row>button{min-height:46px;padding:0;font-size:1.5em}
+.life-planner .lp-stat-date-row .lp-field{display:flex;flex-direction:column;min-width:0;margin:0;gap:6px}
+.life-planner .lp-stat-date-row input[type=date]{box-sizing:border-box;width:100%;min-width:0;min-height:46px;padding:8px;color:var(--text-normal);font:inherit}
+.life-planner .lp-stat-date-row input::-webkit-calendar-picker-indicator{position:static;flex-shrink:0;margin-left:8px;padding:4px}
+.life-planner .lp-stat-date-footer{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-top:8px}
+.life-planner button.lp-today-button{min-height:44px;padding:9px 14px;border-radius:24px}
+.life-planner.lp-mobile button.lp-today-button{padding:8px 5px!important}
+@container (max-width:22em){.life-planner .lp-stat-date-row .lp-field{grid-column:1/-1;grid-row:1}.life-planner .lp-stat-date-row>button:first-child{grid-column:1;grid-row:2}.life-planner .lp-stat-date-row>button:last-child{grid-column:3;grid-row:2}}
+@container (min-width:640px){.life-planner .lp-task-stat-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* The boundary joins the untimed row; all spacing belongs inside that row. */
+.life-planner .lp-axis-hours,.life-planner .lp-timeline{margin-bottom:0}
+
+.life-planner .lp-calendar-grid:not(.has-untimed) .lp-timeline{box-shadow:inset 0 -1px 0 var(--background-modifier-border)}
+.life-planner .lp-untimed-day{padding:18px 6px 10px;border-top:1px solid var(--background-modifier-border)}
+.life-planner .lp-untimed-day strong{font-size:.9em;margin-bottom:8px;white-space:normal;overflow-wrap:normal}
+.life-planner .lp-untimed-day button{display:block;min-height:44px;height:44px;max-height:none;padding:8px;text-align:left;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;border:0;border-left:3px solid var(--lp-area,var(--lp-accent));border-radius:5px;background:color-mix(in srgb,var(--lp-area,var(--lp-accent)) 8%,var(--background-primary))}
+
+/* Host property only: retain native date editing and reserve the picker icon. */
+.metadata-property[data-property-key="life-planner-date"] .metadata-property-value{min-width:0;overflow:visible}
+.metadata-property[data-property-key="life-planner-date"] input[type=date]{position:relative;box-sizing:border-box;flex:1 1 auto;min-width:0;width:100%;max-width:100%;padding-inline:8px 36px;font-family:var(--font-interface,system-ui);font-size:inherit;min-height:44px}
+.metadata-property[data-property-key="life-planner-date"] .metadata-property-value>.clickable-icon{flex:0 0 32px}
+.metadata-property[data-property-key="life-planner-date"] input[type=date]::-webkit-calendar-picker-indicator{position:absolute;inset-inline-end:8px;width:20px;height:20px;margin:0;padding:0}
+.metadata-property[data-property-key="life-planner-date"] .metadata-input{position:relative;min-width:0;max-width:100%}
+@media(max-width:1024px){.metadata-property[data-property-key="life-planner-date"]{flex-wrap:wrap}.metadata-property[data-property-key="life-planner-date"] .metadata-property-value{flex:1 1 14em}}
+
+body.theme-dark .lp-stat-date-row input[type=date],body.dark .lp-stat-date-row input[type=date]{color-scheme:dark}
+
+/* Same statistics and state, restored 1.0.3 desktop presenter / approved mobile cards. */
+.life-planner:not(.lp-mobile) .lp-task-stat-cards{display:none}
+.life-planner.lp-mobile .lp-task-stat-desktop{display:none}
+.life-planner:not(.lp-mobile) .lp-stat-day-picker{display:flex;align-items:end;flex-wrap:wrap;gap:12px;max-width:40em}
+.life-planner:not(.lp-mobile) .lp-stat-date-row{grid-template-columns:44px minmax(12em,16em) 44px;flex:0 1 auto}
+.life-planner:not(.lp-mobile) .lp-stat-date-footer{margin:0;gap:10px}
+.life-planner:not(.lp-mobile) .lp-stat-date-row .lp-field{grid-row:auto;grid-column:auto}
+.life-planner:not(.lp-mobile) .lp-stat-date-row>button{grid-row:auto;grid-column:auto}
+.life-planner .lp-stat-today:disabled{opacity:1;cursor:default}
+.life-planner .lp-stat-today-explanation{flex-basis:100%}
+.life-planner .lp-task-table td small{display:block}
+.life-planner .lp-task-stat-actions{margin-top:18px}
+.life-planner .lp-task-stat-actions .lp-area-plan{min-width:0;overflow-wrap:anywhere}
+.life-planner .lp-task-stat-actions button{box-sizing:border-box;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.life-planner .lp-axis-heading,.life-planner .lp-day-heading{margin:0;border:0;border-bottom:1px solid var(--background-modifier-border)}
+.life-planner .lp-day-heading{padding:0 4px;white-space:normal;line-height:1.05;background:var(--background-secondary,#f5f5f7)}
+.life-planner .lp-day-heading>span{display:block;max-width:100%}
+.life-planner .lp-calendar-grid>.lp-untimed-week{grid-column:1/-1;min-width:0;border-top:1px solid var(--background-modifier-border);padding:10px 8px}
+.life-planner .lp-untimed-week-body{position:sticky;left:0;width:calc(var(--lp-calendar-visible-width,100%) - 18px);max-width:100%;box-sizing:border-box}
+.life-planner .lp-untimed-week-body>strong{display:block;font-size:.8em;margin-bottom:6px}
+.life-planner .lp-calendar-task{display:flex;align-items:center;gap:4px;min-width:0;border-left:3px solid var(--lp-area);border-radius:5px;background:color-mix(in srgb,var(--lp-area) 8%,var(--background-primary));margin:4px 0}
+.life-planner .lp-calendar-task-check{display:grid;place-items:center;flex:none;width:44px;min-height:44px;margin:0}
+.life-planner .lp-calendar-task-check>input[type=checkbox]{width:18px;height:18px;min-height:18px;margin:0;accent-color:var(--lp-area)}
+.life-planner .lp-calendar-task>button{flex:1;min-width:0;width:0;margin:0;border:0;border-radius:0;background:transparent;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:44px;padding:8px 6px;font-size:.85em}
+.life-planner .lp-calendar-task.is-complete>button{text-decoration:line-through}
+/* The time scale grows with the selected note text, never spilling into a day. */
+.life-planner .lp-calendar-grid{grid-template-columns:max(52px,3.4em) minmax(0,1fr)}
+.life-planner .lp-calendar-grid.lp-seven{grid-template-columns:max(52px,3.4em) repeat(7,minmax(110px,1fr));min-width:calc(max(52px,3.4em) + 770px)}
+@container(max-width:600px){.life-planner .lp-calendar-grid.lp-seven{grid-template-columns:max(52px,3.4em) repeat(7,125px);min-width:calc(max(52px,3.4em) + 875px)}}
+/* Read-only workout and routine calendars share one renderer and the note fonts. */
+.life-planner .lp-activity-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,24em),1fr));gap:20px;min-width:0}
+.life-planner .lp-activity-stats.lp-activity-long-period{grid-template-columns:minmax(0,1fr)}
+.life-planner .lp-activity-card{min-width:0;padding:16px;background:var(--background-secondary,#27292c);border-radius:10px;overflow-wrap:anywhere;align-self:start}
+.life-planner .lp-activity-title{font-size:1.15em;margin:0 0 12px}
+.life-planner .lp-activity-scope{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.life-planner .lp-activity-scope button{min-height:44px;padding:6px 10px}
+.life-planner .lp-activity-legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.75em;color:var(--text-muted);margin-bottom:12px}
+.life-planner .lp-activity-calendars{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,18em),1fr));gap:16px;min-width:0}
+.life-planner .lp-activity-month{min-width:0;margin:0;border:0;padding:0}
+.life-planner .lp-activity-month h5{font-size:.95em;margin:0 0 10px;text-transform:none}
+.life-planner .lp-activity-weekheads,.life-planner .lp-activity-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;text-align:center;min-width:0}
+.life-planner .lp-activity-weekheads{font-size:.75em;color:var(--text-muted);margin-bottom:5px}
+.life-planner .lp-activity-days button{width:100%;min-width:0;min-height:48px;height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px 0;gap:0;border:0;border-radius:6px;font-size:.85em;background:var(--background-primary);line-height:1.2}
+.life-planner .lp-activity-mark{font-family:system-ui,sans-serif;font-size:.8em;line-height:1.3;min-height:1.3em}
+.life-planner .lp-activity-day.is-full{color:var(--lp-success,#79bfa7);background:color-mix(in srgb,var(--lp-success,#79bfa7) 14%,var(--background-primary))}
+.life-planner .lp-activity-day.is-partial{color:var(--lp-accent);background:color-mix(in srgb,var(--lp-accent) 12%,var(--background-primary))}
+.life-planner .lp-activity-day.is-zero{color:var(--text-normal);background:color-mix(in srgb,var(--lp-accent) 6%,var(--background-primary))}
+.life-planner .lp-activity-day.is-missing,.life-planner .lp-activity-day.is-future{color:var(--text-muted)}
+.life-planner .lp-activity-day.is-future{background:transparent}
+.life-planner .lp-activity-days button[aria-pressed=true],.life-planner .lp-activity-year button[aria-pressed=true]{outline:2px solid var(--lp-accent);outline-offset:-2px}
+.life-planner .lp-activity-days button[aria-current=date]{box-shadow:inset 0 -2px var(--lp-success,#79bfa7)}
+.life-planner .lp-activity-year{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,8em),1fr));gap:8px;min-width:0}
+.life-planner .lp-activity-year button{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;min-height:88px;white-space:normal;text-align:left;font-size:.85em;padding:10px}
+.life-planner .lp-activity-year strong{font-weight:600}.life-planner .lp-activity-year small{color:var(--text-muted)}
+.life-planner .lp-activity-total{margin-top:18px;padding-top:14px;border-top:1px solid var(--background-modifier-border);min-width:0}
+.life-planner .lp-activity-interval{display:block;font-size:.95em}.life-planner .lp-activity-count,.life-planner .lp-activity-coverage{font-size:.85em;color:var(--text-muted);margin:8px 0}
+.life-planner .lp-activity-metric-label{font-size:.85em;margin:12px 0 4px}
+.life-planner .lp-activity-value{font-size:1.5em;font-weight:550;font-variant-numeric:tabular-nums;display:block;line-height:1.3}
+.life-planner .lp-activity-total>small{display:block;font-size:.8em;margin:4px 0 10px}
+.life-planner .lp-activity-card progress{appearance:none;display:block;width:100%;max-width:100%;height:5px;border:0;border-radius:3px;overflow:hidden;background:var(--background-modifier-border);accent-color:var(--lp-accent)}
+.life-planner .lp-activity-card progress::-webkit-progress-bar{background:var(--background-modifier-border)}
+.life-planner .lp-activity-card progress::-webkit-progress-value{background:var(--lp-accent)}
+.life-planner .lp-activity-items,.life-planner .lp-activity-journal{margin-top:14px;padding-top:4px;border-top:1px solid var(--background-modifier-border)}
+.life-planner .lp-activity-card summary{min-height:44px;padding:10px 0;font-size:.9em;overflow-wrap:anywhere}
+.life-planner .lp-activity-item{padding:10px 0;min-width:0}.life-planner .lp-activity-item-label{display:flex;justify-content:space-between;gap:12px;font-size:.9em;margin-bottom:7px}.life-planner .lp-activity-item-label>span:first-child{min-width:0;overflow-wrap:anywhere}.life-planner .lp-activity-item-label>span:last-child{flex:none;font-variant-numeric:tabular-nums}
+.life-planner .lp-activity-session{font-size:.85em;margin-top:8px}.life-planner .lp-activity-session p{margin:7px 0}
+.life-planner.lp-mobile .lp-activity-stats{grid-template-columns:minmax(0,1fr)}
+.life-planner.lp-mobile .lp-activity-calendars{grid-template-columns:minmax(0,1fr)}
+@container(max-width:430px){.life-planner .lp-activity-card{padding:12px}.life-planner .lp-activity-value{font-size:1.35em}}
+
+/* Ordinary quarter/year only; sidebar, month view and activity calendars keep their own layout. */
+.life-planner .lp-overview-months{gap:18px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.life-planner .lp-overview-month{min-width:0;container-type:inline-size;padding:16px 12px;border:1px solid var(--background-modifier-border,#45474c);border-radius:12px;background:var(--background-primary,#25282b);align-self:start}
+.life-planner .lp-overview-title{display:block;max-width:100%;margin:0 auto 14px;padding:4px 8px;border:0;background:transparent;box-shadow:none;color:var(--text-normal);font:inherit;font-size:1em;font-weight:600;text-transform:capitalize;white-space:normal}
+.life-planner .lp-overview-row{display:grid;grid-template-columns:26px repeat(7,minmax(0,1fr));gap:4px;align-items:stretch;margin-top:5px;min-width:0}
+.life-planner .lp-overview-head{color:var(--text-muted,#a4adb6);font-size:.74em;text-align:center;margin-bottom:10px;align-items:center}
+.life-planner .lp-overview-row button{box-sizing:border-box;min-width:0;padding:0;box-shadow:none;font-family:inherit;line-height:1.2;min-height:44px;height:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+.life-planner .lp-overview-week{color:var(--text-muted,#a4adb6);background:transparent;border:0;border-right:1px solid var(--background-modifier-border,#45474c);border-radius:0;font-size:.78em}
+.life-planner .lp-overview-date{display:flex;justify-content:center;align-items:center;border:1px solid transparent;border-radius:7px;background:color-mix(in srgb,var(--background-primary,#25282b) 90%,#000);color:var(--text-normal,#e2e6e9);font-size:.88em}
+.life-planner .lp-overview-neighbors{grid-column:span var(--neighbor-count);min-width:0;position:relative;display:flex;flex-direction:column}
+.life-planner .lp-overview-neighbor-dates{display:grid;grid-template-columns:repeat(var(--neighbor-count),minmax(0,1fr));gap:4px}
+.life-planner .lp-overview-neighbor-dates .lp-overview-date{background:transparent;color:var(--text-muted,#a4adb6);border-radius:5px;padding-bottom:18px}
+.life-planner .lp-overview-caption{position:absolute;inset: auto 0 0;display:flex;justify-content:center;align-items:center;min-height:18px;font-size:.72em;line-height:1.3;color:var(--text-muted,#a4adb6);margin-inline:calc((100% - (var(--neighbor-count) - 1)*4px)/var(--neighbor-count)/2);--left-line:0px;--right-line:0px;pointer-events:none}
+.life-planner .lp-overview-caption>span{flex:none;white-space:nowrap}
+.life-planner .lp-overview-caption::before,.life-planner .lp-overview-caption::after{content:'';position:absolute;top:50%;height:1px;background:var(--background-modifier-border,#45474c)}
+.life-planner .lp-overview-caption::before{left:0;width:var(--left-line)}
+.life-planner .lp-overview-caption::after{right:0;width:var(--right-line)}
+.life-planner .lp-overview-date.is-today{color:var(--lp-success,#70c89c);border-color:var(--lp-success,#70c89c);background:color-mix(in srgb,var(--lp-success,#70c89c) 12%,var(--background-primary,#25282b));font-weight:650}
+.life-planner .lp-overview-date.is-selected{outline:0;box-shadow:inset 0 -3px var(--lp-accent,#d9b58e)}
+.life-planner .lp-overview-neighbor-dates .lp-overview-date{position:relative}
+.life-planner .lp-overview-neighbor-dates .lp-overview-date.is-today,.life-planner .lp-overview-neighbor-dates .lp-overview-date.is-selected{background:transparent;border-color:transparent;box-shadow:none}
+.life-planner .lp-overview-neighbor-dates .lp-overview-date.is-today::before,.life-planner .lp-overview-neighbor-dates .lp-overview-date.is-selected::before{content:'';position:absolute;inset:0 0 18px;border-radius:5px;pointer-events:none}
+.life-planner .lp-overview-neighbor-dates .lp-overview-date.is-today::before{border:1px solid var(--lp-success,#70c89c);background:color-mix(in srgb,var(--lp-success,#70c89c) 12%,transparent)}
+.life-planner .lp-overview-neighbor-dates .lp-overview-date.is-selected::before{box-shadow:inset 0 -2px var(--lp-accent,#d9b58e)}
+.life-planner .lp-overview-row button:hover,.life-planner .lp-overview-title:hover{background:var(--background-modifier-hover,rgba(128,128,128,.14))}
+.life-planner .lp-overview-row button:focus-visible,.life-planner .lp-overview-title:focus-visible{outline:2px solid var(--lp-accent,#d9b58e);outline-offset:1px}
+@container(max-width:950px){.life-planner .lp-overview-months{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container(max-width:600px){.life-planner .lp-overview-months{grid-template-columns:minmax(0,1fr)}}
+@container(max-width:290px){.life-planner .lp-overview-caption{font-size:clamp(10px,4cqi,.72em)}.life-planner .lp-overview-date{font-size:min(.88em,8cqi)}.life-planner .lp-overview-week,.life-planner .lp-overview-head{font-size:min(.78em,6cqi)}}

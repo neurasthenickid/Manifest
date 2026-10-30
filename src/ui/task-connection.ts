@@ -1,0 +1,25 @@
+import {button,el,field,select} from './elements';
+import type {TaskConnection,TaskConnectionSettings} from '../integrations/task-connection';
+const cleanups=new WeakMap<HTMLElement,()=>void>();
+export function disposeTaskConnection(host:HTMLElement){cleanups.get(host)?.();cleanups.delete(host);}
+export function renderTaskConnection(host:HTMLElement,connection:TaskConnection,get:()=>TaskConnectionSettings,save:(s:TaskConnectionSettings)=>Promise<void>,recover?:()=>Promise<void>){
+ disposeTaskConnection(host);host.replaceChildren();host.classList.add('lp-task-connection');const s=get();el('h3',host,'OneTask · задачи через CalDAV');
+ el('p',host,'Создавайте и редактируйте задачи в Obsidian. В OneTask отмечайте выполнение или снимайте ошибочную галочку.');el('small',host,'Обмен работает при открытом Obsidian. VTODO через Яндекс ещё не подтверждён настоящим тестом OneTask. Пароль на втором устройстве вводится отдельно.');
+ const server=field(host,'Адрес сервера задач (HTTPS)',s.server),login=field(host,'Аккаунт сервера задач',s.username),password=field(host,'Пароль на этом устройстве','','password');password.autocomplete='new-password';login.autocomplete='username';
+ const rememberLabel=el('label',host,undefined,'lp-setting-row'),remember=el('input',rememberLabel);remember.type='checkbox';remember.checked=!!connection.secrets;remember.disabled=!connection.secrets;el('span',rememberLabel,'Сохранить безопасно на этом устройстве');if(!connection.secrets)el('small',host,'Пароль доступен только до закрытия приложения: безопасное хранилище секретов здесь недоступно.');
+ const status=el('p',host,connection.status,'lp-task-sync-status');status.setAttribute('role','status');status.setAttribute('aria-live','polite');const result=el('div',host,undefined,'lp-task-sync-result');
+ const run=(fn:()=>Promise<unknown>)=>{status.textContent='Подождите…';void fn().catch(e=>{status.textContent=e instanceof Error?e.message:String(e);status.classList.add('lp-error');});};
+ const edit=(patch:Partial<TaskConnectionSettings>)=>run(async()=>{await save({...get(),...patch});connection.settingsChanged();renderTaskConnection(host,connection,get,save,recover);});
+ server.addEventListener('change',()=>{try{const url=new URL(server.value);if(url.protocol!=='https:'||url.username||url.password||url.search||url.hash)throw new Error();edit({server:url.href,listUrl:'',verifiedListUrl:'',secretId:'',enabled:false});}catch{status.textContent='Нужен адрес HTTPS без пароля, параметров и фрагмента.';status.classList.add('lp-error');}});
+ login.addEventListener('change',()=>edit({username:login.value.trim(),listUrl:'',verifiedListUrl:'',secretId:'',enabled:false}));
+ const check=button(host,'Проверить подключение',()=>run(async()=>{if(password.value){await connection.password(password.value,remember.checked);password.value='';}await connection.discover();renderTaskConnection(host,connection,get,save,recover);}));
+ const choices=[{id:'',title:'Выберите список задач'},...connection.lists.map(l=>({id:l.url,title:l.title}))];if(s.listUrl&&!choices.some(l=>l.id===s.listUrl))choices.push({id:s.listUrl,title:'Ранее выбранный список задач'});
+ const list=select(host,'Внешний список задач',choices,s.listUrl);list.addEventListener('change',()=>edit({listUrl:list.value,verifiedListUrl:connection.lists.some(l=>l.url===list.value)?list.value:'',enabled:false}));
+ const enabledLabel=el('label',host,undefined,'lp-setting-row'),enabled=el('input',enabledLabel);enabled.type='checkbox';enabled.checked=s.enabled;enabled.setAttribute('role','switch');enabled.setAttribute('aria-label','Обмен задачами');el('span',enabledLabel,'Обмен задачами');enabled.addEventListener('change',()=>edit({enabled:enabled.checked}));
+ const sync=button(host,'Синхронизировать сейчас',()=>run(()=>connection.sync()),'lp-primary');
+ const actions=el('div',host,undefined,'lp-actions');actions.append(check,sync);host.append(status,result);
+ const update=()=>{status.classList.remove('lp-error');status.textContent=connection.status;status.classList.toggle('is-working',connection.busy);check.disabled=sync.disabled=connection.busy;result.replaceChildren();if(!connection.result)return;el('small',result,'Последний обмен: '+new Date(connection.result.at).toLocaleString('ru-RU'));
+  for(const issue of connection.result.issues){const row=el('div',result,undefined,'lp-connection-issue');el('strong',row,issue.title);el('p',row,issue.message);if(issue.id&&issue.conflict){if(issue.message.toLowerCase().includes('облач')&&recover)button(row,'Восстановить нужную копию задачи',()=>run(recover));else{const remote=button(row,'Принять статус OneTask',()=>run(()=>connection.resolve(issue.id!,'remote'))),local=button(row,'Отправить статус Obsidian',()=>run(()=>connection.resolve(issue.id!,'local')));remote.disabled=local.disabled=connection.busy;}}if(issue.id&&(issue.gone||issue.message.startsWith('Результат прежней отправки неизвестен'))){const recreate=button(row,'Создать заново',()=>run(()=>connection.resolve(issue.id!,'recreate')));recreate.disabled=connection.busy;}}
+ };
+ cleanups.set(host,connection.subscribe(update));update();
+}
