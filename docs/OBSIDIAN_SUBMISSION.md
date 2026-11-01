@@ -1,11 +1,14 @@
-# Catalog submission
+# Updating the existing Obsidian directory card
 
-Checked against official documentation on 2026-10-29. The current route is https://community.obsidian.md, not an automatic pull request to the old JSON list. Sign in with an Obsidian account, link GitHub, and add a plugin using https://github.com/neurasthenickid/Manifest after source and releases are public.
+Manifest already has a card: https://community.obsidian.md/plugins/life-planner . Update this card only; keep the technical ID `life-planner` and repository https://github.com/neurasthenickid/Manifest . Do not register a duplicate plugin or another ID.
 
-Repository root needs readable source, README, LICENSE and manifest. The exact numeric plugin release tag must match manifest.version; attach main.js, manifest.json and styles.css separately. The default branch manifest is what the directory processes. Keep id life-planner. No exact Manifest name or life-planner ID match was found in the published JSON directory on the check date; this is not a reservation or a guarantee of acceptance. The new directory may change independently.
+1. Publish and verify the exact numeric GitHub release, including separate `main.js`, `manifest.json` and `styles.css`; the default-branch manifest must agree. Confirm actual public downloads and Actions provenance. Keep the approved licenses and platform limitations.
+2. Sign in through the official Obsidian account flow as the existing card owner. Use **Check for new releases** if available and wait for the review of the requested version, not a previous run. Distinguish warnings from publication blockers; do not substitute the license or redesign the UI to suppress warnings.
+3. If the normal owner workflow requires **Publish**, publish that checked update within the authorized scope. Confirm the card version and that its automatic check belongs to the same version.
+4. Separately inspect the catalog consumed by the app and the installation link's plugin ID. Public page existence, Add to Obsidian, download counts and Completed alone do not prove installability. Record exact timestamp/status if distribution is pending. Do not promise an unattended recheck unless one was actually arranged.
 
-Disclose optional network access, source-available licensing and real-device limits. Current policies require a clear license and respect for upstream licenses; acceptance of any particular license or plugin is decided by Obsidian. Actual Windows/Android testing and live service tests remain separate.
+Repository source, manifest, complete LICENSE and README are public. Original code uses PolyForm Noncommercial 1.0.0; illustrations use CC BY-NC 4.0; upstream notices retain their own grants. Settings search in Obsidian 1.13+ remains a documented limitation. Actual Windows Obsidian, pop-out windows, physical Android/iPhone and real calendar-provider acceptance are NOT RUN for this release unless a distinct report records those tests.
 
-Do not submit before owner permission. After publication, verify real release files and the header download first. Submit once, address automated review feedback, and increment the version for corrections. Do not claim installation through Browse before acceptance.
+Do not install into a working vault as part of publication. A required new version after publication must be agreed with the owner; do not replace published bytes.
 
-Sources: https://docs.obsidian.md/Plugins/Releasing/Submit%20your%20plugin ; https://docs.obsidian.md/Reference/Manifest ; https://docs.obsidian.md/community-directory/developer-policies ; https://docs.obsidian.md/community-directory/submission-requirements-for-plugins .
+Official references: https://docs.obsidian.md/Plugins/Releasing/Submit%20your%20plugin ; https://docs.obsidian.md/Reference/Manifest ; https://docs.obsidian.md/community-directory/developer-policies ; https://docs.obsidian.md/community-directory/submission-requirements-for-plugins .

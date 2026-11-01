@@ -14,17 +14,17 @@ Manifest was previously called Life Planner. Its technical ID remains `life-plan
 
 ## Install and update
 
-This local candidate is not yet published or accepted into the Obsidian community directory. A published release must include separate `main.js`, `manifest.json` and `styles.css`, with an exact numeric tag matching the manifest version.
+Plugin releases are distributed through [GitHub Releases](https://github.com/neurasthenickid/Manifest/releases). Each code release includes separate `main.js`, `manifest.json` and `styles.css`, with an exact numeric tag matching the manifest version. The existing [Obsidian directory page](https://community.obsidian.md/plugins/life-planner) is a separate publication surface: its displayed version and automated review must be checked independently of GitHub.
 
-After publication, download those three files from [Releases](https://github.com/neurasthenickid/Manifest/releases), place them in `<vault-config>/plugins/life-planner/`, and enable **Manifest**. The config folder is usually `.obsidian`, but may be customized. For Android transfer, copy the same vault including its config folder; there is one plugin runtime for Windows and Android. Back up data before updating; do not replace `data.json` or the `Planner` folder with someone else's example files.
+For manual installation, download those three files from [Releases](https://github.com/neurasthenickid/Manifest/releases), place them in `<vault-config>/plugins/life-planner/`, and enable **Manifest**. The config folder is usually `.obsidian`, but may be customized. For Android transfer, copy the same vault including its config folder; there is one plugin runtime for Windows and Android. Back up data before updating; do not replace `data.json` or the `Planner` folder with someone else's example files.
 
-Once accepted into the directory, install/update through Obsidian's Community plugins settings. Until then, availability in Browse is not claimed. Manifest has no custom code updater.
+When Manifest is available in your app's Community plugins catalog, install/update there. A public website page or an Add to Obsidian link alone does not prove that Browse can install the current release; directory propagation and the app's catalog must be checked separately. Manifest has no custom code updater.
 
 ## Illustrated headers
 
 In Manifest settings → Appearance, use **Скачать все шапки**. This fetches optional static WebP data from this repository's `headers-*` releases. The collection contains 473 logical paths backed by 472 distinct images. Progress, cancellation, checksum validation and retry are supported. Installed images work offline. A collection update does not change plugin code.
 
-The credit beside the button remains: «Иллюстрации созданы с помощью ChatGPT по авторским описаниям и отобраны для проекта». These are illustrations, not documentary photographs. Image permissions are separate: see [IMAGE_LICENSE](IMAGE_LICENSE). The repository and download URLs are configured, but actual GitHub collection download is **NOT RUN until the collection release is published**.
+The credit beside the button remains: «Иллюстрации созданы с помощью ChatGPT по авторским описаниям и отобраны для проекта». These are illustrations, not documentary photographs. Image permissions are separate: see [IMAGE_LICENSE](IMAGE_LICENSE). The [2026.10.1 collection](https://github.com/neurasthenickid/Manifest/releases/tag/headers-2026.10.1) is published. On 2026-10-30 the production download service fetched all 472 public GitHub image objects and passed checksum, interruption/resume and offline-restart checks in an isolated filesystem host. This verifies real GitHub downloads, not native Obsidian networking or a physical phone.
 
 ## Privacy and network
 
@@ -32,11 +32,11 @@ No telemetry or advertising. Planner data stays in the vault unless you explicit
 
 ## Platforms and limits
 
-One runtime, `isDesktopOnly: false`, no Node/Electron imports. Declared minimum Obsidian: **1.11.4**. Its mobile-compatible API usage is checked statically and with a browser host adapter; actual operation on that minimum version is not certified. Current candidate: Windows Obsidian, physical Samsung/other Android/iPhone and real Yandex/OneCalendar/OneTask round-trips are **NOT RUN**. Browser touch/rotation simulations are not device acceptance. Statistics support multiple stored workout sessions per date; the unchanged daily form does not add a second-session creation button.
+One runtime, `isDesktopOnly: false`, no Node/Electron imports. Declared minimum Obsidian: **1.11.4**. Its mobile-compatible API usage is checked statically and with a browser host adapter; actual operation on that minimum version is not certified. For this release: Windows Obsidian, physical Samsung/other Android/iPhone and real Yandex/OneCalendar/OneTask round-trips are **NOT RUN**. Browser touch/rotation simulations are not device acceptance. Statistics support multiple stored workout sessions per date; the unchanged daily form does not add a second-session creation button.
 
 ## Development
 
-Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm check`, `pnpm collection`, then `pnpm run pack`. Tests use synthetic fixtures. For browser regression install Chromium with `pnpm exec playwright install chromium`, run `pnpm ui:build`, start `pnpm ui:serve` and in another terminal run `pnpm test:ui`. `MANIFEST_BROWSER_CHANNEL=msedge` can select an installed Edge locally. See [Releasing](docs/RELEASING.md), [Verification](docs/VERIFICATION.md) and [Catalog submission](docs/OBSIDIAN_SUBMISSION.md).
+Node 24 and pnpm 11.25.0. Run `pnpm install --frozen-lockfile`, `pnpm check`, `pnpm collection`, then `pnpm run pack`. Tests use synthetic fixtures. For browser regression install Chromium with `pnpm exec playwright install chromium`, run `pnpm test:ui`; it builds and starts its own temporary test servers. `MANIFEST_BROWSER_CHANNEL=msedge` can select an installed Edge locally. See [Releasing](docs/RELEASING.md), [Verification](docs/VERIFICATION.md) and [Catalog submission](docs/OBSIDIAN_SUBMISSION.md).
 
 ## License and support
 

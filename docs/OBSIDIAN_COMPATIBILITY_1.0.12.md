@@ -1,6 +1,6 @@
-# Manifest 1.0.12 — Obsidian compatibility candidate
+# Manifest 1.0.12 — Obsidian compatibility update
 
-Prepared locally on 2026-11-01 from the published 1.0.11 commit `c8859e2c5c58678324172c6297bc578b3bf5869d`. This candidate is not installed, pushed, released or resubmitted. Runtime data formats, IDs, history, CalDAV behavior, approved designs and the static image collection are preserved.
+Prepared locally on 2026-11-01 from the published 1.0.11 commit `c8859e2c5c58678324172c6297bc578b3bf5869d`. The local preparation reports are preserved separately; publication status is recorded by the GitHub release and the existing directory card, with in-app catalog availability checked independently. No working vault is installed or updated by the publication procedure. Runtime data formats, IDs, history, CalDAV behavior, approved designs and the static image collection are preserved.
 
 | Review item | Finding and decision | Evidence |
 | --- | --- | --- |
@@ -16,7 +16,7 @@ Prepared locally on 2026-11-01 from the published 1.0.11 commit `c8859e2c5c58678
 | !important | Removed redundant priorities where existing specificity/cascade suffices. Retained host-theme overrides and the mobile heading priority that overrides an earlier desktop `!important`. Green Today, separators and fonts are preserved. | Computed layout comparison against 1.0.11, including headings/calendar labels, plus inspected screenshots. |
 | License recognition | GitHub main still contains the complete approved PolyForm Noncommercial 1.0.0 in root LICENSE; metadata/README/notices agree. GitHub's license endpoint reports `Other / NOASSERTION`, not a missing file. No formatting defect warranting a change was found. The selected code/image terms and authorship are unchanged. Catalog recognition/acceptance is not promised. | Public repository LICENSE API snapshot; retained license bytes, metadata and content audit. |
 | File enumeration | Enumeration is not data transmission. The previous adapter called `getFiles()` for every prefix. It now walks only the requested subtree of the public live vault index, with no stale cache. Whole-vault enumeration remains possible only when explicitly requested with an empty prefix. | Subtree test rejects visiting unrelated branches and observes a rename; full storage/migration regressions. |
-| Artifact provenance | Added a separate code-tag attestation job using pinned official `actions/attest@v4` and `download-artifact@v4`. Only that job receives OIDC/attestation/artifact-metadata write permissions. It executes no project build scripts; it signs the three checked runtime files from the preceding job. | Local workflow/configuration inspection only. GitHub execution and successful attestation creation are **NOT RUN** because push/publication are forbidden for this task. |
+| Artifact provenance | Added a separate code-tag attestation job using pinned official `actions/attest@v4` and `download-artifact@v4`. Only that job receives OIDC/attestation/artifact-metadata write permissions. It executes no project build scripts; it signs the three checked runtime files from the preceding job. | Local workflow/configuration inspection only. The publication procedure requires successful execution on the exact tagged commit and verification of the resulting attestations. Local workflow inspection alone is not hosted execution. |
 | Additional release assets | Full offline ZIP, separate collection ZIP and checksums are retained. The three mandatory runtime assets remain separate files. | Candidate package inventory and archive verification. |
 
 ## Remaining lint warnings
@@ -40,4 +40,4 @@ The code is intentionally licensed under PolyForm Noncommercial 1.0.0 (source-av
 - https://github.com/obsidianmd/obsidian-api/blob/master/obsidian.d.ts
 - https://github.com/actions/attest
 
-This is a compatibility candidate with documented limitations, not a claim of catalog approval.
+This compatibility update retains documented limitations. Its public directory-page status does not by itself certify in-app installation or real-device acceptance.
