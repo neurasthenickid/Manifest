@@ -1,3 +1,4 @@
+import {trackPlannerChrome} from './planner-chrome';
 import {ActivitySelections} from '../activity-statistics';
 import {renderActivityStatistics} from './activity-statistics';
 import {canonicalModule,canonicalLayout} from './modules';
@@ -27,7 +28,7 @@ import {type CalendarEvent,type EventFields,type EventOccurrence,type Checkin,ty
 import { adjacent, addDays, dates, formatDate, period, today, weekday } from '../periods';
 import { dailyAreaRatingId, base, changeTask, checkinId, dayRatingId, definitionAt, newCheckin, taskCategory, visibilityId } from '../domain';
 import { dailyAreaRatingSeries, dailyAreaSummary, dayRatingSeries, summarize,observationWindow } from '../analytics';
-import { button, el, field, formatPercent, section, select } from './elements';
+import {detachedEl, button, el, field, formatPercent, section, select } from './elements';
 import { Forms } from './forms';
 import { renderKanban } from './kanban';
 import {TASK_COLUMNS} from './kanban';
@@ -83,19 +84,20 @@ export class PlannerWidget {
   private gestureCleanups: (()=>void)[] = [];
   private undoPanel: HTMLElement;
   private undo?: {record: CalendarEvent; version: number};
+  private chrome:ReturnType<typeof trackPlannerChrome>;
   private observedToday=today();private clockCleanup:()=>void=()=>{};
   private compactCleanup:()=>void=()=>{};
   private kanbanStatus:TaskStatus='todo';
   private taskStatusQueue=new Map<string,Promise<unknown>>();
   constructor(private host: HTMLElement, private store: PlannerStore, private context: Period, private actions: WidgetActions, private module:WidgetModule='all') {
     this.module=canonicalModule(module);this.view=actions.view??new PlannerViewState();this.statisticsDay=new StatisticsDay(context,today());
-    host.classList.add('life-planner');host.dataset.module=this.module;
+    host.classList.add('life-planner');host.dataset.module=this.module;this.chrome=trackPlannerChrome(host);
     this.compactCleanup=observeCompact(host);this.status=el('div',host,undefined,'lp-status');this.status.setAttribute('role','status');
     this.issuePanel=el('div',host,undefined,'lp-issues');this.undoPanel=el('div',host,undefined,'lp-undo-panel');this.panel=el('div',host);this.content=el('div',host);this.forms=new Forms(this.panel,store,(record,saved)=>{this.undo={record,version:saved.version};this.renderUndo();},()=>this.catalogue(),()=>this.settings.definitionOrder??{},async(type,ids)=>{const next=structuredClone(this.settings);next.definitionOrder={...next.definitionOrder,[type]:ids};await this.actions.saveSettings?.(next);});
     this.unsubscribe=store.subscribe(change=>this.recordsChanged(change));this.unsubscribeView=this.view.subscribe(()=>{if(this.renderedArea===this.view.area)this.replaceModules(['plans','task-stats','overview']);else this.render(true);});
-    const refreshDay=()=>{if(!this.disposed&&!document.hidden&&this.observedToday!==today())this.render(true);},timer=window.setInterval(refreshDay,60000);window.addEventListener('focus',refreshDay);document.addEventListener('visibilitychange',refreshDay);this.clockCleanup=()=>{window.clearInterval(timer);window.removeEventListener('focus',refreshDay);document.removeEventListener('visibilitychange',refreshDay);};if(this.module==='all'||this.module==='task-stats')this.statisticsOwner=claimStatistics(host,styleKey(context),()=>!this.disposed&&context.type!=='day'&&this.layout().includes('task-stats'),()=>{if(!this.disposed)this.render(true);},this.view);this.render();
+    const doc=host.ownerDocument,win=doc.defaultView!;const refreshDay=()=>{if(!this.disposed&&!doc.hidden&&this.observedToday!==today())this.render(true);},timer=win.setInterval(refreshDay,60000),close=()=>this.destroy();win.addEventListener('focus',refreshDay);doc.addEventListener('visibilitychange',refreshDay);win.addEventListener('pagehide',close);this.clockCleanup=()=>{win.clearInterval(timer);win.removeEventListener('focus',refreshDay);doc.removeEventListener('visibilitychange',refreshDay);win.removeEventListener('pagehide',close);};if(this.module==='all'||this.module==='task-stats')this.statisticsOwner=claimStatistics(host,styleKey(context),()=>!this.disposed&&context.type!=='day'&&this.layout().includes('task-stats'),()=>{if(!this.disposed)this.render(true);},this.view);this.render();
   }
-  destroy(){this.disposed=true;this.statisticsOwner?.release();this.clockCleanup();this.compactCleanup();this.forms.destroy();this.unsubscribe();this.unsubscribeView();for(const cleanup of this.gestureCleanups)cleanup();this.gestureCleanups=[];this.host.replaceChildren();}
+  destroy(){if(this.disposed)return;this.disposed=true;this.chrome.dispose();this.statisticsOwner?.release();this.clockCleanup();this.compactCleanup();this.forms.destroy();this.unsubscribe();this.unsubscribeView();for(const cleanup of this.gestureCleanups)cleanup();this.gestureCleanups=[];this.host.replaceChildren();}
   private renderUndo(){if(this.disposed)return;this.undoPanel.replaceChildren();if(!this.undo)return;const undo=this.undo;button(this.undoPanel,'Отменить удаление',()=>this.run(async()=>{await this.store.save({...undo.record,version:undo.version},undo.version);this.undo=undefined;this.renderUndo();}));}
   private run(action:()=>Promise<unknown>,quiet=true){
     this.status.classList.remove('lp-error');this.status.textContent=quiet?'':'Выполняется…';
@@ -132,7 +134,7 @@ export class PlannerWidget {
     this.replaceModules([...names]);
   }
   private renderModule(name:WidgetModule,parent:HTMLElement){
-    const root=this.content,target=root.ownerDocument.createElement('div'),start=this.gestureCleanups.length;this.content=target;
+    const root=this.content,target=detachedEl(root,'div'),start=this.gestureCleanups.length;this.content=target;
     try{
       if(name==='navigation')this.navigation();else if(name==='calendar')this.calendar();else if(name==='tasks')this.tasks();
       else if(name==='day-rating')this.dailyRating();else if(name==='area-ratings')this.areaRatings();
@@ -149,7 +151,7 @@ export class PlannerWidget {
       const scrolls=old.flatMap(node=>[...node.querySelectorAll<HTMLElement>('.lp-calendar-scroll,.lp-chart-scroll,.lp-kanban')]).map(n=>({className:n.className,left:n.scrollLeft,top:n.scrollTop}));
       const details=old.flatMap(node=>[...node.querySelectorAll<HTMLDetailsElement>('details')]).map(d=>({key:d.className+'|'+(d.querySelector('summary')?.textContent??'').replace(/\d+/g,''),open:d.open}));
       const cleanups=this.moduleCleanups.get(name)??[];for(const cleanup of cleanups)cleanup();this.gestureCleanups=this.gestureCleanups.filter(c=>!cleanups.includes(c));
-      const target=this.content.ownerDocument.createElement('div');this.renderModule(name,target);
+      const target=detachedEl(this.content,'div');this.renderModule(name,target);
       for(const node of [...target.children])old[0].before(node);for(const node of old)node.remove();
       const remaining=[...details];for(const d of this.content.querySelectorAll<HTMLDetailsElement>(`[data-render-module="${name}"] details`)){const key=d.className+'|'+(d.querySelector('summary')?.textContent??'').replace(/\d+/g,'');const index=remaining.findIndex(v=>v.key===key);if(index>=0){d.open=remaining[index].open;remaining.splice(index,1);}}
       const fresh=[...this.content.querySelectorAll<HTMLElement>(`[data-render-module="${name}"] .lp-calendar-scroll,[data-render-module="${name}"] .lp-chart-scroll,[data-render-module="${name}"] .lp-kanban`)];for(let i=0;i<scrolls.length;i++){const node=fresh[i],before=scrolls[i];if(node?.className===before.className){node.scrollLeft=before.left;node.scrollTop=before.top;}}
@@ -167,7 +169,7 @@ export class PlannerWidget {
     const general=['day-rating','habits','morning','evening','workout','day-stats','habit-stats','routine-stats','workout-stats'];
     this.host.hidden=this.module!=='all'&&(this.context.type==='day'&&['task-stats','plans'].includes(this.module)||!this.layout().includes(this.module)||(this.selectedArea!=='all'&&general.includes(this.module)));
     this.host.classList.toggle('lp-comfortable',this.settings.density==='comfortable');
-    this.host.classList.toggle('lp-concept',this.settings.theme==='concept');
+    this.host.classList.toggle('lp-concept',this.settings.theme==='concept');this.chrome.concept(this.settings.theme==='concept');
     this.host.style.setProperty('--lp-accent',this.settings.accent);this.host.style.setProperty('--lp-background',this.settings.background);
     this.host.style.setProperty('--lp-note-width',this.settings.width+'px');
     this.host.closest<HTMLElement>('.lp-wide-note')?.style.setProperty('--lp-note-width',this.settings.width+'px');
@@ -448,11 +450,11 @@ export class PlannerWidget {
     let editing=false,pending=0;
     const sync=()=>{if(this.disposed||!input.isConnected||editing||pending)return;const record=this.store.get(recordId),value=record&&(record.kind==='day-rating'||record.kind==='daily-area-rating')?record.value:null;input.value=String(value??Math.ceil(max/2));output.value=value===null?'—':String(value);output.setAttribute('aria-label',value===null?'не оценено':String(value));input.setAttribute('aria-valuetext',value===null?'не оценено':String(value));group.classList.toggle('is-unrated',value===null);paint();};
     this.ratingBindings.set(recordId,sync);
-    let settleTimer:number|undefined;
-    const endEdit=()=>{if(!editing)return;editing=false;settleTimer=window.setTimeout(sync,0);};
+    const win=input.ownerDocument.defaultView!;let settleTimer:number|undefined;
+    const endEdit=()=>{if(!editing)return;editing=false;settleTimer=win.setTimeout(sync,0);};
     const cancelEdit=()=>{editing=false;sync();};
-    this.gestureCleanups.push(bindTouchRange(input,()=>{editing=true;},cancelEdit,endEdit));input.addEventListener('pointerdown',e=>{if(!['touch','pen'].includes(e.pointerType))editing=true;});window.addEventListener('pointerup',endEdit);window.addEventListener('pointercancel',cancelEdit);
-    this.gestureCleanups.push(()=>{window.removeEventListener('pointerup',endEdit);window.removeEventListener('pointercancel',cancelEdit);window.clearTimeout(settleTimer);});
+    this.gestureCleanups.push(bindTouchRange(input,()=>{editing=true;},cancelEdit,endEdit));input.addEventListener('pointerdown',e=>{if(!['touch','pen'].includes(e.pointerType))editing=true;});win.addEventListener('pointerup',endEdit);win.addEventListener('pointercancel',cancelEdit);
+    this.gestureCleanups.push(()=>{win.removeEventListener('pointerup',endEdit);win.removeEventListener('pointercancel',cancelEdit);win.clearTimeout(settleTimer);});
     input.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','PageUp','PageDown'].includes(e.key))editing=true;});input.addEventListener('keyup',()=>{editing=false;sync();});input.addEventListener('blur',()=>{editing=false;sync();});
     input.addEventListener('input',()=>{group.classList.remove('is-unrated');output.value=input.value;output.setAttribute('aria-label',input.value);input.setAttribute('aria-valuetext',input.value);paint();});input.addEventListener('change',()=>{const value=Number(input.value);pending++;this.run(()=>{this.ratingQueue=this.ratingQueue.catch(()=>undefined).then(()=>{const current=this.store.get(recordId);if(current&&(current.kind==='day-rating'||current.kind==='daily-area-rating')&&current.value===value)return;return save(value);}).finally(()=>{pending--;if(!this.disposed&&input.isConnected)sync();});return this.ratingQueue;},true);});
 
@@ -503,7 +505,7 @@ export class PlannerWidget {
   private ratingChart(parent:HTMLElement,records:PlannerRecord[]){
     const points=dayRatingSeries(this.context,records,today());const observed=points.filter(point=>point.value!==null);
     el('h4',parent,'Динамика оценки дня');el('p',parent,observed.length?`Наблюдений: ${observed.length} из ${points.length}. Промежутки без точки не являются нулевой оценкой.`:'Пока нет оценок за прошедшую часть периода.','lp-muted');if(!points.length||!observed.length)return;
-    const document=parent.ownerDocument,svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 320 132');svg.setAttribute('role','img');svg.setAttribute('aria-label',`График оценки дня: наблюдений ${observed.length} из ${points.length}`);svg.classList.add('lp-rating-chart');parent.append(svg);
+    const document=parent.ownerDocument,svg=parent.createSvg('svg');svg.setAttribute('viewBox','0 0 320 132');svg.setAttribute('role','img');svg.setAttribute('aria-label',`График оценки дня: наблюдений ${observed.length} из ${points.length}`);svg.classList.add('lp-rating-chart');parent.append(svg);
     const line=(x1:number,y1:number,x2:number,y2:number,stroke:string,width='1')=>{const node=document.createElementNS(svg.namespaceURI,'line');node.setAttribute('x1',String(x1));node.setAttribute('y1',String(y1));node.setAttribute('x2',String(x2));node.setAttribute('y2',String(y2));node.setAttribute('stroke',stroke);node.setAttribute('stroke-width',width);svg.append(node);};
     for(const value of [0,50,100]){const y=116-value;line(24,y,312,y,'var(--background-modifier-border, #c9c7d0)');const label=document.createElementNS(svg.namespaceURI,'text');label.setAttribute('x','0');label.setAttribute('y',String(y+4));label.setAttribute('fill','currentColor');label.setAttribute('font-size','10');label.textContent=String(value);svg.append(label);}
     const x=(index:number)=>points.length===1?168:24+288*index/(points.length-1),y=(value:number)=>116-value;
@@ -515,7 +517,7 @@ export class PlannerWidget {
   private areaObservations():PlannerRecord[]{return [...this.store.all('daily-area-rating'),...this.store.all('area-rating')];}
   private areaChart(parent:HTMLElement,records:PlannerRecord[]){
     const visible=this.areaStatisticAreas();const points=dailyAreaRatingSeries(this.context,this.areaObservations(),today()).filter(p=>visible.some(a=>a.id===p.areaId));el('h4',parent,'Динамика оценок сфер');el('p',parent,points.length?`Ежедневных наблюдений: ${points.length}. Будущие дни не показаны.`:'Пока нет оценок сфер за прошедшую часть периода.','lp-muted');if(!points.length)return;
-    const document=parent.ownerDocument,svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 320 132');svg.setAttribute('role','img');svg.setAttribute('aria-label',`Динамика оценок сфер: наблюдений ${points.length}`);svg.classList.add('lp-rating-chart');parent.append(svg);
+    const document=parent.ownerDocument,svg=parent.createSvg('svg');svg.setAttribute('viewBox','0 0 320 132');svg.setAttribute('role','img');svg.setAttribute('aria-label',`Динамика оценок сфер: наблюдений ${points.length}`);svg.classList.add('lp-rating-chart');parent.append(svg);
     const days=dates(this.context.start,this.context.end),indexByDate=new Map(days.map((date,index)=>[date,index]));const x=(date:string)=>days.length===1?168:24+288*(indexByDate.get(date)??0)/(days.length-1),y=(value:number)=>116-(value-1)*10;
     for(const value of [1,5,10]){const guide=document.createElementNS(svg.namespaceURI,'line');guide.setAttribute('x1','24');guide.setAttribute('x2','312');guide.setAttribute('y1',String(y(value)));guide.setAttribute('y2',String(y(value)));guide.setAttribute('stroke','var(--background-modifier-border, #c9c7d0)');svg.append(guide);const label=document.createElementNS(svg.namespaceURI,'text');label.setAttribute('x','0');label.setAttribute('y',String(y(value)+4));label.setAttribute('font-size','10');label.setAttribute('fill','currentColor');label.textContent=String(value);svg.append(label);}
     const groups=new Map<string,typeof points>();for(const point of points){const own=groups.get(point.areaId)??[];own.push(point);groups.set(point.areaId,own);}const color=(areaId:string)=>this.area(areaId)?.color??'var(--lp-accent, #8873bf)';for(const [areaId,own] of groups){const path=document.createElementNS(svg.namespaceURI,'path');path.setAttribute('d',own.map((point,index)=>`${index?'L':'M'}${x(point.date)} ${y(point.value)}`).join(' '));path.setAttribute('fill','none');path.setAttribute('stroke',color(areaId));path.setAttribute('stroke-width','2');svg.append(path);for(const point of own){const dot=document.createElementNS(svg.namespaceURI,'circle');dot.setAttribute('cx',String(x(point.date)));dot.setAttribute('cy',String(y(point.value)));dot.setAttribute('r','3');dot.setAttribute('fill',color(areaId));const title=document.createElementNS(svg.namespaceURI,'title');title.textContent=`${formatDate(point.date)} · ${point.areaTitle}: ${point.value}`;dot.append(title);svg.append(dot);}}
@@ -531,7 +533,7 @@ export class PlannerWidget {
       const grid=el('div',output,undefined,'lp-area-metrics');for(const r of ratings){const c=el('article',grid,undefined,'lp-area-metric');c.dataset.area=r.areaId;c.style.setProperty('--lp-area',this.area(r.areaId).color);el('strong',c,r.areaTitle);el('output',c,r.mean===null?'нет данных':r.mean.toLocaleString('ru-RU',{maximumFractionDigits:1}));el('small',c,'Оценённых дней: '+r.count+' из '+observationWindow(this.context).elapsed+' прошедших · всего '+observationWindow(this.context).total);if(!wheel){const bar=el('progress',c);bar.max=10;bar.value=r.mean??0;bar.setAttribute('aria-label',r.areaTitle+': '+(r.mean===null?'нет данных':r.mean));if(r.mean===null)bar.hidden=true;}}
       if(areas.length>8)button(output,manualWheel?'Показать полосы':'Открыть колесо жизни',()=>{manualWheel=!manualWheel;draw();});
       if(!wheel)return;
-      const doc=parent.ownerDocument,svg=doc.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 420 380');svg.setAttribute('role','img');svg.setAttribute('aria-label','Колесо жизни: оценено сфер '+ratings.filter(r=>r.mean!==null).length+' из '+areas.length);svg.classList.add('lp-rating-chart','lp-radar');output.append(svg);
+      const doc=parent.ownerDocument,svg=parent.createSvg('svg');svg.setAttribute('viewBox','0 0 420 380');svg.setAttribute('role','img');svg.setAttribute('aria-label','Колесо жизни: оценено сфер '+ratings.filter(r=>r.mean!==null).length+' из '+areas.length);svg.classList.add('lp-rating-chart','lp-radar');output.append(svg);
       const point=(i:number,value:number)=>{const angle=-Math.PI/2+2*Math.PI*i/areas.length;return[210+112*value/10*Math.cos(angle),190+112*value/10*Math.sin(angle)];};
       for(const value of [2,4,6,8,10]){const ring=doc.createElementNS(svg.namespaceURI,'polygon');ring.setAttribute('points',areas.map((_,i)=>point(i,value).join(',')).join(' '));ring.setAttribute('fill','none');ring.setAttribute('stroke','var(--background-modifier-border)');svg.append(ring);}
       if(ratings.every(r=>r.mean!==null)){const polygon=doc.createElementNS(svg.namespaceURI,'polygon');polygon.setAttribute('points',ratings.map((r,i)=>point(i,r.mean!).join(',')).join(' '));polygon.setAttribute('fill','color-mix(in srgb,var(--lp-accent) 18%,transparent)');polygon.setAttribute('stroke','var(--lp-accent)');svg.append(polygon);}
@@ -566,7 +568,7 @@ export class PlannerWidget {
     const doc=parent.ownerDocument,font=parseFloat(doc.defaultView!.getComputedStyle(parent).fontSize)||16;
     const stride=Math.max(28,font*(String(max).length*.65+1)),width=Math.max(680,72+values.length*Math.max(136,stride*3+font*2)),step=(width-72)/values.length;
     const top=Math.max(34,font*2),bottom=top+201,height=bottom+12;
-    const svg=doc.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.style.width=width+'px';svg.setAttribute('role','img');svg.setAttribute('aria-label','График задач: завершено '+total.done+', просрочено '+total.overdue+', завершено с опозданием '+total.late);svg.classList.add('lp-rating-chart','lp-task-chart');const scroll=el('div',parent,undefined,'lp-chart-scroll');scroll.tabIndex=0;scroll.setAttribute('aria-label','Столбчатый график задач по сферам');scroll.append(svg);
+    const svg=parent.createSvg('svg');svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.style.width=width+'px';svg.setAttribute('role','img');svg.setAttribute('aria-label','График задач: завершено '+total.done+', просрочено '+total.overdue+', завершено с опозданием '+total.late);svg.classList.add('lp-rating-chart','lp-task-chart');const scroll=el('div',parent,undefined,'lp-chart-scroll');scroll.tabIndex=0;scroll.setAttribute('aria-label','Столбчатый график задач по сферам');scroll.append(svg);
     const node=(tag:string,attrs:Record<string,string|number>,title?:string)=>{const n=doc.createElementNS(svg.namespaceURI,tag);for(const [key,value]of Object.entries(attrs))n.setAttribute(key,String(value));if(title!==undefined)n.textContent=title;svg.append(n);return n;};
     const tickStep=Math.max(1,Math.ceil(max/4)),axisMax=Math.ceil(max/tickStep)*tickStep;
     for(let value=0;value<=axisMax;value+=tickStep){const y=bottom-(bottom-top)*value/axisMax;node('line',{x1:48,x2:width-24,y1:y,y2:y,stroke:'currentColor','stroke-opacity':.12});node('text',{x:35,y:y+5,'font-size':'.8em','text-anchor':'end',fill:'currentColor','data-axis':'count'},String(value));}

@@ -1,7 +1,8 @@
+import {startTimeout} from '../timers';
 import type {Editor,TFile,WorkspaceLeaf} from 'obsidian';
 import {freeNotesPatch,freeNotesPosition} from './free-notes-position';
 /** Public APIs, exact source file and editor readiness; no platform-specific class identity. */
-export async function openFreeNotesEditor(leaf:WorkspaceLeaf,file:TFile,reveal:(leaf:WorkspaceLeaf)=>Promise<unknown>,wait:(ms:number)=>Promise<void>=ms=>new Promise(resolve=>window.setTimeout(resolve,ms))){
+export async function openFreeNotesEditor(leaf:WorkspaceLeaf,file:TFile,reveal:(leaf:WorkspaceLeaf)=>Promise<unknown>,wait:(ms:number)=>Promise<void>=ms=>new Promise(resolve=>startTimeout(resolve,ms,leaf.view.containerEl.ownerDocument.defaultView!))){
  await leaf.openFile(file,{active:true,state:{mode:'source'}});await leaf.loadIfDeferred?.();
  const state=leaf.getViewState();await leaf.setViewState({...state,type:'markdown',state:{...state.state,file:file.path,mode:'source'},active:true},{focus:true});await reveal(leaf);
  let editor:Editor|undefined;

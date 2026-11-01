@@ -22,7 +22,8 @@ export async function dailyNotesStartupChoice(io:FileIO,settings:PlannerSettings
 }
 
 /** Native config files are outside Vault's Markdown index; use the mobile DataAdapter. */
-export async function configureDailyNotes(io:FileIO,settings:PlannerSettings,configDir='.obsidian',root='Planner'):Promise<boolean>{
+export async function configureDailyNotes(io:FileIO,settings:PlannerSettings,configDir:string,root='Planner'):Promise<boolean>{
+ if(typeof configDir!=='string'||!configDir.trim())throw new Error('Нужна папка конфигурации текущего хранилища.');
  const daily=configDir+'/daily-notes.json',core=configDir+'/core-plugins.json';
  const beforeDaily=await io.read(daily),beforeCore=await io.read(core);
  const parsed=beforeDaily===null?{}:parseJSON(beforeDaily);

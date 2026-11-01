@@ -37,8 +37,43 @@ jobs:
       - run: pnpm collection
       - run: pnpm run pack
       - run: node scripts/seal-release.mjs
+      - name: Retain the checked runtime for provenance
+        if: ${{ !startsWith(github.ref_name, 'headers-') }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: checked-runtime
+          path: |
+            dist/light/main.js
+            dist/light/manifest.json
+            dist/light/styles.css
+          if-no-files-found: error
+          retention-days: 7
       - name: Create an immutable new draft, never overwrite an existing release
         run: node scripts/tag-draft.mjs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
+  attest-runtime:
+    needs: draft
+    if: ${{ !startsWith(github.ref_name, 'headers-') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    steps:
+      # No project code executes in the job holding the OIDC signing permission.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: checked-runtime
+          path: checked-runtime
+      - uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6
+        with:
+          subject-path: |
+            checked-runtime/main.js
+            checked-runtime/manifest.json
+            checked-runtime/styles.css

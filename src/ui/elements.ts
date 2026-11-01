@@ -1,9 +1,11 @@
 export function el<K extends keyof HTMLElementTagNameMap>(tag: K, parent?: HTMLElement, text?: string, cls?: string): HTMLElementTagNameMap[K] {
-  const node = (parent?.ownerDocument ?? document).createElement(tag);
+  const node = parent ? parent.createEl(tag) : createEl(tag);
   if (text !== undefined) node.textContent = text;
   if (cls) node.className = cls;
   parent?.append(node); return node;
 }
+/** Temporary renderer nodes stay detached and belong to the container's document. */
+export function detachedEl<K extends keyof HTMLElementTagNameMap>(parent:HTMLElement,tag:K):HTMLElementTagNameMap[K]{return (parent.ownerDocument.defaultView as Window&{createFragment:typeof createFragment}).createFragment().createEl(tag);}
 export function button(parent: HTMLElement, text: string, action: () => void, cls = ''): HTMLButtonElement {
   const node = el('button', parent, text, cls); node.type = 'button'; node.addEventListener('click', action); return node;
 }

@@ -1,11 +1,11 @@
 {
   "name": "life-planner",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "private": true,
   "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/*.test.ts",
+    "test": "tsx --import ./tests/runtime-setup.ts --test tests/*.test.ts",
     "lint": "eslint src",
     "check:manifest": "node scripts/verify-manifest.mjs",
     "build": "node scripts/build.mjs",

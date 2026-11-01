@@ -40,13 +40,13 @@ test('native Daily Notes follows legacy or fresh folder names and rejects mixed 
   for(const separator of ['.','-']){
     const io=new MemoryIO(),notes=new NotesService(io,'Planner',()=>settings);
     io.files.set(`${folder}/03${separator}10${separator}2026.md`,'# Мои записи');
-    await configureDailyNotes(io,settings);
+    await configureDailyNotes(io,settings,'.obsidian');
     const config=JSON.parse(io.files.get('.obsidian/daily-notes.json')!);
     assert.equal(config.format,separator==='.'?'DD.MM.YYYY':'DD-MM-YYYY');
     assert.equal(await notes.ensurePeriod('day','2026-10-04'),`${folder}/04${separator}10${separator}2026.md`);
   }
   const io=new MemoryIO();io.files.set(folder+'/03-10-2026.md','# Первый день');io.files.set(folder+'/04.10.2026.md','# Второй день');
-  const before=[...io.files];await assert.rejects(configureDailyNotes(io,settings),/смешаны/);assert.deepEqual([...io.files],before);
+  const before=[...io.files];await assert.rejects(configureDailyNotes(io,settings,'.obsidian'),/смешаны/);assert.deepEqual([...io.files],before);
 });
 
 test('occupied daily aliases and preexisting duplicate identities block creation without altering either file',async()=>{

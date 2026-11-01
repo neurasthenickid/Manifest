@@ -1,3 +1,4 @@
+import './dom-harness';
 import {HeaderCollection,HEADER_CATALOG,type HeaderIO} from '../src/headers/collection';
 import {renderSettingsPanel} from '../src/ui/settings-panel';
 import {normalizeSettings} from '../src/settings';

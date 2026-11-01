@@ -1,3 +1,5 @@
+import './compat-harness';
+import './dom-harness';
 import {activityFixtureRecords} from './activity-fixture';
 import {calendarDockingHarness} from './calendar-docking-harness';
 import {widgetModule} from '../src/ui/modules';

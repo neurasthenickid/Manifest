@@ -7,7 +7,7 @@ function fixture(restored=false,deferred=false){
  const gate=new Promise<void>(resolve=>{release=resolve;});
  const leaf={getViewState:()=>({type:restored?'calendar':'empty'}),loadIfDeferred:async()=>{loads++;},setViewState:async()=>{sets++;await gate;if(fail)throw Error('failed');restored=true;}} as unknown as WorkspaceLeaf;
  const workspace={getLeavesOfType:()=>restored&&!deferred?[leaf]:[],iterateAllLeaves:(fn:(leaf:WorkspaceLeaf)=>void)=>fn(leaf),getLeftLeaf:()=>{creates++;return leaf;},getRightLeaf:()=>{creates++;return leaf;},revealLeaf:async()=>{reveals++;}} as unknown as Workspace;
- return{opener:new SingleCalendar(workspace,'calendar',()=> 'right'),release,fail:()=>{fail=true;},counts:()=>({creates,sets,reveals,loads})};
+ return{opener:new SingleCalendar(workspace,'calendar',()=> 'right',()=>null),release,fail:()=>{fail=true;},counts:()=>({creates,sets,reveals,loads})};
 }
 test('startup reuses a restored calendar without resetting its view or revealing sidebar',async()=>{const f=fixture(true);await f.opener.open(false);assert.deepEqual(f.counts(),{creates:0,sets:0,reveals:0,loads:0});});
 test('startup recognizes a restored deferred calendar by saved view state',async()=>{const f=fixture(true,true);await f.opener.open(false);await f.opener.open();assert.deepEqual(f.counts(),{creates:0,sets:0,reveals:1,loads:1});});
@@ -17,10 +17,10 @@ test('existing calendar duplicates are removed, original and unrelated note leav
  const removed:string[]=[];const make=(id:string,type:string)=>({getViewState:()=>({type}),detach:()=>removed.push(id)}) as unknown as WorkspaceLeaf;
  const original=make('original','calendar'),extra=make('extra','calendar'),note=make('note','markdown');
  const workspace={getLeavesOfType:()=>[original],iterateAllLeaves:(fn:(leaf:WorkspaceLeaf)=>void)=>[original,extra,note].forEach(fn)} as unknown as Workspace;
- await new SingleCalendar(workspace,'calendar',()=> 'right').open(false);assert.deepEqual(removed,['extra']);
+ await new SingleCalendar(workspace,'calendar',()=> 'right',()=>null).open(false);assert.deepEqual(removed,['extra']);
 });
 test('older Obsidian without deferred API still reveals its existing calendar',async()=>{
  let revealed=0;const leaf={getViewState:()=>({type:'calendar'})} as unknown as WorkspaceLeaf;
  const workspace={getLeavesOfType:()=>[leaf],iterateAllLeaves:()=>{},revealLeaf:async()=>{revealed++;}} as unknown as Workspace;
- await new SingleCalendar(workspace,'calendar',()=> 'right').open();assert.equal(revealed,1);
+ await new SingleCalendar(workspace,'calendar',()=> 'right',()=>null).open();assert.equal(revealed,1);
 });

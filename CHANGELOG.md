@@ -1,3 +1,14 @@
+# Manifest 1.0.12 (candidate)
+
+- Require the actual vault configuration directory for Daily Notes.
+- Use public owner-document DOM helpers, retain timer owners, and clean up window/gesture resources.
+- Replace deprecated activeLeaf access with the public active-view API and protect asynchronous sidebar focus.
+- Replace broad relational CSS selectors with managed classes and preserve the approved layout.
+- Enumerate only requested vault subtrees; prepare optional GitHub runtime provenance in a separate job.
+- Preserve licensing, data formats, static images, minimum app version and release ZIPs. Settings search requires a separate migration; see docs/OBSIDIAN_COMPATIBILITY_1.0.12.md.
+
+Actual Obsidian, pop-out windows, phones, external providers and the new hosted attestation job remain NOT RUN. This candidate has not been installed or published.
+
 # Manifest 1.0.11
 
 - Rename the user-facing plugin to Manifest, by neurasthenick1d; preserve the life-planner technical ID, vault paths, records, settings and history.

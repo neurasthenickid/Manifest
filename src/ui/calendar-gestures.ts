@@ -1,3 +1,4 @@
+import {el} from './elements';
 import type { EventFields, EventOccurrence } from '../model';
 import { assertLocalDate } from '../periods';
 import { eventFields } from '../recurrence';
@@ -24,7 +25,7 @@ export function gestureFields(occurrence: EventOccurrence, mode: 'move' | 'resiz
 /** Mouse gestures supplement forms. Touch retains native scrolling and tap-to-edit. */
 function track(node: HTMLElement, start: (event: PointerEvent) => ((event: PointerEvent, finish: boolean) => void) | undefined): () => void {
   let active: { id: number; x: number; y: number; target: HTMLElement; moved: boolean; update: (event: PointerEvent, finish: boolean) => void } | undefined;
-  let suppressClick = false;
+  const win=node.ownerDocument.defaultView!;let suppressClick = false;
   const down = (event: PointerEvent) => {
     if (event.pointerType !== 'mouse' || event.button !== 0) return;
     suppressClick = false;
@@ -42,15 +43,15 @@ function track(node: HTMLElement, start: (event: PointerEvent) => ((event: Point
     else if (finished.target !== node) { finished.target.click(); suppressClick = true; }
     if (node.hasPointerCapture(event.pointerId)) node.releasePointerCapture(event.pointerId);
   };
-  const cancel = () => { active = undefined; };
+  const cancel = () => { const previous=active;active = undefined;if(previous&&node.hasPointerCapture(previous.id))node.releasePointerCapture(previous.id); };
   const click = (event: MouseEvent) => { if (suppressClick && event.detail !== 0) { suppressClick = false; event.preventDefault(); event.stopImmediatePropagation(); } };
-  node.addEventListener('pointerdown', down); node.addEventListener('pointermove', move); node.addEventListener('pointerup', up); node.addEventListener('pointercancel', cancel); node.addEventListener('click', click, true);
-  return () => { cancel(); node.removeEventListener('pointerdown', down); node.removeEventListener('pointermove', move); node.removeEventListener('pointerup', up); node.removeEventListener('pointercancel', cancel); node.removeEventListener('click', click, true); };
+  win.addEventListener('blur',cancel);win.addEventListener('pagehide',cancel);node.addEventListener('pointerdown', down); node.addEventListener('pointermove', move); node.addEventListener('pointerup', up); node.addEventListener('pointercancel', cancel); node.addEventListener('click', click, true);
+  return () => { cancel();win.removeEventListener('blur',cancel);win.removeEventListener('pagehide',cancel); node.removeEventListener('pointerdown', down); node.removeEventListener('pointermove', move); node.removeEventListener('pointerup', up); node.removeEventListener('pointercancel', cancel); node.removeEventListener('click', click, true); };
 }
 const scale=(timeline:HTMLElement)=>({start:Number(timeline.dataset.startMinute??0),end:Number(timeline.dataset.endMinute??1440),height:Number(timeline.dataset.hourHeight??40)});
 const minuteAt = (timeline: HTMLElement, y: number): number => {const s=scale(timeline);return Math.max(s.start,Math.min(s.end,s.start+(y-timeline.getBoundingClientRect().top)*60/s.height));};
 function ghost(timeline: HTMLElement, from: number, to: number): HTMLElement {
-  const node = timeline.ownerDocument.createElement('div'); node.className = 'lp-selection';
+  const node = el('div',timeline); node.className = 'lp-selection';
   const s=scale(timeline);node.style.top = `${(from-s.start) * s.height / 60}px`; node.style.height = `${Math.max(10, (to - from) * s.height / 60)}px`; timeline.append(node); return node;
 }
 export function bindSelection(timeline: HTMLElement, date: string, create: (fields: Pick<EventFields, 'start' | 'end'>) => void): () => void {
@@ -65,8 +66,8 @@ export function bindSelection(timeline: HTMLElement, date: string, create: (fiel
       if (finish) create(rangeFields(date, from, to)); else preview = ghost(timeline, from, to);
     };
   });
-  const cancel = () => { preview?.remove(); preview = undefined; }; timeline.addEventListener('pointercancel', cancel);
-  return () => { unbind(); cancel(); timeline.removeEventListener('pointercancel', cancel); };
+  const cancel = () => { preview?.remove(); preview = undefined; }; timeline.addEventListener('pointercancel', cancel);timeline.win.addEventListener('blur',cancel);timeline.win.addEventListener('pagehide',cancel);
+  return () => { unbind(); cancel(); timeline.removeEventListener('pointercancel', cancel);timeline.win.removeEventListener('blur',cancel);timeline.win.removeEventListener('pagehide',cancel); };
 }
 export function bindEventGesture(button: HTMLElement, occurrence: EventOccurrence, calendar: HTMLElement, propose: (fields: EventFields) => void, report: (error: unknown) => void): () => void {
   let preview: HTMLElement | undefined;
@@ -86,6 +87,6 @@ export function bindEventGesture(button: HTMLElement, occurrence: EventOccurrenc
       } catch (error) { if (finish) report(error); }
     };
   });
-  const cancel = () => { preview?.remove(); preview = undefined; }; button.addEventListener('pointercancel', cancel);
-  return () => { unbind(); cancel(); button.removeEventListener('pointercancel', cancel); };
+  const cancel = () => { preview?.remove(); preview = undefined; }; button.addEventListener('pointercancel', cancel);button.win.addEventListener('blur',cancel);button.win.addEventListener('pagehide',cancel);
+  return () => { unbind(); cancel(); button.removeEventListener('pointercancel', cancel);button.win.removeEventListener('blur',cancel);button.win.removeEventListener('pagehide',cancel); };
 }

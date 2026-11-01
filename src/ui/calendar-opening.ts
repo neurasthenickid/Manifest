@@ -1,4 +1,4 @@
-import type {Workspace, WorkspaceItem,WorkspaceLeaf} from 'obsidian';
+import type {Workspace, WorkspaceItem,WorkspaceLeaf,View} from 'obsidian';
 export interface CalendarPreferences {enabled:boolean;side:'left'|'right'}
 /** Restored background leaves may still have DeferredView. Inspect saved type too. */
 export class SingleCalendar {
@@ -6,7 +6,7 @@ export class SingleCalendar {
  private creating?:WorkspaceLeaf;
  private generation=0;
  private started=false;
- constructor(private workspace:Workspace,private type:string,private side:()=> 'left'|'right'){}
+ constructor(private workspace:Workspace,private type:string,private side:()=> 'left'|'right',private currentView:()=>Pick<View,'leaf'>|null){}
  /** One layout-ready attempt per plugin instance. Mobile drawers remain user-controlled. */
  async startup(preferences:CalendarPreferences,mobile:boolean){
   if(this.started)return;this.started=true;
@@ -61,10 +61,12 @@ export class SingleCalendar {
  private async showWithoutFocus(leaf:WorkspaceLeaf){
   // revealLeaf selects the sidebar tab. Restore the note only if the API activated
   // this calendar, never if the user switched to a different note while awaiting it.
-  const active=this.workspace.activeLeaf,doc=this.workspace.containerEl?.ownerDocument,focused=doc?.activeElement;
-  await this.workspace.revealLeaf(leaf);
-  if(active&&active!==leaf&&this.workspace.activeLeaf===leaf)this.workspace.setActiveLeaf(active,{focus:false});
-  if(focused&&'focus' in focused&&focused.isConnected&&doc?.activeElement!==focused&&
+  const active=this.currentView()?.leaf,doc=active?.view?.containerEl?.ownerDocument??this.workspace.containerEl?.ownerDocument,focused=doc?.activeElement;
+  let switched=false;
+  const ref=this.workspace.on('active-leaf-change',next=>{if(next&&next!==active&&next!==leaf)switched=true;});
+  try{await this.workspace.revealLeaf(leaf);}finally{this.workspace.offref(ref);}
+  if(!switched&&active&&active!==leaf&&this.currentView()?.leaf===leaf)this.workspace.setActiveLeaf(active,{focus:false});
+  if(!switched&&focused&&'focus' in focused&&focused.isConnected&&doc?.activeElement!==focused&&
    (doc?.activeElement===doc?.body||!!doc?.activeElement&&leaf.view?.containerEl?.contains(doc.activeElement)))(focused as HTMLElement).focus({preventScroll:true});
  }
 }

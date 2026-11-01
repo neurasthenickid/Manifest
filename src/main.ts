@@ -1,3 +1,5 @@
+import {listVaultFiles} from './vault-files';
+import {startTimeout,stopTimeout,disposeTimeouts} from './timers';
 import {parseJSON} from './json';
 import {HeaderCollection} from './headers/collection';
 import {githubHeaderSource} from './headers/source';
@@ -6,7 +8,7 @@ import {PlannerViewState} from './view-state';
 import {period} from './periods';
 import {renderSettingsPanel,disposeSettingsPanel,MODULE_TITLES} from './ui/settings-panel';
 import {CALENDAR_VIEW,PlannerCalendarView} from './ui/sidebar';
-import {MarkdownRenderChild,Modal,Notice,Plugin,PluginSettingTab,Platform,type WorkspaceLeaf,TFile,TFolder,normalizePath} from 'obsidian';
+import {MarkdownRenderChild,Modal,Notice,Plugin,PluginSettingTab,Platform,type WorkspaceLeaf,View,TFile,TFolder,normalizePath} from 'obsidian';
 import { RecordStore, type FileIO } from './storage';
 import { NotesService } from './notes';
 import {configureDailyNotes,dailyNotesStartupChoice,ownsDailyNotes} from './daily-notes';
@@ -37,7 +39,8 @@ export default class LifePlannerPlugin extends Plugin {
   notes!: NotesService;
   cloudConnection!:CloudConnection;private cloudSettings!:CloudSettingsFile;cloudAuto!:CloudAutoSync;
   private io!: FileIO;
-  private reloadTimer?: number;
+  private reloadTimer?: ReturnType<typeof startTimeout>;
+  private cloudReloadTimer?:ReturnType<typeof startTimeout>;
   private alive = true;
   private children = new Set<PlannerChild>();
   settings:PlannerSettings=normalizeSettings({});
@@ -49,6 +52,8 @@ export default class LifePlannerPlugin extends Plugin {
   get appearance(){return this.settings;}
   async onload() {
     this.registerEditorExtension(plannerEditorMarkers(state=>state.field(editorLivePreviewField,false)===true));
+    const win=this.app.workspace.containerEl.ownerDocument.defaultView!,doc=win.document;
+    this.register(disposeTimeouts);
     const adapter=this.app.vault.adapter,pluginDir=this.manifest.dir??this.app.vault.configDir+'/plugins/life-planner';
     this.headers=new HeaderCollection({read:async p=>await adapter.exists(p)?adapter.read(p):null,write:(p,v)=>adapter.write(p,v),readBinary:async p=>await adapter.exists(p)?adapter.readBinary(p):null,writeBinary:(p,v)=>adapter.writeBinary(p,v),mkdir:async p=>{let path='';for(const part of p.split('/')){path=path?path+'/'+part:part;if(!await adapter.exists(path))await adapter.mkdir(path);}}},pluginDir,githubHeaderSource(async url=>{const r=await requestUrl({url,throw:false});return {status:r.status,arrayBuffer:r.arrayBuffer};}));
     this.register(()=>this.headers.cancel());void this.headers.initialize();
@@ -62,9 +67,9 @@ export default class LifePlannerPlugin extends Plugin {
     this.register(this.store.subscribe(change=>{if(change?.records.some(r=>r.kind==='event'||r.kind==='task'))this.cloudAuto.trigger();}));
     void this.cloudConnection.restore().then(()=>this.cloudAuto.trigger()).catch(e=>this.notice(e));
     this.addCommand({id:'sync-cloud',name:'Синхронизировать связь с облаком',callback:()=>{void this.cloudConnection.sync().then(()=>new Notice(this.cloudConnection.status)).catch(e=>this.notice(e));}});
-    const automatic=()=>{if(this.alive&&!document.hidden)this.cloudAuto.trigger();};
-    this.registerInterval(window.setInterval(automatic,60_000));this.registerDomEvent(window,'focus',automatic);this.registerDomEvent(window,'online',automatic);
-    this.registerDomEvent(document,'visibilitychange',()=>{if(!document.hidden)automatic();});
+    const automatic=()=>{if(this.alive&&!doc.hidden)this.cloudAuto.trigger();};
+    const automaticTimer=win.setInterval(automatic,60_000);this.register(()=>win.clearInterval(automaticTimer));this.registerDomEvent(win,'focus',automatic);this.registerDomEvent(win,'online',automatic);
+    this.registerDomEvent(doc,'visibilitychange',()=>{if(!doc.hidden)automatic();});
     this.addRibbonIcon('calendar-days','Manifest · Сегодня',()=>{void this.openPeriod('day',today()).catch(e=>this.notice(e));});
     this.registerView(CALENDAR_VIEW,leaf=>new PlannerCalendarView(leaf,this));
     this.addCommand({id:'open-calendar',name:'Открыть боковой календарь',callback:()=>{void this.openCalendar().catch(e=>this.notice(e));}});
@@ -82,19 +87,19 @@ export default class LifePlannerPlugin extends Plugin {
     });
     this.registerMarkdownPostProcessor((container,ctx)=>{const file=this.app.vault.getAbstractFileByPath(ctx.sourcePath);if(!this.notes.isTemplate(ctx.sourcePath)&&(ctx.sourcePath.startsWith('Planner/Journal/')||file instanceof TFile&&this.app.metadataCache.getFileCache(file)?.frontmatter?.['life-planner-type'])){hidePlannerMarkers(container);bindFreeNotes(container,()=>{void this.editFreeNotes(ctx.sourcePath,container).catch(e=>this.notice(e));});}});
     const reload = (path:string)=>{
-      if(path===this.cloudSettings.path||path.startsWith('Planner/Data/cloud-connection-history/')){window.setTimeout(()=>{if(this.alive)void this.cloudSettings.load().then(s=>{this.settings.cloudConnection=s;this.cloudConnection.settingsChanged();return this.cloudConnection.restore();}).then(()=>this.cloudAuto.trigger()).catch(e=>{this.settings.cloudConnection.enabled=false;this.cloudConnection.settingsChanged();this.cloudConnection.reportError(e);this.notice(e);});},250);return;}
-      if(path.startsWith('Planner/Data/task-revisions/')||path.startsWith('Planner/Data/event-revisions/')){window.clearTimeout(this.reloadTimer);this.reloadTimer=window.setTimeout(()=>{if(this.alive)void this.store.reload().catch(e=>this.notice(e));},250);return;}
+      if(path===this.cloudSettings.path||path.startsWith('Planner/Data/cloud-connection-history/')){stopTimeout(this.cloudReloadTimer);this.cloudReloadTimer=startTimeout(()=>{if(this.alive)void this.cloudSettings.load().then(s=>{this.settings.cloudConnection=s;this.cloudConnection.settingsChanged();return this.cloudConnection.restore();}).then(()=>this.cloudAuto.trigger()).catch(e=>{this.settings.cloudConnection.enabled=false;this.cloudConnection.settingsChanged();this.cloudConnection.reportError(e);this.notice(e);});},250);return;}
+      if(path.startsWith('Planner/Data/task-revisions/')||path.startsWith('Planner/Data/event-revisions/')){stopTimeout(this.reloadTimer);this.reloadTimer=startTimeout(()=>{if(this.alive)void this.store.reload().catch(e=>this.notice(e));},250);return;}
       if(!path.startsWith('Planner/Data/records/'))return;
-      window.clearTimeout(this.reloadTimer);
-      this.reloadTimer=window.setTimeout(()=>{if(this.alive)void this.store.reload().catch(e=>this.notice(e));},250);
+      stopTimeout(this.reloadTimer);
+      this.reloadTimer=startTimeout(()=>{if(this.alive)void this.store.reload().catch(e=>this.notice(e));},250);
     };
     this.registerEvent(this.app.vault.on('modify',file=>reload(file.path)));
     this.registerEvent(this.app.vault.on('create',file=>reload(file.path)));
     this.registerEvent(this.app.vault.on('delete',file=>reload(file.path)));
     this.registerEvent(this.app.vault.on('rename',(file,oldPath)=>{reload(file.path);reload(oldPath);}));
-    this.register(()=>{this.alive=false;this.notesReturnCleanup?.();window.clearTimeout(this.reloadTimer);for(const child of this.children)child.unload();this.children.clear();});
+    this.register(()=>{this.alive=false;this.notesReturnCleanup?.();stopTimeout(this.reloadTimer);stopTimeout(this.cloudReloadTimer);for(const child of this.children)child.unload();this.children.clear();});
   }
-  applyAppearance(){for(const node of document.querySelectorAll<HTMLElement>('.life-planner')){if(!node.dataset.style||node.dataset.style==='plain')node.style.setProperty('--lp-accent',this.appearance.accent);if(this.appearance.background)node.style.setProperty('--lp-background',this.appearance.background);else node.style.removeProperty('--lp-background');}}
+  applyAppearance(){const documents=new Set([this.app.workspace.containerEl.ownerDocument]);this.app.workspace.iterateAllLeaves(leaf=>{if(leaf.view?.containerEl)documents.add(leaf.view.containerEl.ownerDocument);});for(const doc of documents)for(const node of doc.querySelectorAll<HTMLElement>('.life-planner')){if(!node.dataset.style||node.dataset.style==='plain')node.style.setProperty('--lp-accent',this.appearance.accent);if(this.appearance.background)node.style.setProperty('--lp-background',this.appearance.background);else node.style.removeProperty('--lp-background');}}
   async saveAppearance(next:AppearanceSettings){await this.saveSettings({...this.settings,...next});}
   private dailyIO():FileIO{const a=this.app.vault.adapter;return {read:async p=>await a.exists(p)?a.read(p):null,write:(p,t)=>a.write(p,t),list:async()=>[],mkdir:async p=>{let path='';for(const part of p.split('/')){path=path?path+'/'+part:part;if(!await a.exists(path))await a.mkdir(path);}}};}
   private async restoreDailyNotesChoice(){const choice=await dailyNotesStartupChoice(this.dailyIO(),this.settings,this.app.vault.configDir);if(choice!==this.settings.dailyNotes)await this.saveSettings({...this.settings,dailyNotes:choice});}
@@ -114,7 +119,7 @@ export default class LifePlannerPlugin extends Plugin {
   private stateForLeaf(leaf:WorkspaceLeaf){let state=this.states.get(leaf);if(!state){state=new PlannerViewState();this.states.set(leaf,state);}return state;}
   leafFor(container:HTMLElement){return this.app.workspace.getLeavesOfType('markdown').find(leaf=>leaf.view.containerEl.contains(container))??this.mainLeaf();}
   stateFor(container:HTMLElement){return this.stateForLeaf(this.leafFor(container));}
-  private calendar(){return this.calendarOpening??=new SingleCalendar(this.app.workspace,CALENDAR_VIEW,()=>this.settings.sidebar.side);}
+  private calendar(){return this.calendarOpening??=new SingleCalendar(this.app.workspace,CALENDAR_VIEW,()=>this.settings.sidebar.side,()=>this.app.workspace.getActiveViewOfType(View));}
   async openCalendar(reveal=true){await this.calendar().open(reveal);}
   async editFreeNotes(path:string,container?:HTMLElement){
     const file=this.app.vault.getAbstractFileByPath(path);if(!(file instanceof TFile))throw new Error('Заметка не найдена.');
@@ -147,7 +152,7 @@ export default class LifePlannerPlugin extends Plugin {
     return {
       read:async path=>{const file=vault.getAbstractFileByPath(safe(path));if(!file)return null;if(!(file instanceof TFile))throw new Error(`Ожидался файл: ${path}`);return vault.read(file);},
       mkdir,
-      list:async prefix=>{const p=prefix?safe(prefix).replace(/\/$/,'')+'/':'';return vault.getFiles().map(f=>f.path).filter(path=>!p||path.startsWith(p));},
+      list:async prefix=>listVaultFiles(vault,prefix?safe(prefix).replace(/\/$/,''):''),
       create:async(path,text)=>{const p=safe(path);if(vault.getAbstractFileByPath(p))return false;try{await vault.create(p,text);return true;}catch(error){if(vault.getAbstractFileByPath(p))return false;throw error;}},
       write:async(path,text)=>{const p=safe(path),file=vault.getAbstractFileByPath(p);if(file instanceof TFile)await vault.modify(file,text);else if(file)throw new Error('Путь занят папкой.');else await vault.create(p,text);},
       replace:async(path,expected,text)=>{const file=vault.getAbstractFileByPath(safe(path));if(!(file instanceof TFile))throw new Error('Файл исчез до сохранения.');await vault.process(file,current=>{if(current!==expected)throw new Error('Конфликт: файл изменился до записи. Обновите данные.');return text;});}
